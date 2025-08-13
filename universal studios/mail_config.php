@@ -6,4 +6,3 @@ define('SMTP_USER', 'jadenlee09082005@gmail.com');
 define('SMTP_PASS', '');   // 
 define('MAIL_FROM', 'jadenlee09082005@gmail.com'); 
 define('MAIL_FROM_NAME', 'universal studios');
-HHHHBJBJB
