@@ -71,8 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Sign Up - WaterLand</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body class = "signup-page">
 <div class="container mt-5" style="max-width:520px;">
     <h2 class="mb-4">Sign Up</h2>
     <?php if (!empty($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>

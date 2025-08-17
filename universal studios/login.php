@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body class = "login-page">
 <div class="container mt-5" style="max-width:520px;">
     <h2 class="mb-4 text-center">Sign In</h2>
 

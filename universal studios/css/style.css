@@ -928,4 +928,202 @@
 }
 /*** copyright end ***/
 
+/* style.css - Universal Studios Theme for Login Page */
+
+/* Global body styling */
+.body.login-body {
+  background: linear-gradient(135deg, #113b4a 60%, #000 100%);
+  color: #fff;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card-like container */
+.login-page .container {
+  background: rgba(17, 59, 74, 0.9);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Heading - cinematic feel */
+.login-page h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Labels */
+.login-page .form-label {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Inputs */
+.login-page .form-control {
+  border-radius: 10px;
+  border: 2px solid #113b4a;
+  padding: 12px;
+  background-color: #fff;
+  transition: all 0.3s;
+}
+
+.login-page .form-control:focus {
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(17, 59, 74, 0.8);
+}
+
+/* Primary Button */
+.login-page .btn-primary {
+  background-color: #113b4a;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 12px;
+  transition: all 0.3s;
+}
+
+.login-page .btn-primary:hover {
+  background-color: #0c2a34;
+  transform: scale(1.05);
+}
+
+/* Links */
+.login-page .btn-link {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-page .btn-link:hover {
+  color: #f1c40f !important; /* Universal Studios golden accent */
+  text-decoration: underline;
+}
+
+/* Alerts */
+.login-page .alert-success {
+  background-color: #0c2a34;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.login-page .alert-danger {
+  background-color: #8b0000;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* Subtle animation */
+@keyframes login-page-fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* signup.css - Universal Studios Theme for Signup Page */
+
+/* Global */
+body.signup-page {
+  background: linear-gradient(135deg, #113b4a 40%, #1a1a1a 100%);
+  color: #fff;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container box */
+.signup-page .container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 30px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Title */
+.signup-page h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #f1c40f; /* Universal Studios golden highlight */
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Labels */
+.signup-page .form-label {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Inputs */
+.signup-page .form-control {
+  border-radius: 10px;
+  border: 2px solid #113b4a;
+  padding: 12px;
+  background-color: rgba(255,255,255,0.9);
+  transition: all 0.3s;
+}
+
+.signup-page .form-control:focus {
+  border-color: #f1c40f;
+  box-shadow: 0 0 10px rgba(241,196,15,0.8);
+}
+
+/* Button */
+.signup-page .btn-primary {
+  background: linear-gradient(90deg, #113b4a, #0c2a34);
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+
+.signup-page .btn-primary:hover {
+  background: linear-gradient(90deg, #0c2a34, #113b4a);
+  transform: scale(1.05);
+}
+
+/* Link */
+.signup-page .btn-link {
+  color: #f1c40f !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-page .btn-link:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+/* Alerts */
+.signup-page .alert-danger {
+  background-color: rgba(139, 0, 0, 0.85);
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+}
+
+/* Subtle animation */
+@keyframes signup-page-slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
