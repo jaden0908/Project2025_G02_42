@@ -105,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS (adjust path if needed) -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5" style="max-width:520px;">
