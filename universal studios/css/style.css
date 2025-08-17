@@ -947,7 +947,7 @@
   border-radius: 20px;
   padding: 40px 30px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-  animation: fadeIn 1s ease-in-out;
+  animation: login-page-fadeIn 1s ease-in-out;
 }
 
 /* Heading - cinematic feel */
@@ -1050,7 +1050,7 @@ body.signup-page {
   padding: 40px 30px;
   backdrop-filter: blur(6px);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-  animation: slideUp 0.8s ease-out;
+  animation: signup-page-slideUp 0.8s ease-out;
 }
 
 /* Title */
@@ -1125,5 +1125,103 @@ body.signup-page {
 @keyframes signup-page-slideUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================= */
+/* Forgot Password Page Styling  */
+/* ============================= */
+
+body.forgot-password-page {
+  background: linear-gradient(135deg, #1a1a1a 40%, #113b4a 100%);
+  color: #fff;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container */
+.forgot-password-page .container {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px 30px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  animation: slideUp 0.8s ease-out;
+  max-width: 450px;
+  width: 100%;
+}
+
+/* Title */
+.forgot-password-page h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f1c40f;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Instructions text */
+.forgot-password-page p {
+  color: #ddd;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+/* Labels */
+.forgot-password-page .form-label {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Input field */
+.forgot-password-page .form-control {
+  border-radius: 10px;
+  border: 2px solid #113b4a;
+  padding: 12px;
+  background-color: rgba(255,255,255,0.9);
+  transition: all 0.3s;
+}
+
+.forgot-password-page .form-control:focus {
+  border-color: #f1c40f;
+  box-shadow: 0 0 10px rgba(241,196,15,0.8);
+}
+
+/* Submit Button */
+.forgot-password-page .btn-primary {
+  background: linear-gradient(90deg, #113b4a, #0c2a34);
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.forgot-password-page .btn-primary:hover {
+  background: linear-gradient(90deg, #0c2a34, #113b4a);
+  transform: scale(1.05);
+}
+
+/* Back to login link */
+.forgot-password-page .btn-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #f1c40f !important;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.forgot-password-page .btn-link:hover {
+  color: #fff !important;
+  text-decoration: underline;
 }
 
