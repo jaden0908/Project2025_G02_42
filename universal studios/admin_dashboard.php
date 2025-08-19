@@ -11,7 +11,9 @@ if ($role !== 'admin') {
 
 require __DIR__ . '/database.php';
 function e($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
-
+function nav_active($file){
+  return basename($_SERVER['PHP_SELF']) === $file ? ' active' : '';
+}
 /* --------- Stats --------- */
 $byRole = ['admin'=>0,'staff'=>0,'customer'=>0];
 $res = $conn->query("SELECT role, COUNT(*) c FROM users GROUP BY role");
@@ -122,18 +124,29 @@ if ($res2) { while ($row = $res2->fetch_assoc()) { $recent[] = $row; } }
     <div class="brand">
       <i class="bi bi-film"></i><span><?= BRAND_NAME ?></span>
     </div>
-    <div class="side-search">
-      <input type="text" placeholder="Search…">
-    </div>
+    
 
     <div class="nav-sec">
       <div class="nav-title">Main</div>
-      <a class="nav-link active" href="admin_dashboard.php"><i class="bi bi-speedometer2"></i>Dashboard</a>
-      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-people"></i>Manage Customers</a>
-      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-person-badge"></i>Manage Staff</a>
-      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-ticket-perforated"></i>Manage Packages</a>
-      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-graph-up"></i>Sales Reports</a>
-    </div>
+      <a class="nav-link<?= nav_active('admin_dashboard.php') ?>" href="admin_dashboard.php">
+    <i class="bi bi-speedometer2"></i>Dashboard
+  </a>
+
+  <a class="nav-link<?= nav_active('manage_staff.php') ?>" href="manage_staff.php">
+    <i class="bi bi-person-badge"></i>Manage Staff
+  </a>
+
+    <a class="nav-link<?= nav_active('manage_customers.php') ?>" href="manage_customers.php">
+    <i class="bi bi-person-badge"></i>Manage Customer
+  </a>
+
+  <a class="nav-link disabled" title="Coming soon">
+    <i class="bi bi-ticket-perforated"></i>Manage Packages
+  </a>
+
+  <a class="nav-link disabled" title="Coming soon">
+    <i class="bi bi-graph-up"></i>Sales Reports
+  </a>
 
     <div class="nav-sec">
       <div class="nav-title">Account</div>
@@ -148,10 +161,7 @@ if ($res2) { while ($row = $res2->fetch_assoc()) { $recent[] = $row; } }
     <!-- Topbar -->
     <div class="topbar">
       <div class="fw-bold">Material Dashboard</div>
-      <div class="top-right">
-        <span class="text-muted d-none d-sm-inline">Signed in as <strong><?= e($_SESSION['user']['name']) ?></strong></span>
-        <a href="logout.php" class="btn btn-outline-slate btn-sm btn-pill"><i class="bi bi-box-arrow-right me-1"></i>Sign Out</a>
-      </div>
+    
     </div>
 
     <!-- Main -->
@@ -196,30 +206,7 @@ if ($res2) { while ($row = $res2->fetch_assoc()) { $recent[] = $row; } }
         </div>
       </div>
 
-      <!-- Quick Actions / Promo -->
-      <div class="row g-3 mt-1">
-        <div class="col-lg-8">
-          <div class="card-soft panel">
-            <div class="card-header"><h5><i class="bi bi-lightning-charge me-2 text-warning"></i>Quick Actions</h5></div>
-            <div class="card-body d-flex flex-wrap gap-2">
-              <a class="btn btn-outline-slate btn-pill disabled" title="Coming soon"><i class="bi bi-people me-1"></i>Manage Customers</a>
-              <a class="btn btn-outline-slate btn-pill disabled" title="Coming soon"><i class="bi bi-person-badge me-1"></i>Manage Staff</a>
-              <a class="btn btn-outline-slate btn-pill disabled" title="Coming soon"><i class="bi bi-ticket-perforated me-1"></i>Manage Packages</a>
-              <a class="btn btn-outline-slate btn-pill disabled" title="Coming soon"><i class="bi bi-graph-up me-1"></i>Sales Reports</a>
-              <a href="profile.php" class="btn btn-primary btn-pill"><i class="bi bi-person me-1"></i>My Profile</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card-soft p-3 d-flex align-items-center justify-content-between">
-            <div>
-              <div class="fw-bold">Unverified Users</div>
-              <div class="text-muted small">Keep your users verified for security</div>
-            </div>
-            <span class="badge bg-danger badge-pulse"><?= number_format($unverifiedTotal) ?></span>
-          </div>
-        </div>
-      </div>
+     
 
       <!-- Recent Signups -->
       <div class="card-soft panel mt-3">

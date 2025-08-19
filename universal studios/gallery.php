@@ -43,7 +43,7 @@ define('BRAND_NAME', 'Universal Studios');
 </div>
 <!-- Spinner End -->
 
-<!-- Navbar & Hero Start -->
+<!-- ===================== Navbar & Hero Start =============== -->
 <div class="container-fluid nav-bar sticky-top px-4 py-2 py-lg-0">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a href="index.php" class="navbar-brand p-0">
@@ -52,6 +52,15 @@ define('BRAND_NAME', 'Universal Studios');
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars"></span>
         </button>
+
+        <?php
+        // Availability for "Give Feedback" in Pages dropdown
+        // Only guests and customers should see it; staff/admin should NOT.
+        $isGuest      = empty($_SESSION['user']);
+        $sessionRole  = $isGuest ? '' : ($_SESSION['user']['role'] ?? '');
+        $canFeedback  = $isGuest || $sessionRole === 'customer';
+        ?>
+
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto py-0">
                 <a href="index.php" class="nav-item nav-link">Home</a>
@@ -63,20 +72,29 @@ define('BRAND_NAME', 'Universal Studios');
                     <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
                         <a href="feature.php" class="dropdown-item">Our Feature</a>
-                        <a href="gallery.php" class="dropdown-item active">Our Gallery</a>
+                        <a href="gallery.php" class="dropdown-item">Our Gallery</a>
                         <a href="attraction.php" class="dropdown-item">Attractions</a>
-                        <a href="package.php" class="dropdown-item">Ticket Packages</a>
+                        <a href="package.php" class="dropdown-item active">Ticket Packages</a>
                         <a href="team.php" class="dropdown-item">Our Team</a>
                         <a href="testimonial.php" class="dropdown-item">Testimonial</a>
+
+                        <?php if ($canFeedback): ?>
+                            <!-- Show only to guests and customers -->
+                            <a href="feedback.php" class="dropdown-item">Give Feedback</a>
+                        <?php endif; ?>
+
                         <a href="404.php" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
+
                 <a href="contact.php" class="nav-item nav-link">Contact</a>
 
                 <?php if (empty($_SESSION['user'])): ?>
+                    <!-- Not logged in -->
                     <a href="signup.php" class="nav-item nav-link">Sign Up</a>
                     <a href="login.php" class="nav-item nav-link">Sign In</a>
                 <?php else: ?>
+                    <!-- Logged in dropdown -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <?php
@@ -105,11 +123,12 @@ define('BRAND_NAME', 'Universal Studios');
                 <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-instagram"></i></a>
                 <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <a href="package.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Buy Tickets</a>
+            <a href="package.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Ticket Packages</a>
         </div>
     </nav>
 </div>
-<!-- Navbar & Hero End -->
+<!-- ===================== Navbar & Hero End ================= -->
+
 
 <!-- Header Start -->
 <div class="container-fluid bg-breadcrumb">
