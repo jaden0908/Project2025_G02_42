@@ -183,25 +183,15 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
   <meta charset="utf-8">
   <title><?= BRAND_NAME ?> · Manage Customers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap & Icons -->
+
+  <!-- Libs -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    body{background:#f3f5f9;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-    .layout{display:flex;min-height:100vh;}
-    aside.sidebar{width:240px;background:#fff;border-right:1px solid #dee2e6;padding:1rem;position:sticky;top:0;align-self:flex-start}
-    .brand{font-weight:700}
-    .nav-link{display:block;padding:.5rem .75rem;color:#333;border-radius:8px}
-    .nav-link:hover{background:#f0f2f5}
-    .nav-link.active{background:#0d6efd;color:#fff!important}
-    .nav-link.disabled{opacity:.5;pointer-events:none}
-    .content{flex:1;padding:2rem}
-    .card-soft{background:#fff;border:1px solid #e7eaf0;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.08)}
-    .mono{font-family:ui-monospace,Menlo,Consolas,monospace}
-    .btn-pill{border-radius:12px}
-    .badge-pill{border-radius:999px}
-  </style>
+
+
+  <link href="css/style.css?v=3" rel="stylesheet">
 </head>
+
 <body>
 <div class="layout">
   <!-- Sidebar -->
@@ -209,17 +199,13 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
     <div class="brand mb-3"><i class="bi bi-film me-2"></i><?= BRAND_NAME ?></div>
     <div class="nav-sec mb-3">
       <div class="nav-title text-muted small mb-1">Main</div>
-      <a class="nav-link<?= nav_active('admin_dashboard.php') ?>" href="admin_dashboard.php">
-        <i class="bi bi-speedometer2 me-1"></i>Dashboard
-      </a>
-      <a class="nav-link<?= nav_active('manage_staff.php') ?>" href="manage_staff.php">
-        <i class="bi bi-person-badge me-1"></i>Manage Staff
-      </a>
-      <a class="nav-link<?= nav_active('manage_customers.php') ?>" href="manage_customers.php">
-        <i class="bi bi-people me-1"></i>Manage Customers
-      </a>
-      <a class="nav-link disabled"><i class="bi bi-ticket-perforated me-1"></i>Manage Packages</a>
-      <a class="nav-link disabled"><i class="bi bi-graph-up me-1"></i>Sales Reports</a>
+       
+      <a class="nav-link<?= nav_active('admin_dashboard.php') ?>" href="admin_dashboard.php"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a>
+      <a class="nav-link<?= nav_active('manage_staff.php') ?>" href="manage_staff.php"><i class="bi bi-person-badge me-1"></i>Manage Staff</a>
+      <a class="nav-link<?= nav_active('manage_customers.php') ?>" href="manage_customers.php"><i class="bi bi-people me-1"></i>Manage Customers</a>
+      <a class="nav-link<?= nav_active('view_feedback.php') ?>" href="view_feedback.php"><i class="bi bi-chat-left-text me-1"></i>View Feedback</a>
+      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-ticket-perforated"></i>Manage Packages</a>
+      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-graph-up"></i>Sales Reports</a>
     </div>
     <div class="nav-sec">
       <div class="nav-title text-muted small mb-1">Account</div>

@@ -5,7 +5,7 @@
    - Create, Edit, Soft Delete (Archive) & Restore
    - Admin-set password reset
    - CSRF protection + Prepared Statements + XSS escaping
-   - Bootstrap 5 UI with Sidebar
+   - Uses the SAME UI styles as Admin Dashboard (style.css)
    =========================================================== */
 
 session_start();
@@ -251,75 +251,67 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
   <meta charset="utf-8">
   <title><?= BRAND_NAME ?> · Manage Staff</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap & Icons -->
+
+  <!-- Libs -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    body{background:#f3f5f9;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-    .layout{display:flex;min-height:100vh;}
-    aside.sidebar{width:240px;background:#fff;border-right:1px solid #dee2e6;padding:1rem;position:sticky;top:0;align-self:flex-start}
-    .brand{font-weight:700}
-    .nav-link{display:block;padding:.5rem .75rem;color:#333;border-radius:8px}
-    .nav-link:hover{background:#f0f2f5}
-    .nav-link.active{background:#0d6efd;color:#fff!important}
-    .nav-link.disabled{opacity:.5;pointer-events:none}
-    .content{flex:1;padding:2rem}
-    .card-soft{background:#fff;border:1px solid #e7eaf0;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.08)}
-    .mono{font-family:ui-monospace,Menlo,Consolas,monospace}
-    .btn-pill{border-radius:12px}
-    .badge-pill{border-radius:999px}
 
-  </style>
+  <!-- Global site styles (same as dashboard) -->
+  <link href="css/style.css?v=3" rel="stylesheet">
 </head>
 <body>
-<div class="layout">
-  <!-- Sidebar -->
+
+<div class="layout"><!-- same grid shell as dashboard -->
+
+  <!-- Sidebar (same markup/classes as dashboard for uniform look) -->
   <aside class="sidebar">
-    <div class="brand mb-3"><i class="bi bi-film me-2"></i><?= BRAND_NAME ?></div>
-    <div class="nav-sec mb-3">
-      <div class="nav-title text-muted small mb-1">Main</div>
-      <a class="nav-link<?= nav_active('admin_dashboard.php') ?>" href="admin_dashboard.php">
-        <i class="bi bi-speedometer2 me-1"></i>Dashboard
-      </a>
-      <a class="nav-link<?= nav_active('manage_staff.php') ?>" href="manage_staff.php">
-        <i class="bi bi-person-badge me-1"></i>Manage Staff
-      </a>
-       <a class="nav-link<?= nav_active('manage_customers.php') ?>" href="manage_customers.php">
-    <i class="bi bi-person-badge"></i>Manage Customer
-  </a>
-      <a class="nav-link disabled"><i class="bi bi-ticket-perforated me-1"></i>Manage Packages</a>
-      <a class="nav-link disabled"><i class="bi bi-graph-up me-1"></i>Sales Reports</a>
+    <div class="brand">
+      <i class="bi bi-film"></i><span><?= BRAND_NAME ?></span>
     </div>
+
     <div class="nav-sec">
-      <div class="nav-title text-muted small mb-1">Account</div>
-      <a class="nav-link" href="profile.php"><i class="bi bi-person me-1"></i>My Profile</a>
-      <a class="nav-link" href="index.php"><i class="bi bi-house-door me-1"></i>Back to Home</a>
-      <a class="nav-link" href="logout.php"><i class="bi bi-box-arrow-right me-1"></i>Sign Out</a>
+      <div class="nav-title">Main</div>
+
+      <a class="nav-link<?= nav_active('admin_dashboard.php') ?>" href="admin_dashboard.php"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a>
+      <a class="nav-link<?= nav_active('manage_staff.php') ?>" href="manage_staff.php"><i class="bi bi-person-badge me-1"></i>Manage Staff</a>
+      <a class="nav-link<?= nav_active('manage_customers.php') ?>" href="manage_customers.php"><i class="bi bi-people me-1"></i>Manage Customers</a>
+      <a class="nav-link<?= nav_active('view_feedback.php') ?>" href="view_feedback.php"><i class="bi bi-chat-left-text me-1"></i>View Feedback</a>
+      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-ticket-perforated"></i>Manage Packages</a>
+      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-graph-up"></i>Sales Reports</a>
+    </div>
+
+    <div class="nav-sec">
+      <div class="nav-title">Account</div>
+      <a class="nav-link" href="profile.php"><i class="bi bi-person"></i>My Profile</a>
+      <a class="nav-link" href="index.php"><i class="bi bi-house-door"></i>Back to Home</a>
+      <a class="nav-link" href="logout.php"><i class="bi bi-box-arrow-right"></i>Sign Out</a>
     </div>
   </aside>
 
-  <!-- Main content -->
-  <div class="content">
+  <!-- Main content (use .main so it picks same padding etc.) -->
+  <main class="main">
+
+    <!-- Header row -->
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3 class="m-0"><i class="bi bi-person-badge me-2"></i>Manage Staff</h3>
-      <div>
-        <a href="admin_dashboard.php" class="btn btn-outline-secondary btn-sm btn-pill">
-          <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
-        </a>
-      </div>
+      <h4 class="m-0"><i class="bi bi-person-badge me-2"></i>Manage Staff</h4>
+      <a href="admin_dashboard.php" class="btn btn-outline-secondary btn-pill">
+        <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+      </a>
     </div>
 
+    <!-- Flash messages -->
     <?php if (!empty($_SESSION['flash_ok'])): ?>
-      <div class="alert alert-success"><?php echo e($_SESSION['flash_ok']); unset($_SESSION['flash_ok']); ?></div>
+      <div class="alert alert-success"><?= e($_SESSION['flash_ok']); unset($_SESSION['flash_ok']); ?></div>
     <?php endif; ?>
     <?php if (!empty($_SESSION['flash_error'])): ?>
-      <div class="alert alert-danger"><?php echo e($_SESSION['flash_error']); unset($_SESSION['flash_error']); ?></div>
+      <div class="alert alert-danger"><?= e($_SESSION['flash_error']); unset($_SESSION['flash_error']); ?></div>
     <?php endif; ?>
 
     <div class="row g-3">
-      <!-- Left: Table -->
+      <!-- Left: table -->
       <div class="col-lg-8">
         <div class="card-soft p-3">
+          <!-- Search & view switch -->
           <form class="row g-2 mb-2" method="get" action="manage_staff.php">
             <input type="hidden" name="view" value="<?= e($view) ?>">
             <div class="col-md-6">
@@ -334,6 +326,7 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
             </div>
           </form>
 
+          <!-- Table -->
           <div class="table-responsive">
             <table class="table align-middle">
               <thead>
@@ -351,9 +344,9 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
                   <td class="text-muted"><?= e($r['email']) ?></td>
                   <td>
                     <?php if ((int)$r['is_verified'] === 1): ?>
-                      <span class="badge bg-success badge-pill"><i class="bi bi-shield-check me-1"></i>Verified</span>
+                      <span class="badge bg-success"><i class="bi bi-shield-check me-1"></i>Verified</span>
                     <?php else: ?>
-                      <span class="badge bg-secondary badge-pill"><i class="bi bi-shield me-1"></i>Unverified</span>
+                      <span class="badge bg-secondary"><i class="bi bi-shield me-1"></i>Unverified</span>
                     <?php endif; ?>
                     <?php if (!empty($r['deleted_at'])): ?>
                       <span class="badge bg-danger ms-1">Archived</span>
@@ -467,8 +460,9 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
     </div>
 
     <div class="text-center text-muted small mt-4">© <?= date('Y') ?> <?= BRAND_NAME ?> · Manage Staff</div>
-  </div>
+  </main>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
