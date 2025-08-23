@@ -874,51 +874,81 @@
 
 
 /*** Footer Start ***/
+/*** Footer Start ***/
 .footer {
-    background: var(--bs-dark);
+    background: var(--bs-dark);   /* Dark background for contrast */
+    color: #fff;                  /* Default text color set to white */
 }
 
 .footer .footer-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;       /* Stack items vertically */
 }
 
-.footer .footer-item a {
-    line-height: 35px;
-    color: var(--bs-body);
-    transition: 0.5s;
+/* Footer section titles (e.g. Quick Links, Support, Opening Hours) */
+.footer .footer-item h4 {
+    color: #fff;                  /* Make all titles white */
+    margin-bottom: 15px;
 }
 
+/* Paragraph text inside the footer (address, description, etc.) */
 .footer .footer-item p {
     line-height: 35px;
+    color: #fff;                  /* Force paragraphs to be white */
+    margin: 0;
 }
 
-.footer .footer-item a:hover {
-    color: var(--bs-primary);
-}
-
-.footer .footer-item .footer-btn a,
-.footer .footer-item .footer-btn a i {
+/* Links inside the footer */
+.footer .footer-item a {
+    line-height: 35px;
+    color: #fff;                  /* White by default */
+    opacity: 0.9;                 /* Slightly dimmed look */
     transition: 0.5s;
+    text-decoration: none;
+}
+.footer .footer-item a:hover {
+    color: var(--bs-primary);     /* Highlight with primary color on hover */
+    opacity: 1;
 }
 
-.footer .footer-item .footer-btn a:hover {
-    background: var(--bs-white);
-}
-
-.footer .footer-item .footer-btn a:hover i {
-    color: var(--bs-primary);
-}
-
+/* Opening Hours section styling */
 .footer .footer-item .opening-date {
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    border-bottom: 1px solid rgba(255, 255, 255, .08); /* Thin divider line */
+    margin-bottom: 10px;
 }
-
 .footer .footer-item .opening-date .opening-clock {
     display: flex;
     align-items: center;
     line-height: 35px;
 }
+.footer .opening-date h6,
+.footer .opening-date p {
+    color: #fff;                  /* Force white text for times/days */
+    margin: 0;
+}
+
+/* Icons (map, mail, phone, clock) */
+.footer .footer-item i,
+.footer .opening-date i {
+    color: var(--bs-primary);     /* Keep icons in the theme primary color */
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Social media / button styling */
+.footer .footer-item .footer-btn a,
+.footer .footer-item .footer-btn a i {
+    transition: 0.5s;
+}
+.footer .footer-item .footer-btn a:hover {
+    background: var(--bs-white);
+}
+.footer .footer-item .footer-btn a:hover i {
+    color: var(--bs-primary);
+}
+/*** Footer End ***/
+
+
 /*** Footer End ***/
 
 /*** copyright Start ***/
@@ -1306,3 +1336,134 @@ a{text-decoration:none}
 }
 
 .content { padding: 24px; }
+
+/* ===== FINAL OVERRIDE for Footer (must be at very end) ===== */
+
+/* Make all typical footer text white */
+.footer .footer-item a,
+.footer .footer-item p,
+.footer .footer-item h4,
+.footer .opening-date h6,
+.footer .opening-date p {
+  color: #fff !important;
+  opacity: 1 !important;
+  line-height: 35px;
+}
+
+/* Hover color for links */
+.footer .footer-item a:hover {
+  color: var(--bs-primary) !important;
+}
+
+/* Keep icons in primary color */
+.footer .footer-item i,
+.footer .opening-date i {
+  color: var(--bs-primary) !important;
+  vertical-align: middle;
+}
+
+/* Copyright line */
+.copyright .text-body,
+.copyright .text-body a {
+  color: #fff !important;
+  opacity: 0.95 !important;
+}
+.copyright .text-body a:hover {
+  color: var(--bs-primary) !important;
+}
+
+/* ========== Fix feature card height ========== */
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Make all images the same height */
+.feature-item img {
+  height: 250px;        
+  width: 100%;
+  object-fit: cover;    
+  display: block;
+}
+
+/* Ensure content sticks to bottom */
+.feature-item .feature-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+/* Completely remove the purple glow/pill effect behind navbar links */
+.nav-bar .navbar-nav .nav-link,
+.nav-bar .navbar-nav .nav-link:hover,
+.nav-bar .navbar-nav .nav-link:focus,
+.nav-bar .navbar-nav .nav-link:active,
+.nav-bar .navbar-nav .nav-link.active {
+  background: transparent !important;   /* Remove any background or gradient */
+  box-shadow: none !important;          /* Remove box-shadow glow */
+  filter: none !important;              /* Remove blur/filters */
+  outline: none !important;             /* Remove outline highlight */
+}
+
+/* Some templates use pseudo-elements (::before/::after) for glow,
+   so we disable them completely */
+.nav-bar .navbar-nav .nav-link::before,
+.nav-bar .navbar-nav .nav-link::after,
+.navbar .nav-link::before,
+.navbar .nav-link::after {
+  content: none !important;             /* Remove generated content */
+  display: none !important;             /* Hide pseudo-elements */
+}
+
+/* Extra: remove click/tap highlight on mobile browsers */
+.navbar .nav-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== Kill any glow/pill behind navbar links ===== */
+/* Base link states */
+.nav-bar .navbar-nav .nav-link,
+.nav-bar .navbar-nav .nav-link:hover,
+.nav-bar .navbar-nav .nav-link:focus,
+.nav-bar .navbar-nav .nav-link:focus-visible,
+.nav-bar .navbar-nav .nav-link:active,
+.nav-bar .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.active {
+  background: transparent !important;      /* remove background / gradient */
+  background-image: none !important;
+  box-shadow: none !important;             /* remove shadow glow */
+  outline: none !important;
+  filter: none !important;
+  border: 0 !important;
+}
+
+/* Some templates draw the pill on the li (.nav-item) instead of the a (.nav-link) */
+.nav-bar .navbar-nav .nav-item,
+.nav-bar .navbar-nav .nav-item:hover,
+.nav-bar .navbar-nav .nav-item:focus,
+.nav-bar .navbar-nav .nav-item:active,
+.nav-bar .navbar-nav .nav-item.show {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Nuke pseudo-elements that could paint the purple background */
+.nav-bar .navbar-nav .nav-link::before,
+.nav-bar .navbar-nav .nav-link::after,
+.nav-bar .navbar-nav .nav-item::before,
+.nav-bar .navbar-nav .nav-item::after,
+.navbar .nav-link::before,
+.navbar .nav-link::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep active state clean (only color change) */
+.navbar-light .navbar-nav .nav-link.active {
+  color: var(--bs-primary) !important;
+}
+
+/* Remove mobile tap highlight */
+.navbar .nav-link { -webkit-tap-highlight-color: transparent; }

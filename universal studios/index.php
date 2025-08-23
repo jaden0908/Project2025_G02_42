@@ -30,7 +30,8 @@ define('BRAND_NAME', 'Universal Studios');
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+<link href="css/style.css?v=999" rel="stylesheet">
+
 </head>
 
 <body>
@@ -252,52 +253,70 @@ define('BRAND_NAME', 'Universal Studios');
     </div>
     <!-- Carousel End -->
 
+    
     <!-- Feature Start -->
-    <div class="container-fluid feature py-5">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="feature-item">
-                        <img src="img/feature-1.jpg" class="img-fluid rounded w-100" alt="Image">
-                        <div class="feature-content p-4">
-                            <div class="feature-content-inner">
-                                <h4 class="text-white">Movie-Themed Rides</h4>
-                                <p class="text-white">Feel the rush on attractions inspired by your favorite films and characters.</p>
-                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="feature-item">
-                        <img src="img/feature-2.jpg" class="img-fluid rounded w-100" alt="Image">
-                        <div class="feature-content p-4">
-                            <div class="feature-content-inner">
-                                <h4 class="text-white">Spectacular Shows</h4>
-                                <p class="text-white">Stunt shows, parades, and live performances bring stories to life.</p>
-                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="feature-item">
-                        <img src="img/feature-3.jpg" class="img-fluid rounded w-100" alt="Image">
-                        <div class="feature-content p-4">
-                            <div class="feature-content-inner">
-                                <h4 class="text-white">Studio Experiences</h4>
-                                <p class="text-white">Behind-the-scenes touches, immersive lands, and photo-worthy sets.</p>
-                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+<div class="container-fluid feature py-5">
+  <div class="container py-5">
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="feature-item">
+          <img src="img/feature-1.jpg" class="img-fluid rounded w-100" alt="Movie-Themed Rides">
+          <div class="feature-content p-4">
+            <div class="feature-content-inner">
+              <h4 class="text-white">Movie-Themed Rides</h4>
+              <p class="text-white">Feel the rush on attractions inspired by your favorite films and characters.</p>
+              <a class="btn btn-primary rounded-pill py-2 px-4"
+                 data-bs-toggle="modal"
+                 data-bs-target="#featRideModal">
+                Read More <i class="fa fa-arrow-right ms-1"></i>
+              </a>
             </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="feature-item">
+          <img src="img/feature-2.jpg" class="img-fluid rounded w-100" alt="Spectacular Shows">
+          <div class="feature-content p-4">
+            <div class="feature-content-inner">
+              <h4 class="text-white">Spectacular Shows</h4>
+              <p class="text-white">Stunt shows, parades, and live performances bring stories to life.</p>
+              <a class="btn btn-primary rounded-pill py-2 px-4"
+                 data-bs-toggle="modal"
+                 data-bs-target="#featShowModal">
+                Read More <i class="fa fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+        <div class="feature-item">
+          <img src="img/feature-3.jpg" class="img-fluid rounded w-100" alt="Studio Experiences">
+          <div class="feature-content p-4">
+            <div class="feature-content-inner">
+              <h4 class="text-white">Studio Experiences</h4>
+              <p class="text-white">Behind-the-scenes touches, immersive lands, and photo-worthy sets.</p>
+              <a class="btn btn-primary rounded-pill py-2 px-4"
+                 data-bs-toggle="modal"
+                 data-bs-target="#featStudioModal">
+                Read More <i class="fa fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
+
+
     <!-- Feature End -->
 
     <!-- About Start -->
@@ -683,67 +702,99 @@ define('BRAND_NAME', 'Universal Studios');
     </div>
     <!-- Gallery End -->
 
-    <!-- Blog Start -->
-    <div class="container-fluid blog pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Our Blog</h4>
-                <h1 class="display-5 mb-4">Latest News & Articles</h1>
-                <p class="mb-0">Tips, event highlights, and planning guides for your next trip to <?= BRAND_NAME ?>.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="img/blog-2.jpg" class="img-fluid w-100 rounded-top" alt="Image">
-                            </a>
-                            <div class="blog-category py-2 px-4">Vacation</div>
-                            <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
-                        </div>
-                        <div class="blog-content p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">How To Maximize A One-Day Visit</a>
-                            <p class="mb-4">Plan your route, use Express upgrades, and catch the must-see shows without rushing….</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="img/blog-3.jpg" class="img-fluid w-100 rounded-top" alt="Image">
-                            </a>
-                            <div class="blog-category py-2 px-4">Insight</div>
-                            <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
-                        </div>
-                        <div class="blog-content p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Top 5 Family-Friendly Attractions</a>
-                            <p class="mb-4">From gentle rides to character meet-ups, here’s where families love to spend time….</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="img/blog-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
-                            </a>
-                            <div class="blog-category py-2 px-4">Insight</div>
-                            <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
-                        </div>
-                        <div class="blog-content p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Best Times To Visit <?= BRAND_NAME ?></a>
-                            <p class="mb-4">Crowd patterns, weather tips, and seasonal events to help you pick your date….</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Blog Start -->
+<style>
+  /* Equal-height blog cards */
+  .blog .blog-item{display:flex;flex-direction:column;height:100%;border-radius:10px;overflow:hidden;}
+  .blog .blog-img{height:230px;overflow:hidden;}
+  .blog .blog-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .blog .blog-content{display:flex;flex-direction:column;flex:1 1 auto;background:var(--bs-light);}
+  .blog .blog-content .btn{margin-top:auto;align-self:flex-start;}
+</style>
+
+<div class="container-fluid blog pb-5">
+  <div class="container pb-5">
+    <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+      <h4 class="text-primary">Our Blog</h4>
+      <h1 class="display-5 mb-4">Latest News & Articles</h1>
+      <p class="mb-0">Tips, event highlights, and planning guides for your next trip to <?= BRAND_NAME ?>.</p>
     </div>
-    <!-- Blog End -->
+
+    <div class="row g-4">
+  <!-- Card 1: Rides -->
+  <div class="col-lg-4 wow fadeInUp h-100" data-wow-delay="0.2s">
+    <div class="blog-item h-100">
+      <div class="blog-img">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#blogRideModal">
+          <img src="img/blog-1.jpg" alt="Top rides at <?= BRAND_NAME ?>">
+        </a>
+        <div class="blog-category py-2 px-4">Vacation</div>
+        <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
+      </div>
+      <div class="blog-content p-4">
+        <a href="#" class="h4 d-inline-block mb-4" data-bs-toggle="modal" data-bs-target="#blogRideModal">
+          Top 5 Must-Ride Attractions at <?= BRAND_NAME ?>
+        </a>
+        <p class="mb-4">From roller coasters to 3D simulators, here’s your guide to the rides you can’t miss…</p>
+        <a href="#" class="btn btn-primary rounded-pill py-2 px-4 mt-auto"
+           data-bs-toggle="modal" data-bs-target="#blogRideModal">
+          Read More <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: Shows -->
+  <div class="col-lg-4 wow fadeInUp h-100" data-wow-delay="0.4s">
+    <div class="blog-item h-100">
+      <div class="blog-img">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#blogShowModal">
+          <img src="img/blog-2.jpg" alt="Shows at <?= BRAND_NAME ?>">
+        </a>
+        <div class="blog-category py-2 px-4">Insight</div>
+        <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
+      </div>
+      <div class="blog-content p-4">
+        <a href="#" class="h4 d-inline-block mb-4" data-bs-toggle="modal" data-bs-target="#blogShowModal">
+          How To Plan Your Day for Shows & Parades
+        </a>
+        <p class="mb-4">Make the most of stunt shows, musical performances and the evening parade…</p>
+        <a href="#" class="btn btn-primary rounded-pill py-2 px-4 mt-auto"
+           data-bs-toggle="modal" data-bs-target="#blogShowModal">
+          Read More <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3: Best Time -->
+  <div class="col-lg-4 wow fadeInUp h-100" data-wow-delay="0.6s">
+    <div class="blog-item h-100">
+      <div class="blog-img">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#blogTipsModal">
+          <img src="img/blog-3.jpg" alt="Best time to visit <?= BRAND_NAME ?>">
+        </a>
+        <div class="blog-category py-2 px-4">Insight</div>
+        <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
+      </div>
+      <div class="blog-content p-4">
+        <a href="#" class="h4 d-inline-block mb-4" data-bs-toggle="modal" data-bs-target="#blogTipsModal">
+          Family Guide: Best Times To Visit <?= BRAND_NAME ?>
+        </a>
+        <p class="mb-4">Crowd patterns, weather tips, and seasonal events to help you pick your date…</p>
+        <a href="#" class="btn btn-primary rounded-pill py-2 px-4 mt-auto"
+           data-bs-toggle="modal" data-bs-target="#blogTipsModal">
+          Read More <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+<!-- Blog End -->
+
 
     <!-- Team Start -->
     <div class="container-fluid team pb-5">
@@ -1029,5 +1080,252 @@ define('BRAND_NAME', 'Universal Studios');
         alert(item.name + ' added to cart! ' + (item.price !== null ? '(' + item.label + ')' : '(Pricing will be confirmed)'));
     }
     </script>
+    <!-- ===================== Feature Detail Modals (INDEX) ===================== -->
+
+<!-- Movie-Themed Rides -->
+<div class="modal fade" id="featRideModal" tabindex="-1" aria-labelledby="featRideLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="featRideLabel">Movie-Themed Rides</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <img src="img/feature-1.jpg" class="img-fluid rounded" alt="Movie-Themed Rides">
+          </div>
+          <div class="col-lg-6">
+            <p class="mb-3">
+              From high-speed coasters to 3D/4D simulators, dive into rides
+              inspired by blockbuster films and iconic characters.
+            </p>
+            <ul class="mb-4">
+              <li>Headline coaster with cinematic theming</li>
+              <li>Family motion simulator (min height 102&nbsp;cm)</li>
+              <li>Express access available on select rides</li>
+              <li>On-ride photos & nearby locker services</li>
+            </ul>
+            <div class="alert alert-info">Tip: Arrive early or upgrade to Express to minimize wait times.</div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<!-- Spectacular Shows -->
+<div class="modal fade" id="featShowModal" tabindex="-1" aria-labelledby="featShowLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="featShowLabel">Spectacular Shows</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <img src="img/feature-2.jpg" class="img-fluid rounded" alt="Spectacular Shows">
+          </div>
+          <div class="col-lg-6">
+            <p class="mb-3">
+              Stunts, parades and live entertainment that bring stories to life,
+              with multiple showtimes daily.
+            </p>
+            <ul class="mb-4">
+              <li>High-energy stunt spectacular (20–25 mins)</li>
+              <li>Character parade with photo moments</li>
+              <li>Indoor theater shows (air-conditioned)</li>
+              <li>Accessible seating available</li>
+            </ul>
+            <div class="alert alert-info">Tip: Check today’s schedule in the app for the next showtime.</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Studio Experiences -->
+<div class="modal fade" id="featStudioModal" tabindex="-1" aria-labelledby="featStudioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="featStudioLabel">Studio Experiences</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <img src="img/feature-3.jpg" class="img-fluid rounded" alt="Studio Experiences">
+          </div>
+          <div class="col-lg-6">
+            <p class="mb-3">
+              Go behind the scenes with immersive sets, props and photo-worthy
+              spaces that reveal how movie magic is made.
+            </p>
+            <ul class="mb-4">
+              <li>Backlot-style walkthroughs & set pieces</li>
+              <li>Interactive prop displays and effects</li>
+              <li>Guided experiences at select hours</li>
+              <li>Plenty of photo opportunities</li>
+            </ul>
+            <div class="alert alert-info">Tip: Weekday afternoons are usually less crowded—perfect for photos.</div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- =================== /Feature Detail Modals (INDEX) =================== -->
+
+
+
+<!-- =================== Blog Detail Modals (INDEX) =================== -->
+
+<!-- Blog Modal 1: Rides -->
+<div class="modal fade" id="blogRideModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <!-- ===== Modal Header ===== -->
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Top 5 Must-Ride Attractions at <?= BRAND_NAME ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- ===== Modal Body (Two Columns) ===== -->
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left column: Responsive 16:9 image -->
+          <div class="col-lg-6">
+            <div class="ratio ratio-16x9 rounded overflow-hidden">
+              <img src="img/blog-1.jpg" class="w-100 h-100" style="object-fit:cover;object-position:center" alt="Rides">
+            </div>
+          </div>
+
+          <!-- Right column: Text content with highlights -->
+          <div class="col-lg-6">
+            <p class="mb-3">
+              Our rides range from adrenaline-pumping roller coasters to family-friendly simulators. Highlights include:
+            </p>
+            <ul class="mb-4">
+              <li>The headline coaster with cinematic theming</li>
+              <li>3D/4D simulator rides inspired by blockbuster movies</li>
+              <li>Family adventure rides with minimum height 102&nbsp;cm</li>
+              <li>Express upgrades to save waiting time</li>
+            </ul>
+            <!-- Tip box for better UX -->
+            <div class="alert alert-info mb-0">
+              Tip: Arrive early or upgrade to Express to minimize wait times.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Modal Footer ===== -->
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+        <a href="package.php" class="btn btn-primary rounded-pill">See Ticket Packages</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Modal 2: Shows -->
+<div class="modal fade" id="blogShowModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">How To Plan Your Day for Shows & Parades</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left: Image -->
+          <div class="col-lg-6">
+            <div class="ratio ratio-16x9 rounded overflow-hidden">
+              <img src="img/blog-2.jpg" class="w-100 h-100" style="object-fit:cover;object-position:center" alt="Shows">
+            </div>
+          </div>
+
+          <!-- Right: Text -->
+          <div class="col-lg-6">
+            <p class="mb-3">With multiple shows across the park, timing is everything:</p>
+            <ul class="mb-4">
+              <li>Action stunt spectacular (20–25 mins)</li>
+              <li>Character parade with photo moments</li>
+              <li>Indoor theater shows (air-conditioned)</li>
+              <li>Night parade with fireworks</li>
+            </ul>
+            <div class="alert alert-info mb-0">
+              Tip: Check today’s schedule in the app for the next showtime.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+        <a href="package.php" class="btn btn-primary rounded-pill">Plan Your Trip</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Modal 3: Best Time -->
+<div class="modal fade" id="blogTipsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Family Guide: Best Times To Visit <?= BRAND_NAME ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left: Image -->
+          <div class="col-lg-6">
+            <div class="ratio ratio-16x9 rounded overflow-hidden">
+              <img src="img/blog-3.jpg" class="w-100 h-100" style="object-fit:cover;object-position:center" alt="Tips">
+            </div>
+          </div>
+
+          <!-- Right: Text -->
+          <div class="col-lg-6">
+            <p class="mb-3">When you visit can make or break your experience. Here are tips:</p>
+            <ul class="mb-4">
+              <li><b>Weekdays</b>: Less crowded, easier to explore</li>
+              <li><b>School holidays</b>: More events, but heavier crowds</li>
+              <li><b>Evenings</b>: Cooler weather, perfect for parades</li>
+              <li><b>Seasonal events</b>: Halloween Horror Nights & Christmas Lights</li>
+            </ul>
+            <div class="alert alert-info mb-0">
+              Tip: Evening visits are cooler and perfect for enjoying parades.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+        <a href="package.php" class="btn btn-primary rounded-pill">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- =================== /Blog Detail Modals (INDEX) =================== -->
+
+
+
 </body>
 </html>

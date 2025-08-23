@@ -29,7 +29,8 @@ define('BRAND_NAME', 'Universal Studios');
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?v=999" rel="stylesheet">
+
 </head>
 <body>
 
@@ -141,11 +142,7 @@ define('BRAND_NAME', 'Universal Studios');
 <div class="container-fluid bg-breadcrumb">
     <div class="container text-center py-5" style="max-width: 900px;">
         <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Contact Us</h4>
-        <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active text-primary">Contact</li>
-        </ol>
+
     </div>
 </div>
 <!-- Header End -->
@@ -200,12 +197,16 @@ define('BRAND_NAME', 'Universal Studios');
         </div>
 
         <!-- Map -->
-        <div class="mt-5 wow fadeInUp" data-wow-delay="0.3s">
-            <iframe class="rounded w-100"
-                style="height: 400px;"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd"
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+     <!-- Map -->
+<div class="mt-5 wow fadeInUp" data-wow-delay="0.3s">
+  <iframe class="rounded w-100"
+    style="height: 400px;"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.275339708329!2d-81.46621632376322!3d28.474321175751084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e77eb6d6b063df%3A0x6f03e3e3374fd539!2sUniversal%20Studios%20Florida!5e0!3m2!1sen!2sus!4v1713882345678!5m2!1sen!2sus"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
     </div>
 </div>
 <!-- Contact End -->

@@ -4,7 +4,8 @@
    - List / Search / Paginate customers
    - Edit, Soft Delete (Archive) & Restore
    - CSRF + Prepared Statements + XSS escaping
-  
+   - Bootstrap 5 UI with Sidebar (统一于后台风格)
+   - 没有 Add 功能，也没有 Reset Password
    =========================================================== */
 
 session_start();

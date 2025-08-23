@@ -30,7 +30,8 @@ define('BRAND_NAME', 'Universal Studios');
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?v=999" rel="stylesheet">
+
 </head>
 
 <body>
@@ -259,7 +260,11 @@ define('BRAND_NAME', 'Universal Studios');
                         <div class="feature-content-inner">
                             <h4 class="text-white">Blockbuster Rides</h4>
                             <p class="text-white">Experience attractions inspired by your favorite movies and characters.</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                            <a
+  class="btn btn-primary rounded-pill py-2 px-4"
+  data-bs-toggle="modal"
+  data-bs-target="#rideModal"
+>Read More <i class="fa fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
@@ -271,7 +276,11 @@ define('BRAND_NAME', 'Universal Studios');
                         <div class="feature-content-inner">
                             <h4 class="text-white">Spectacular Shows</h4>
                             <p class="text-white">Stunts, parades and live performances that bring stories to life.</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                            <a
+  class="btn btn-primary rounded-pill py-2 px-4"
+  data-bs-toggle="modal"
+  data-bs-target="#showModal"
+>Read More <i class="fa fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
@@ -283,7 +292,11 @@ define('BRAND_NAME', 'Universal Studios');
                         <div class="feature-content-inner">
                             <h4 class="text-white">Studio Experiences</h4>
                             <p class="text-white">Behind-the-scenes details, immersive lands and photo-worthy sets.</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                            <a
+  class="btn btn-primary rounded-pill py-2 px-4"
+  data-bs-toggle="modal"
+  data-bs-target="#studioModal"
+>Read More <i class="fa fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
@@ -539,5 +552,119 @@ define('BRAND_NAME', 'Universal Studios');
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+<!-- ===================== Feature Detail Modals ===================== -->
+
+<!-- Blockbuster Rides -->
+<div class="modal fade" id="rideModal" tabindex="-1" aria-labelledby="rideModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="rideModalLabel">Blockbuster Rides</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <img src="img/feature-1.jpg" alt="Blockbuster Rides" class="img-fluid rounded">
+          </div>
+          <div class="col-lg-6">
+            <p class="mb-3">
+              From high-speed coasters to 3D/4D simulator rides, experience attractions
+              inspired by blockbuster films and beloved characters.
+            </p>
+            <ul class="mb-4">
+              <li>Headliner coaster with cinematic theming</li>
+              <li>Family-friendly motion simulator (height 102cm+)</li>
+              <li>Express access available on select rides</li>
+              <li>On-ride photo & locker services nearby</li>
+            </ul>
+            <div class="alert alert-info">
+              Tip: Arrive early or use Express upgrades to minimize wait times.
+            </div>
+          </div>
+        </div>
+      </div>
+
+ 
+    </div>
+  </div>
+</div>
+
+<!-- Spectacular Shows -->
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="showModalLabel">Spectacular Shows</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <img src="img/feature-2.jpg" alt="Spectacular Shows" class="img-fluid rounded">
+          </div>
+          <div class="col-lg-6">
+            <p class="mb-3">
+              Stunts, parades and live performances that bring stories to life—perfect
+              for all ages with several showtimes daily.
+            </p>
+            <ul class="mb-4">
+              <li>Action stunt spectacular (20–25 mins)</li>
+              <li>Character parade with photo moments</li>
+              <li>Indoor theater shows (air-conditioned)</li>
+              <li>Accessibility seating available</li>
+            </ul>
+            <div class="alert alert-info">
+              Tip: Check today’s schedule in the app for the next showtime and venue.
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+    </div>
+  </div>
+</div>
+
+<!-- Studio Experiences -->
+<div class="modal fade" id="studioModal" tabindex="-1" aria-labelledby="studioModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="studioModalLabel">Studio Experiences</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <img src="img/feature-3.jpg" alt="Studio Experiences" class="img-fluid rounded">
+          </div>
+          <div class="col-lg-6">
+            <p class="mb-3">
+              Go behind the scenes with immersive sets, props, and photo-worthy spots
+              that showcase how movie magic is made.
+            </p>
+            <ul class="mb-4">
+              <li>Backlot-style walkthroughs & set pieces</li>
+              <li>Interactive prop displays and effects</li>
+              <li>Guided experiences at select hours</li>
+              <li>Plenty of photo opportunities</li>
+            </ul>
+            <div class="alert alert-info">
+              Tip: Weekday afternoons are usually less crowded—great for photos.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    </div>
+  </div>
+</div>
+<!-- =================== /Feature Detail Modals =================== -->
+
 </body>
 </html>
