@@ -100,6 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css?v=999" rel="stylesheet">
+    
+    <script src="https://kit.fontawesome.com/351048854e.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -116,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container-fluid nav-bar sticky-top px-4 py-2 py-lg-0">
   <nav class="navbar navbar-expand-lg navbar-light">
     <a href="index.php" class="navbar-brand p-0">
-      <h1 class="display-6 text-dark"><i class="fas fa-film text-primary me-3"></i><?= BRAND_NAME ?></h1>
+      <h1 class="display-6 text-dark"><i class="fa-solid fa-globe"></i><?= BRAND_NAME ?></h1>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="fa fa-bars"></span>
