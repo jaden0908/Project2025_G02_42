@@ -113,7 +113,6 @@ unset($_SESSION['flash']);
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/351048854e.js" crossorigin="anonymous"></script>
 <style>
 body { background: #f4f6f8; font-family: 'Segoe UI', sans-serif; }
 .profile-header { text-align: center; padding: 30px 0; background: linear-gradient(135deg, #007bff, #00c6ff); color: white; border-radius: 12px; margin-bottom: 30px; }
@@ -125,7 +124,7 @@ body { background: #f4f6f8; font-family: 'Segoe UI', sans-serif; }
 <body>
 <div class="container py-4">
     <div class="profile-header">
-        <img src="img/profile-avatar.jpg" alt="Avatar">
+       
         <h3 class="mt-3"><?= htmlspecialchars($user['name']) ?></h3>
         <p><?= htmlspecialchars($user['email']) ?> 
             <span class="badge-status <?= $user['is_verified'] ? 'bg-success' : 'bg-warning' ?>">
