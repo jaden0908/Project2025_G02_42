@@ -91,7 +91,9 @@ define('BRAND_NAME', 'Universal Studios');
                 </div>
 
                 <a href="contact.php" class="nav-item nav-link">Contact</a>
+            </div>
 
+               <div class="d-flex align-items-center ms-auto">
                 <?php if (empty($_SESSION['user'])): ?>
                     <!-- Not logged in -->
                     <a href="signup.php" class="nav-item nav-link">Sign Up</a>
@@ -100,6 +102,7 @@ define('BRAND_NAME', 'Universal Studios');
                     <!-- Logged in dropdown -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                             <i class="fa fa-user"></i>
                             <?php
                                 echo htmlspecialchars($_SESSION['user']['name']);
                                 if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'customer') {
@@ -118,13 +121,6 @@ define('BRAND_NAME', 'Universal Studios');
                         </div>
                     </div>
                 <?php endif; ?>
-            </div>
-
-            <div class="team-icon d-none d-xl-flex justify-content-center me-3">
-                <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-instagram"></i></a>
-                <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <a href="package.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Ticket Packages</a>
         </div>

@@ -1468,3 +1468,36 @@ a{text-decoration:none}
 
 /* Remove mobile tap highlight */
 .navbar .nav-link { -webkit-tap-highlight-color: transparent; }
+
+/* Wrap the icon so it looks like a circle */
+.user-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The circle background for the icon */
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Icon itself */
+.user-icon i {
+  font-size: 1.2rem; /* adjust size of person icon */
+  color: #333;
+}
+
+/* Hover effect */
+.user-icon:hover {
+  background-color: #e0e0e0;
+}
+
+
