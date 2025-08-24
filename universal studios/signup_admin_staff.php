@@ -123,45 +123,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 
     <!-- Login Form -->
-<form method="POST" action="">
-    <div class="mb-3">
-        <label class="form-label">Email address</label>
-        <input
-            type="email"
-            name="email"
-            class="form-control"
-            placeholder="you@example.com"
-            required
-            value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
-    </div>
+    <form method="POST" action="">
+        <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="you@example.com"
+                required
+                value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
+        </div>
 
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input
-            type="password"
-            name="password"
-            class="form-control"
-            required
-            placeholder="Your password">
-    </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+                type="password"
+                name="password"
+                class="form-control"
+                required
+                placeholder="Your password">
+        </div>
 
-    <button type="submit" class="btn btn-primary w-100">Sign In</button>
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
 
-    <div class="d-flex justify-content-between mt-3">
-        <!-- Start the email OTP reset flow -->
-        <a href="forgot_password.php" class="btn btn-link p-0">Forgot Password?</a>
-        <a href="signup.php" class="btn btn-link p-0">Don't have an account? Sign Up</a>
-    </div>
-
-    <!-- Extra option: Sign in as Admin/Staff -->
-    <div class="text-center mt-3">
-        
-        <a href="signup_admin_staff.php" class="btn btn-outline-secondary btn-sm mt-1">
-            Sign In as Admin/Staff
-        </a>
-    </div>
-</form>
-
+        <div class="d-flex justify-content-between mt-3">
+            <!-- Start the email OTP reset flow -->
+            <a href="forgot_password.php" class="btn btn-link p-0">Forgot Password?</a>
+            <a href="signup.php" class="btn btn-link p-0">Don't have an account? Sign Up</a>
+        </div>
+    </form>
 </div>
 
 <!-- Optional: Bootstrap JS (if you use any BS JS components) -->
