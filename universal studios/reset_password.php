@@ -55,8 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Create New Password - WaterLand</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body class ="reset-password-page">
 <div class="container mt-5" style="max-width:520px;">
     <h2 class="mb-3">Create a New Password</h2>
     <p class="text-muted">For account: <strong><?= htmlspecialchars($email) ?></strong></p>
