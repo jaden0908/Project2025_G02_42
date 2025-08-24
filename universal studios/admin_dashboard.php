@@ -38,6 +38,8 @@ if ($res2) { while ($row = $res2->fetch_assoc()) { $recent[] = $row; } }
 
   <!-- Your global styles -->
   <link href="css/style.css?v=2" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/351048854e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

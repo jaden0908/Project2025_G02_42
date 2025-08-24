@@ -161,12 +161,14 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
 
   <!-- Global styles -->
   <link href="css/style.css?v=3" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/351048854e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="layout">
   <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="brand mb-3"><i class="bi bi-film me-2"></i><?= BRAND_NAME ?></div>
+    <div class="brand mb-3"><i class="fa-solid fa-globe"></i><?= BRAND_NAME ?></div>
     <div class="nav-sec mb-3">
       <div class="nav-title text-muted small mb-1">Main</div>
       <a class="nav-link<?= nav_active('admin_dashboard.php') ?>" href="admin_dashboard.php"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a>
