@@ -95,8 +95,11 @@ if (isset($_GET['resend']) && $_GET['resend'] === '1') {
     <meta charset="UTF-8">
     <title>Verify Reset Code - WaterLand</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
-<body>
+<body class = "reset-otp-page">
 <div class="container mt-5" style="max-width:520px;">
     <h2 class="mb-3">Enter Reset Code</h2>
     <p class="text-muted">We sent a 6-digit code to <strong><?= htmlspecialchars($email) ?></strong>. Check your inbox (and spam).</p>

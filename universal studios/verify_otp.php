@@ -62,8 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Email Verification - WaterLand</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
 </head>
-<body>
+<body class = "verify-otp-page">
 <div class="container mt-5" style="max-width:520px;">
     <h2 class="mb-3">Verify Your Email</h2>
 
