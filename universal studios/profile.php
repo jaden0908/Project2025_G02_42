@@ -27,9 +27,12 @@ function mask_email_for_display(string $email): string {
     $keep = max(1, min(3, strlen($local)));
     return substr($local, 0, $keep) . str_repeat('*', max(0, strlen($local) - $keep)) . '@' . $domain;
 }
+
+/* PASSWORD RULE: length-only, >= 6 chars */
 function valid_new_password(string $pw): bool {
-    return strlen($pw) >= 6 && preg_match('/[A-Za-z]/', $pw) && preg_match('/\d/', $pw);
+    return strlen($pw) >= 6;
 }
+
 function issue_email_otp(mysqli $conn, int $userId, int $minutes = 10): ?string {
     $code = str_pad((string)random_int(0, 999999), 6, '0', STR_PAD_LEFT);
     $expires = (new DateTime('now', new DateTimeZone('Asia/Kuala_Lumpur')))
@@ -47,9 +50,9 @@ $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 if (!$user) { session_destroy(); header('Location: login.php'); exit; }
-$_SESSION['user']['name'] = $user['name'];
-$_SESSION['user']['email'] = $user['email'];
-$_SESSION['user']['role'] = $user['role'];
+$_SESSION['user']['name']        = $user['name'];
+$_SESSION['user']['email']       = $user['email'];
+$_SESSION['user']['role']        = $user['role'];
 $_SESSION['user']['is_verified'] = (int)$user['is_verified'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -58,9 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verify_csrf($token)) { set_flash('danger', 'Security check failed.'); header('Location: profile.php'); exit; }
 
     if ($action === 'update_profile') {
-        $name = trim($_POST['name']); $email = trim($_POST['email']);
+        $name  = trim($_POST['name']);
+        $email = trim($_POST['email']);
         if ($name === '' || $email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            set_flash('warning', 'Please provide valid name and email.'); header('Location: profile.php'); exit;
+            set_flash('warning', 'Please provide valid name and email.');
+            header('Location: profile.php'); exit;
         }
         $chk = $conn->prepare("SELECT id FROM users WHERE email = ? AND id <> ?");
         $chk->bind_param("si", $email, $uid);
@@ -68,35 +73,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($exists) { set_flash('warning', 'Email already in use.'); header('Location: profile.php'); exit; }
         $emailChanged = (strcasecmp($email, $user['email']) !== 0);
         if ($emailChanged) {
-            $otp = issue_email_otp($conn, $uid, 10);
+            $otp  = issue_email_otp($conn, $uid, 10);
             $stmt = $conn->prepare("UPDATE users SET name=?, email=?, is_verified=0 WHERE id=?");
-            $stmt->bind_param("ssi", $name, $email, $uid); $ok = $stmt->execute(); $stmt->close();
+            $stmt->bind_param("ssi", $name, $email, $uid);
+            $ok = $stmt->execute(); $stmt->close();
             if ($ok && $otp) { sendVerificationOTP($email, $name, $otp); set_flash('success', 'Profile updated. Check your email.'); }
             else set_flash('danger', 'Profile update failed.');
         } else {
             $stmt = $conn->prepare("UPDATE users SET name=?, email=? WHERE id=?");
-            $stmt->bind_param("ssi", $name, $email, $uid); $ok = $stmt->execute(); $stmt->close();
+            $stmt->bind_param("ssi", $name, $email, $uid);
+            $ok = $stmt->execute(); $stmt->close();
             set_flash($ok ? 'success' : 'danger', $ok ? 'Profile updated.' : 'Failed to update.');
         }
         header('Location: profile.php'); exit;
     }
 
     if ($action === 'change_password') {
-        $cur = $_POST['current_password']; $new = $_POST['new_password']; $confirm = $_POST['confirm_password'];
-        if ($new !== $confirm || !valid_new_password($new) || !password_verify($cur, $user['password'])) {
-            set_flash('danger', 'Password change failed.'); header('Location: profile.php'); exit;
+        $cur     = $_POST['current_password'] ?? '';
+        $new     = $_POST['new_password'] ?? '';
+        $confirm = $_POST['confirm_password'] ?? '';
+
+        // Re-fetch the freshest password value from DB
+        $stmt = $conn->prepare("SELECT password FROM users WHERE id = ?");
+        $stmt->bind_param("i", $uid);
+        $stmt->execute();
+        $row = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+
+        if (!$row) { set_flash('danger', 'Account not found.'); header('Location: profile.php'); exit; }
+
+        $stored = $row['password'] ?? '';
+
+        // Backward-compatible verification: bcrypt/argon, then MD5, then plaintext
+        $matches = false;
+        if (preg_match('/^\$(2y|argon2id)\$/', $stored)) {
+            $matches = password_verify($cur, $stored);
+        } elseif (preg_match('/^[a-f0-9]{32}$/i', $stored)) {
+            $matches = hash_equals($stored, md5($cur));
+        } else {
+            $matches = hash_equals($stored, $cur);
         }
+
+        if (!$matches) {
+            set_flash('danger', 'Current password is incorrect.');
+            header('Location: profile.php'); exit;
+        }
+        if ($new !== $confirm) {
+            set_flash('warning', 'New passwords do not match.');
+            header('Location: profile.php'); exit;
+        }
+        if (!valid_new_password($new)) {
+            set_flash('warning', 'New password must be at least 6 characters.');
+            header('Location: profile.php'); exit;
+        }
+
+        // Save new password using password_hash (migrates legacy users)
         $hash = password_hash($new, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("UPDATE users SET password=? WHERE id=?");
-        $stmt->bind_param("si", $hash, $uid); $ok = $stmt->execute(); $stmt->close();
-        set_flash($ok ? 'success' : 'danger', $ok ? 'Password changed.' : 'Failed.');
+        $stmt->bind_param("si", $hash, $uid);
+        $ok = $stmt->execute();
+        $stmt->close();
+
+        set_flash($ok ? 'success' : 'danger', $ok ? 'Password changed successfully.' : 'Failed to update password.');
         header('Location: profile.php'); exit;
     }
 
     if ($action === 'resend_otp') {
         if ($user['is_verified']) { set_flash('info', 'Email already verified.'); header('Location: profile.php'); exit; }
         $otp = issue_email_otp($conn, $uid, 10);
-        $ok = $otp && sendVerificationOTP($user['email'], $user['name'], $otp);
+        $ok  = $otp && sendVerificationOTP($user['email'], $user['name'], $otp);
         set_flash($ok ? 'success' : 'danger', $ok ? 'Verification code sent.' : 'Send failed.');
         header('Location: profile.php'); exit;
     }
@@ -124,9 +169,8 @@ body { background: #f4f6f8; font-family: 'Segoe UI', sans-serif; }
 <body>
 <div class="container py-4">
     <div class="profile-header">
-       
         <h3 class="mt-3"><?= htmlspecialchars($user['name']) ?></h3>
-        <p><?= htmlspecialchars($user['email']) ?> 
+        <p><?= htmlspecialchars($user['email']) ?>
             <span class="badge-status <?= $user['is_verified'] ? 'bg-success' : 'bg-warning' ?>">
                 <?= $user['is_verified'] ? 'Verified' : 'Unverified' ?>
             </span>
@@ -137,14 +181,12 @@ body { background: #f4f6f8; font-family: 'Segoe UI', sans-serif; }
         <div class="alert alert-<?= htmlspecialchars($flash['type']) ?>"><?= htmlspecialchars($flash['msg']) ?></div>
     <?php endif; ?>
 
-    <!-- Overview -->
     <div class="card-custom">
         <h5><i class="fa-solid fa-user"></i> Account Overview</h5><hr>
         <p><strong>Role:</strong> <?= htmlspecialchars($user['role']) ?></p>
         <p><strong>Member Since:</strong> <?= htmlspecialchars($user['created_at']) ?></p>
     </div>
 
-    <!-- Personal Info -->
     <div class="card-custom">
         <h5><i class="fa-solid fa-id-card"></i> Personal Information</h5><hr>
         <form method="post">
@@ -163,7 +205,6 @@ body { background: #f4f6f8; font-family: 'Segoe UI', sans-serif; }
         </form>
     </div>
 
-    <!-- Change Password -->
     <div class="card-custom">
         <h5><i class="fa-solid fa-lock"></i> Change Password</h5><hr>
         <form method="post">
@@ -185,7 +226,6 @@ body { background: #f4f6f8; font-family: 'Segoe UI', sans-serif; }
         </form>
     </div>
 
-    <!-- Resend Verification -->
     <?php if (!$user['is_verified']): ?>
     <div class="card-custom text-center">
         <p>Your email is not verified. Click below to resend verification code.</p>
