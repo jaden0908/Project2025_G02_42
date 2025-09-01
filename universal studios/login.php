@@ -1,98 +1,114 @@
 <?php
 // login.php
-// Full, drop-in Sign In page with:
-// - Secure login using password_hash/password_verify
-// - Blocks login if email is not verified (is_verified=1 required)
+// - Secure login (password_hash/password_verify) + MD5/plaintext backward-compat
+// - Admin can bypass email verification
 // - Redirects by role (customer/staff/admin)
 // - Shows success message after password reset (?reset=1)
-// - Includes "Forgot Password?" link to start email OTP reset flow
 
+ob_start(); // 防止任何意外输出破坏 header()
 session_start();
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
 require_once 'database.php'; // must define $conn (mysqli)
 
-// ------------------------------------------------------------------
-// UI messages
-// ------------------------------------------------------------------
+// ---------------- Password matcher (兼容多种历史格式) ----------------
+function match_password(string $input, string $stored): bool {
+    $raw  = $input;
+    $trim = trim($input);
+
+    // 1) password_hash 系列（bcrypt/argon2）
+    if (preg_match('/^\$(2y|2b|2a)\$|^\$argon2i\$|^\$argon2id\$/', $stored)) {
+        if (password_verify($raw, $stored)) return true;
+        if ($raw !== $trim && password_verify($trim, $stored)) return true;
+        return false;
+    }
+    // 2) 旧 MD5（32位十六进制）
+    if (preg_match('/^[a-f0-9]{32}$/i', $stored)) {
+        if (hash_equals($stored, md5($raw))) return true;
+        if ($raw !== $trim && hash_equals($stored, md5($trim))) return true;
+        return false;
+    }
+    // 3) 兜底：明文对比（仅为兼容历史数据，尽快迁移）
+    if (hash_equals($stored, $raw)) return true;
+    if ($raw !== $trim && hash_equals($stored, $trim)) return true;
+
+    return false;
+}
+
+// ---------------- UI messages ----------------
 $error   = '';
 $success = '';
 
-// Show success banner after password reset
+// 密码重置成功提示
 if (isset($_GET['reset']) && $_GET['reset'] == '1') {
     $success = "Your password was updated. Please sign in.";
 }
 
-// If already logged in, you may redirect user away from login page (optional)
+// 已登录则按角色跳转
 if (!empty($_SESSION['user'])) {
-    // You can change this behavior if you want to allow re-login
     $role = $_SESSION['user']['role'] ?? 'customer';
     if     ($role === 'admin')  { header("Location: admin_dashboard.php");  exit(); }
     elseif ($role === 'staff')  { header("Location: staff_dashboard.php");  exit(); }
     else                        { header("Location: index.php");            exit(); }
 }
 
-// ------------------------------------------------------------------
-// Handle login POST
-// ------------------------------------------------------------------
+// ---------------- Handle POST ----------------
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // 1) Read inputs
     $email    = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    // 2) Basic validation
     if ($email === '' || $password === '') {
         $error = "Please enter both email and password.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Please enter a valid email address.";
     } else {
-        // 3) Lookup user
-        $stmt = $conn->prepare("SELECT id, name, email, password, role, is_verified FROM users WHERE email = ? LIMIT 1");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $res = $stmt->get_result();
+        $stmt = $conn->prepare(
+            "SELECT id, name, email, password, role, is_verified
+             FROM users
+             WHERE email = ?
+             LIMIT 1"
+        );
+        if ($stmt === false) {
+            $error = "Database error (prepare failed).";
+        } else {
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $res = $stmt->get_result();
 
-        // 4) Verify existence
-        if ($res->num_rows === 1) {
-            $user = $res->fetch_assoc();
+            if ($res && $res->num_rows === 1) {
+                $user = $res->fetch_assoc();
 
-            // 5) Verify password
-            if (password_verify($password, $user['password'])) {
+                if (match_password($password, $user['password'])) {
+                    // 非 admin 才要求邮箱验证
+                    $needsVerify = ($user['role'] !== 'admin') && ((int)$user['is_verified'] !== 1);
 
-                // 6) Require email verification before login
-                if ((int)$user['is_verified'] !== 1) {
-                    // keep email in session so verify_otp.php knows which account to verify
-                    $_SESSION['verify_email'] = $user['email'];
-                    $error = "Your email is not verified yet. Please check your inbox or verify now.";
-                    // Tip: your signup flow already redirects to verify_otp.php after registration.
-                    // If you have a manual verification page, show a helpful link:
-                    // $error .= ' <a href="verify_otp.php" class="alert-link">Verify Email</a>';
-                } else {
-                    // 7) Success → store minimal info in session
-                    $_SESSION['user'] = [
-                        'id'    => (int)$user['id'],
-                        'name'  => $user['name'],
-                        'email' => $user['email'],
-                        'role'  => $user['role'],
-                    ];
-
-                    // 8) Redirect by role
-                    if ($user['role'] === 'admin') {
-                        header("Location: admin_dashboard.php");
-                    } elseif ($user['role'] === 'staff') {
-                        header("Location: staff_dashboard.php");
+                    if ($needsVerify) {
+                        $_SESSION['verify_email'] = $user['email'];
+                        $error = "Your email is not verified yet. Please check your inbox or verify now.";
                     } else {
-                        header("Location: index.php"); // customer
+                        // 登录成功 → 写入会话并按角色跳转
+                        $_SESSION['user'] = [
+                            'id'    => (int)$user['id'],
+                            'name'  => $user['name'],
+                            'email' => $user['email'],
+                            'role'  => $user['role'],
+                        ];
+
+                        if ($user['role'] === 'admin') {
+                            header("Location: admin_dashboard.php");
+                        } elseif ($user['role'] === 'staff') {
+                            header("Location: staff_dashboard.php");
+                        } else {
+                            header("Location: index.php");
+                        }
+                        exit();
                     }
-                    exit();
+                } else {
+                    $error = "Invalid email or password.";
                 }
             } else {
-                // Wrong password (use generic message to avoid user enumeration)
                 $error = "Invalid email or password.";
             }
-        } else {
-            // Email not found (use same generic message)
-            $error = "Invalid email or password.";
         }
     }
 }
@@ -103,68 +119,58 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <title>Login - WaterLand</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS (adjust path if needed) -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css?v=999" rel="stylesheet">
-
 </head>
-<body class = "login-page">
+<body class="login-page">
 <div class="container mt-5" style="max-width:520px;">
     <h2 class="mb-4 text-center">Sign In</h2>
 
-    <!-- Success after password reset -->
     <?php if (!empty($success)): ?>
         <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
     <?php endif; ?>
 
-    <!-- Errors -->
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error ?></div>
     <?php endif; ?>
 
-    <!-- Login Form -->
-<form method="POST" action="">
-    <div class="mb-3">
-        <label class="form-label">Email address</label>
-        <input
-            type="email"
-            name="email"
-            class="form-control"
-            placeholder="you@example.com"
-            required
-            value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
-    </div>
+    <form method="POST" action="">
+        <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="you@example.com"
+                required
+                value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
+        </div>
 
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input
-            type="password"
-            name="password"
-            class="form-control"
-            required
-            placeholder="Your password">
-    </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+                type="password"
+                name="password"
+                class="form-control"
+                required
+                placeholder="Your password">
+        </div>
 
-    <button type="submit" class="btn btn-primary w-100">Sign In</button>
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
 
-    <div class="d-flex justify-content-between mt-3">
-        <!-- Start the email OTP reset flow -->
-        <a href="forgot_password.php" class="btn btn-link p-0">Forgot Password?</a>
-        <a href="signup.php" class="btn btn-link p-0">Don't have an account? Sign Up</a>
-    </div>
+        <div class="d-flex justify-content-between mt-3">
+            <a href="forgot_password.php" class="btn btn-link p-0">Forgot Password?</a>
+            <a href="signup.php" class="btn btn-link p-0">Don't have an account? Sign Up</a>
+        </div>
 
-    <!-- Extra option: Sign in as Admin/Staff -->
-    <div class="text-center mt-3">
-        
-        <a href="signup_admin_staff.php" class="btn btn-outline-secondary btn-sm mt-1">
-            Sign In as Admin/Staff
-        </a>
-    </div>
-</form>
-
+        <div class="text-center mt-3">
+            <a href="signup_admin_staff.php" class="btn btn-outline-secondary btn-sm mt-1">
+                Sign In as Admin/Staff
+            </a>
+        </div>
+    </form>
 </div>
 
-<!-- Optional: Bootstrap JS (if you use any BS JS components) -->
 <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
