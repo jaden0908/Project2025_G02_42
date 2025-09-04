@@ -276,7 +276,7 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
       <a class="nav-link<?= nav_active('manage_staff.php') ?>" href="manage_staff.php"><i class="bi bi-person-badge me-1"></i>Manage Staff</a>
       <a class="nav-link<?= nav_active('manage_customers.php') ?>" href="manage_customers.php"><i class="bi bi-people me-1"></i>Manage Customers</a>
       <a class="nav-link<?= nav_active('view_feedback.php') ?>" href="view_feedback.php"><i class="bi bi-chat-left-text me-1"></i>View Feedback</a>
-      <a class="nav-link disabled" title="Coming soon"><i class="bi bi-ticket-perforated"></i>Manage Packages</a>
+      <a class="nav-link<?= nav_active('manage_packages.php') ?>" href="manage_packages.php"><i class="bi bi-ticket-perforated me-1"></i>Manage Packages</a>
       <a class="nav-link disabled" title="Coming soon"><i class="bi bi-graph-up"></i>Sales Reports</a>
     </div>
 
