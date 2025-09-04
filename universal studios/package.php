@@ -7,6 +7,26 @@
 session_start();
 define('BRAND_NAME', 'Universal Studios');
 ?>
+<?php
+require __DIR__ . '/database.php'; // connect to database
+
+// helper function for HTML escaping
+function e($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
+
+// fetch active packages from database
+$packages = [];
+$stmt = $conn->prepare(
+  "SELECT id,title,short_desc,price_usd,status,image_path
+   FROM packages
+   WHERE status='active'
+   ORDER BY created_at DESC"
+);
+$stmt->execute();
+$res = $stmt->get_result();
+while ($row = $res->fetch_assoc()) { $packages[] = $row; }
+$stmt->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -174,113 +194,57 @@ define('BRAND_NAME', 'Universal Studios');
                 </div>
             </div>
 
-            <!-- Packages Grid -->
-            <div id="uor-packages" class="col-lg-12 col-xl-9">
-                <div class="row g-4">
+         <!-- Packages Grid -->
+<div id="uor-packages" class="col-lg-12 col-xl-9">
+  <div class="row g-4">
 
-                    <!-- (1) Hotel + Park Tickets -->
-                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="pricing-item bg-dark rounded text-center p-5 h-100 d-flex flex-column">
-                            <div class="pb-4 border-bottom">
-                                <h2 class="mb-2 text-primary">Hotel + Park Tickets</h2>
-                                <p class="mb-2">Bundle an on-site hotel stay with park admission.</p>
-                                <h5 class="mb-3 text-white">Save up to $200 • Stay longer, save more</h5>
-                                <!-- Price -->
-                                <h2 class="mb-0 text-primary">$219 <span class="text-white-50 fs-5 fw-normal">/person (from)</span></h2>
-                            </div>
-                            <div class="py-4 text-start text-white flex-grow-1">
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Choose 1–3 parks (select Universal Studios parks & water parks)</p>
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Early Park Admission (select hotels/dates)</p>
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>On-site transportation & easy park access</p>
-                                <p class="mb-0"><i class="fa fa-check text-primary me-2"></i>Optional: Park-to-Park upgrades</p>
-                            </div>
-                            <button
-                                onclick="addToCart('Hotel + Park Tickets', 219.00, {unit:'per person', note:'From price', currency:'USD'})"
-                                class="btn btn-light rounded-pill py-3 px-5 mt-auto">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
+    <?php if (empty($packages)): ?>
+      <div class="col-12">
+        <div class="alert alert-secondary mb-0">
+          No active packages available right now.
+        </div>
+      </div>
+    <?php else: ?>
+      <?php foreach ($packages as $i => $p): ?>
+        <?php $dark = ($i % 2) === 0; // alternate background style ?>
+        <div class="col-md-6 wow fadeInUp" data-wow-delay="<?= 0.2 + 0.05 * ($i % 6) ?>s">
+          <div class="pricing-item <?= $dark ? 'bg-dark text-white' : 'bg-light' ?> rounded text-center p-5 h-100 d-flex flex-column">
 
-                    <!-- (2) Dining Card Vacation Package -->
-                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.25s">
-                        <div class="pricing-item bg-primary rounded text-center p-5 h-100 d-flex flex-column">
-                            <div class="pb-4 border-bottom">
-                                <h2 class="text-dark mb-2">Dining Card Vacation Package</h2>
-                                <p class="text-dark mb-2">Stay 4–5 nights at official hotels to receive Dining Card credits.</p>
-                                <h5 class="text-dark mb-3">Valid on select travel dates</h5>
-                                <!-- Price -->
-                                <h2 class="text-dark mb-0">$899 <span class="text-white fs-5 fw-normal">/package (from)</span></h2>
-                            </div>
-                            <div class="py-4 text-start text-white flex-grow-1">
-                                <p class="mb-3"><i class="fa fa-check text-dark me-2"></i>$300–$1,000 Dining Card (by hotel tier & nights)</p>
-                                <p class="mb-3"><i class="fa fa-check text-dark me-2"></i>Early Park Admission</p>
-                                <p class="mb-3"><i class="fa fa-check text-dark me-2"></i>Complimentary resort transportation</p>
-                                <p class="mb-0"><i class="fa fa-check text-dark me-2"></i>Merchandise delivery to hotel</p>
-                            </div>
-                            <button
-                                onclick="addToCart('Dining Card Package', 899.00, {unit:'per package', note:'From price; dining credit up to $1,000', currency:'USD'})"
-                                class="btn btn-dark rounded-pill py-3 px-5 mt-auto">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- (3) Costco Travel Bundle -->
-                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="pricing-item bg-light rounded text-center p-5 h-100 d-flex flex-column">
-                            <div class="pb-4 border-bottom">
-                                <h2 class="mb-2">Costco Travel Bundle</h2>
-                                <p class="mb-2">Theme park tickets + Early Park Admission + Costco digital shop card.</p>
-                                <h5 class="mb-3">Options include seasonal events & water parks</h5>
-                                <!-- Price -->
-                                <h2 class="mb-0">$649 <span class="text-body fs-5 fw-normal">/person (from)</span></h2>
-                            </div>
-                            <div class="py-4 text-start flex-grow-1">
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Hotel & multi-park ticket bundles</p>
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Early Park Admission (select dates)</p>
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Costco digital shop card (value varies)</p>
-                                <p class="mb-0 small text-muted">
-                                    *Availability varies by destination and travel dates.  
-                                    **Seasonal events may require separate admission.
-                                </p>
-                            </div>
-                            <button
-                                onclick="addToCart('Costco Travel Bundle', 649.00, {unit:'per person', note:'From price; digital shop card included', currency:'USD'})"
-                                class="btn btn-primary rounded-pill py-3 px-5 mt-auto">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- (4) Southwest Vacations Bundle -->
-                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.35s">
-                        <div class="pricing-item bg-dark rounded text-center p-5 h-100 d-flex flex-column">
-                            <div class="pb-4 border-bottom">
-                                <h2 class="text-primary mb-2">Southwest Vacations Bundle</h2>
-                                <p class="text-white mb-2">Flight + Hotel + Car + Multi-park tickets.</p>
-                                <h5 class="text-white mb-3">Save up to 40% (select promos)</h5>
-                                <!-- Price -->
-                                <h2 class="mb-0 text-primary">$599 <span class="text-white-50 fs-5 fw-normal">/person (from)</span></h2>
-                            </div>
-                            <div class="py-4 text-start text-white flex-grow-1">
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Bundle & save on complete trips</p>
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Options to include select parks*</p>
-                                <p class="mb-3"><i class="fa fa-check text-primary me-2"></i>Flexible length of stay</p>
-                                <p class="mb-0 small">
-                                    *Access depends on tickets, travel dates, and availability.
-                                </p>
-                            </div>
-                            <button
-                                onclick="addToCart('Southwest Vacations Bundle', 599.00, {unit:'per person', note:'From price; up to 40% off promos', currency:'USD'})"
-                                class="btn btn-light rounded-pill py-3 px-5 mt-auto">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
+            <!-- Title and short description -->
+            <div class="pb-4 border-bottom">
+              <h2 class="<?= $dark ? 'text-primary' : '' ?> mb-2"><?= e($p['title']) ?></h2>
+              <?php if (!empty($p['short_desc'])): ?>
+                <p class="<?= $dark ? 'text-white' : 'text-body' ?> mb-2"><?= e($p['short_desc']) ?></p>
+              <?php endif; ?>
+              <h2 class="mb-0 <?= $dark ? 'text-primary' : '' ?>">
+                $<?= number_format((float)$p['price_usd'], 2) ?>
+                <span class="<?= $dark ? 'text-white-50' : 'text-muted' ?> fs-5 fw-normal">/from</span>
+              </h2>
             </div>
+
+            <!-- Optional image -->
+            <?php if (!empty($p['image_path'])): ?>
+              <div class="py-3">
+                <img src="<?= e($p['image_path']) ?>" alt="<?= e($p['title']) ?>" class="img-fluid rounded">
+              </div>
+            <?php endif; ?>
+
+           
+
+            <!-- Add to Cart button -->
+            <button
+              onclick="addToCart('<?= e($p['title']) ?>', <?= json_encode((float)$p['price_usd']) ?>, {unit:'from', currency:'USD', package_id: <?= (int)$p['id'] ?>})"
+              class="btn <?= $dark ? 'btn-light' : 'btn-primary' ?> rounded-pill py-3 px-5 mt-auto">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    <?php endif; ?>
+
+  </div>
+</div>
+
         </div>
 
         <!-- Policy note -->
