@@ -101,40 +101,49 @@ define('BRAND_NAME', 'Universal Studios');
         </div>
 
         <a href="contact.php" class="nav-item nav-link<?= $active('contact.php') ?>">Contact</a>
-
-        <?php if (empty($_SESSION['user'])): ?>
-          <a href="signup.php" class="nav-item nav-link<?= $active('signup.php') ?>">Sign Up</a>
-          <a href="login.php"  class="nav-item nav-link<?= $active('login.php') ?>">Sign In</a>
-        <?php else: ?>
+    </div>
+    
+        <div class="d-flex align-items-center ms-auto">
+        <?php if (empty($_SESSION['user'])): ?> 
+          <!-- Show single icon for guests -->
+           <div class="nav-item dropdown">
+             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+             <i class="fa fa-user"></i></a>
+                <div class="dropdown-menu dropdown-menu-end m-0">
+                     <a href="signup.php" class="dropdown-item<?= $active('signup.php') ?>">
+                     <i class="fa fa-user-plus me-2"></i> Sign Up</a>
+                     <a href="login.php" class="dropdown-item<?= $active('login.php') ?>">
+                     <i class="fa fa-sign-in-alt me-2"></i> Sign In</a>
+                 </div>
+            </div>
+        <?php else: ?> 
+        <!-- Show name & role if logged in -->
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <?php
-                echo htmlspecialchars($_SESSION['user']['name']);
-                if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'customer') {
-                  echo ' (' . ucfirst($_SESSION['user']['role']) . ')';
-                }
-              ?>
-            </a>
-            <div class="dropdown-menu m-0">
-              <a href="profile.php" class="dropdown-item<?= $active('profile.php') ?>">Profile</a>
-              <?php if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'staff'): ?>
-                <a href="staff_dashboard.php" class="dropdown-item">Dashboard</a>
-              <?php elseif (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin'): ?>
-                <a href="admin_dashboard.php" class="dropdown-item">Dashboard</a>
-              <?php endif; ?>
-              <a href="logout.php" class="dropdown-item">Sign Out</a>
-            </div>
-          </div>
-        <?php endif; ?>
-      </div>
-
-      <div class="team-icon d-none d-xl-flex justify-content-center me-3">
-        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-twitter"></i></a>
-        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-instagram"></i></a>
-        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <a href="package.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Ticket Packages</a>
+              <i class="fa fa-user-circle me-1"></i>
+        <?php 
+          echo htmlspecialchars($_SESSION['user']['name']); 
+            if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'customer') { 
+          echo ' (' . ucfirst($_SESSION['user']['role']) . ')'; 
+        } ?>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end m-0">
+      <a href="profile.php" class="dropdown-item<?= $active('profile.php') ?>">
+        <i class="fa fa-id-badge me-2"></i> Profile
+      </a>
+      <?php if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'staff'): ?>
+        <a href="staff_dashboard.php" class="dropdown-item"><i class="fa fa-briefcase me-2"></i> Dashboard</a>
+      <?php elseif (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin'): ?> 
+        <a href="admin_dashboard.php" class="dropdown-item"><i class="fa fa-cogs me-2"></i> Dashboard</a>
+      <?php endif; ?>
+      <a href="logout.php" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i> Sign Out</a>
+    </div>
+    </div>
+  </div>
+<?php endif; ?>
+      <a href="package.php" class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center py-1 px-3 flex-shrink-0">
+  Ticket Packages
+      </a>
     </div>
   </nav>
 </div>
