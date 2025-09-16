@@ -1601,3 +1601,202 @@ body.reset-password-page {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* ================================
+   VERIFY OTP PAGE STYLES
+   ================================ */
+
+/* Page background */
+body.verify-otp-page {
+    background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card wrapper */
+.verify-otp-page .container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 0.6s ease;
+}
+
+/* Heading */
+.verify-otp-page h2 {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Alerts */
+.verify-otp-page .alert {
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* Form labels */
+.verify-otp-page .form-label {
+    font-weight: 600;
+    color: #444;
+}
+
+/* Input field */
+.verify-otp-page .form-control {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.verify-otp-page .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Verify button */
+.verify-otp-page .btn-primary {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.verify-otp-page .btn-primary:hover {
+    background: #0056b3;
+}
+
+/* Resend link */
+.verify-otp-page .btn-link {
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.verify-otp-page .btn-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* verify_reset_otp.css */
+/* Universal Studios Theme for Verify Reset OTP Page */
+
+/* Background with cinematic gradient + glowing spotlight */
+body.reset-otp-page {
+    background: radial-gradient(circle at center, #f2f3f4 0%, #f5f2f2 100%);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card container */
+.reset-otp-page.container {
+    background: rgba(57, 57, 93, 0.92);
+    padding: 45px 40px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 25px rgba(0, 191, 255, 0.3); /* Cool blue glow */
+    animation: zoomIn 0.9s ease-in-out;
+}
+
+/* Headings */
+.reset-otp-page h2 {
+    color: #0e1517; /* Cinematic blue */
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 0px 12px rgba(21, 21, 21, 0.7);
+}
+
+.reset-otp-page p.text-muted {
+    color: #aaa !important;
+    text-align: center;
+}
+
+/* Form labels */
+.reset-otp-page .form-label {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* OTP Input fields (make them like code boxes) */
+.reset-otp-page .otp-input {
+    width: 50px;
+    height: 55px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.reset-otp-page .otp-input:focus {
+    border-color: #00BFFF;
+    box-shadow: 0 0 12px rgba(0, 191, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+}
+
+/* Primary button */
+.reset-otp-page .btn-primary {
+    background: linear-gradient(135deg, #00BFFF, #1E90FF);
+    border: none;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 10px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.reset-otp-page .btn-primary:hover {
+    background: linear-gradient(135deg, #1E90FF, #00BFFF);
+    box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.6);
+    transform: scale(1.03);
+}
+
+/* Link button (Resend OTP) */
+.reset-otp-page .btn-link {
+    color: #00BFFF;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.reset-otp-page .btn-link:hover {
+    text-decoration: underline;
+    color: #1E90FF;
+}
+
+/* Error message */
+.reset-otp-page .alert-danger {
+    background: rgba(220, 53, 69, 0.85);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
