@@ -94,21 +94,21 @@ define('BRAND_NAME', 'Universal Studios');
                 </div>
 
                 <?php if (empty($_SESSION['user'])): ?> 
-    <!-- Show dropdown with user icon for guests -->
-    <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-            <i class="fa fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-end m-0">
-            <a href="signup.php" class="dropdown-item">
-                <i class="fa fa-user-plus me-2"></i> Sign Up
-            </a>
-            <a href="login.php" class="dropdown-item">
-                <i class="fa fa-sign-in-alt me-2"></i> Sign In
-            </a>
-        </div>
-    </div>
-<?php else: ?>
+                <!-- Show dropdown with user icon for guests -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fa fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end m-0">
+                        <a href="signup.php" class="dropdown-item">
+                        <i class="fa fa-user-plus me-2"></i> Sign Up
+                        </a>
+                        <a href="login.php" class="dropdown-item">
+                        <i class="fa fa-sign-in-alt me-2"></i> Sign In
+                        </a>
+                    </div>
+                </div>
+                <?php else: ?>
                     <!-- Logged in dropdown -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
