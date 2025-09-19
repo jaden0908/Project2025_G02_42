@@ -106,11 +106,22 @@ $stmt->fetch();
 $stmt->close();
 
 /* ---------- Fetch page rows ---------- */
-$sqlList = "SELECT id,user_id,role_snapshot,package_name,rating,message,guest_name,guest_email,created_at
-            FROM feedbacks
+$sqlList = "SELECT 
+              f.id,
+              f.user_id,
+              f.role_snapshot,
+              f.package_name,
+              f.rating,
+              f.message,
+              CASE WHEN f.role_snapshot='customer' THEN u.name  ELSE f.guest_name  END AS display_name,
+              CASE WHEN f.role_snapshot='customer' THEN u.email ELSE f.guest_email END AS display_email,
+              f.created_at
+            FROM feedbacks f
+            LEFT JOIN users u ON u.id = f.user_id
             WHERE $where
-            ORDER BY created_at DESC
+            ORDER BY f.created_at DESC
             LIMIT ? OFFSET ?";
+
 $stmt = $conn->prepare($sqlList);
 if ($types) {
   $types2 = $types . 'ii';
@@ -129,10 +140,23 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
   header('Content-Type: text/csv; charset=utf-8');
   header('Content-Disposition: attachment; filename=feedbacks.csv');
   $out = fopen('php://output', 'w');
-  fputcsv($out, ['id','user_id','role_snapshot','package_name','rating','message','guest_name','guest_email','created_at']);
+fputcsv($out, ['id','user_id','role_snapshot','package_name','rating','message','name','email','created_at']);
 
-  $sqlAll = "SELECT id,user_id,role_snapshot,package_name,rating,message,guest_name,guest_email,created_at
-             FROM feedbacks WHERE $where ORDER BY created_at DESC";
+$sqlAll = "SELECT 
+             f.id,
+             f.user_id,
+             f.role_snapshot,
+             f.package_name,
+             f.rating,
+             f.message,
+             CASE WHEN f.role_snapshot='customer' THEN u.name  ELSE f.guest_name  END AS name,
+             CASE WHEN f.role_snapshot='customer' THEN u.email ELSE f.guest_email END AS email,
+             f.created_at
+           FROM feedbacks f
+           LEFT JOIN users u ON u.id = f.user_id
+           WHERE $where
+           ORDER BY f.created_at DESC";
+
   $stmt = $conn->prepare($sqlAll);
   if ($types) { $stmt->bind_param($types, ...$params); }
   $stmt->execute();
@@ -198,7 +222,7 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
 
     <!-- Filter/search form -->
     <form class="row g-2 mb-3" method="get" action="staff_view_feedback.php">
-      <div class="col-md-3"><input class="form-control" type="text" name="q" value="<?= e($q) ?>" placeholder="Search..."></div>
+
       <div class="col-md-2">
         <select class="form-select" name="rating">
           <option value="">Any Rating</option>
@@ -234,8 +258,9 @@ $total_pages = max(1, (int)ceil(($total ?? 0) / $PER_PAGE));
           <?php else: foreach($rows as $i=>$r): ?>
             <tr>
               <td class="mono"><?= $offset+$i+1 ?></td>
-              <td><?= e($r['guest_name']) ?></td>
-              <td class="text-muted"><?= e($r['guest_email']) ?></td>
+             <td><?= e($r['display_name']) ?></td>
+<td class="text-muted"><?= e($r['display_email']) ?></td>
+
               <td class="text-uppercase"><?= e($r['role_snapshot']) ?></td>
               <td><?= e($r['package_name']) ?></td>
               <td><?= str_repeat('★',(int)$r['rating']) ?></td>

@@ -30,7 +30,12 @@ $unverifiedTotal = (int)$conn->query("SELECT COUNT(*) FROM users WHERE is_verifi
 
 // Recent signups (all users like admin page)
 $recent = [];
-$res2 = $conn->query("SELECT name,email,role,is_verified,created_at FROM users ORDER BY created_at DESC LIMIT 8");
+$res2 = $conn->query("SELECT name,email,role,is_verified,created_at 
+                      FROM users 
+                      WHERE role IN ('staff','customer') 
+                      ORDER BY created_at DESC 
+                      LIMIT 8");
+
 if ($res2) { while ($row = $res2->fetch_assoc()) { $recent[] = $row; } }
 ?>
 <!doctype html>

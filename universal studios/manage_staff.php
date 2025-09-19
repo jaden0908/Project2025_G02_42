@@ -21,6 +21,8 @@ if ($role !== 'admin') {
 
 /* ---------- DB + helpers ---------- */
 require __DIR__ . '/database.php';
+require __DIR__ . '/auth_guard.php';
+
 
 /** HTML escape helper */
 function e($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }

@@ -34,5 +34,5 @@ echo "DATABASE(): ".$conn->query("SELECT DATABASE() db")->fetch_assoc()['db']."\
 echo "Email: {$row['email']}\nRole: {$row['role']}\nVerified: {$row['is_verified']}\nHash len: {$row['len']}\n";
 echo "password_verify: "; var_dump(password_verify($plain, $hash));
 
-echo "\n== 登录信息（请尽快要求改密）==\n";
+echo "\n== PLEASE CHANGE PASSWORD & EMAIL RIGHT NOW!==\n";
 echo "Email: {$email}\nPassword: {$plain}\n";
