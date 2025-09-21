@@ -1709,120 +1709,102 @@ body.verify-otp-page {
     }
 }
 
-/* verify_reset_otp.css */
-/* Universal Studios Theme for Verify Reset OTP Page (Dark + Gold, No Glow) */
+/* ============================= */
+/* Verify Reset OTP Page Styles  */
+/* ============================= */
 
-/* Background - cinematic dark gradient */
 body.reset-otp-page {
-    background: radial-gradient(circle at top, #0b0d17 0%, #000 100%);
+    background: #0d0d0d; /* Dark background */
     color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
 }
 
 /* Card container */
 .reset-otp-page .container {
-    background: #14141e; /* solid dark background */
+    background: #1b1b1b;
     padding: 40px 35px;
     border-radius: 12px;
-    border: 1px solid #333; /* subtle border instead of glow */
-    width: 100%;
-    max-width: 420px;
-    animation: zoomIn 0.8s ease-in-out;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.25);
+    animation: zoomIn 0.9s ease-in-out;
 }
 
 /* Headings */
 .reset-otp-page h2 {
-    color: #FFD700; /* Universal gold */
+    color: #00BFFF;
     text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .reset-otp-page p.text-muted {
-    color: #bbb !important;
+    color: #aaa !important;
     text-align: center;
-    margin-bottom: 25px;
 }
 
-/* Form labels */
-.reset-otp-page .form-label {
-    color: #fff;
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: block;
-}
-
-/* OTP Input fields (styled like code boxes) */
-.reset-otp-page .otp-input {
-    width: 50px;
-    height: 55px;
-    margin: 0 6px;
-    text-align: center;
-    font-size: 1.3rem;
-    background: #1f1f2e;
+/* OTP Input */
+.reset-otp-page input.form-control {
+    background: #262626;
     border: 1px solid #444;
     color: #fff;
     border-radius: 8px;
-    transition: border-color 0.3s, background 0.3s;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: 0.3s;
 }
 
-.reset-otp-page .otp-input:focus {
-    border-color: #FFD700;
-    background: #2a2a3b;
+.reset-otp-page input.form-control:focus {
+    border-color: #00BFFF;
+    background: #303030;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
     outline: none;
 }
 
 /* Primary button */
 .reset-otp-page .btn-primary {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: linear-gradient(135deg, #00BFFF, #1E90FF);
     border: none;
-    font-weight: bold;
     padding: 12px;
+    font-weight: bold;
     border-radius: 8px;
     transition: 0.3s;
     width: 100%;
-    color: #000;
 }
 
 .reset-otp-page .btn-primary:hover {
-    background: linear-gradient(135deg, #FFA500, #FFD700);
     transform: scale(1.02);
+    background: linear-gradient(135deg, #1E90FF, #00BFFF);
+    box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
 }
 
-/* Link button (Resend OTP) */
+/* Link button */
 .reset-otp-page .btn-link {
-    color: #FFD700;
-    font-weight: 500;
+    color: #00BFFF;
     text-decoration: none;
-    display: block;
-    margin-top: 15px;
-    text-align: center;
 }
 
 .reset-otp-page .btn-link:hover {
+    color: #1E90FF;
     text-decoration: underline;
-    color: #FFA500;
 }
 
-/* Error message */
+/* Error/info messages */
 .reset-otp-page .alert-danger {
-    background: #dc3545;
+    background: rgba(220, 53, 69, 0.9);
     color: #fff;
     border: none;
-    border-radius: 6px;
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 15px;
+}
+
+.reset-otp-page .alert-info {
+    background: rgba(0, 191, 255, 0.2);
+    border: none;
+    color: #00BFFF;
 }
 
 /* Animations */
 @keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.9); }
+    from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
-
