@@ -1501,26 +1501,28 @@ a{text-decoration:none}
 }
 
 /* reset_password.css */
-/* Universal Studios Theme for Reset Password Page */
+/* Universal Studios Theme for Reset Password Page (No Glow) */
 
-/* Background with dark cinematic gradient + spotlight feel */
+/* Background - dark cinematic gradient */
 body.reset-password-page {
-    background: radial-gradient(circle at top, #1e2236 0%, #0b1145 100%);
+    background: radial-gradient(circle at top, #0b0d17 0%, #000 100%);
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 /* Card container */
 .reset-password-page .container {
-    background: rgba(15, 15, 25, 0.9);
+    background: #14141e; /* solid dark background */
     padding: 40px 35px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 25px rgba(255, 215, 0, 0.3);
-    animation: fadeIn 1s ease-in-out;
+    border-radius: 12px;
+    border: 1px solid #333; /* subtle border instead of glow */
+    width: 100%;
+    max-width: 420px;
 }
 
 /* Headings */
@@ -1528,34 +1530,39 @@ body.reset-password-page {
     color: #FFD700; /* Universal gold */
     text-align: center;
     font-weight: bold;
-    text-shadow: 0px 0px 10px rgba(22, 22, 21, 0.7);
+    margin-bottom: 20px;
 }
 
-.reset-password-page p{
-    color: #aaa !important;
+.reset-password-page p {
+    color: #bbb;
     text-align: center;
+    margin-bottom: 25px;
 }
 
 /* Form labels */
 .reset-password-page .form-label {
     color: #fff;
     font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
 }
 
 /* Inputs */
 .reset-password-page .form-control {
-    background: rgba(255, 255, 255, 0.1);
+    background: #1f1f2e;
     border: 1px solid #444;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 12px;
+    width: 100%;
+    margin-bottom: 18px;
+    transition: border-color 0.3s, background 0.3s;
 }
 
 .reset-password-page .form-control:focus {
     border-color: #FFD700;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
+    background: #2a2a3b;
+    outline: none;
 }
 
 /* Primary button */
@@ -1564,14 +1571,15 @@ body.reset-password-page {
     border: none;
     font-weight: bold;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: 0.3s;
+    width: 100%;
+    color: #000;
 }
 
 .reset-password-page .btn-primary:hover {
     background: linear-gradient(135deg, #FFA500, #FFD700);
-    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.6);
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 /* Link button (Cancel) */
@@ -1579,6 +1587,9 @@ body.reset-password-page {
     color: #FFD700;
     font-weight: 500;
     text-decoration: none;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .reset-password-page .btn-link:hover {
@@ -1588,18 +1599,22 @@ body.reset-password-page {
 
 /* Error message */
 .reset-password-page .alert-danger {
-    background: rgba(220, 53, 69, 0.85);
+    background: #dc3545;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     text-align: center;
+    padding: 10px;
+    margin-bottom: 15px;
 }
+
 
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-15px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
 
 /* ================================
    VERIFY OTP PAGE STYLES
@@ -1695,104 +1710,114 @@ body.verify-otp-page {
 }
 
 /* verify_reset_otp.css */
-/* Universal Studios Theme for Verify Reset OTP Page */
+/* Universal Studios Theme for Verify Reset OTP Page (Dark + Gold, No Glow) */
 
-/* Background with cinematic gradient + glowing spotlight */
+/* Background - cinematic dark gradient */
 body.reset-otp-page {
-    background: radial-gradient(circle at center, #262a2d 0%, #3d3d36 100%);
+    background: radial-gradient(circle at top, #0b0d17 0%, #000 100%);
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 /* Card container */
-.reset-otp-page.container {
-    background: rgba(45, 45, 59, 0.92);
-    padding: 45px 40px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 25px rgba(0, 191, 255, 0.3); /* Cool blue glow */
-    animation: zoomIn 0.9s ease-in-out;
+.reset-otp-page .container {
+    background: #14141e; /* solid dark background */
+    padding: 40px 35px;
+    border-radius: 12px;
+    border: 1px solid #333; /* subtle border instead of glow */
+    width: 100%;
+    max-width: 420px;
+    animation: zoomIn 0.8s ease-in-out;
 }
 
 /* Headings */
 .reset-otp-page h2 {
-    color: #0e1517; /* Cinematic blue */
+    color: #FFD700; /* Universal gold */
     text-align: center;
     font-weight: bold;
-    text-shadow: 0px 0px 12px rgba(21, 21, 21, 0.7);
+    margin-bottom: 20px;
 }
 
 .reset-otp-page p.text-muted {
-    color: #191717 !important;
+    color: #bbb !important;
     text-align: center;
+    margin-bottom: 25px;
 }
 
 /* Form labels */
 .reset-otp-page .form-label {
     color: #fff;
     font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
 }
 
-/* OTP Input fields (make them like code boxes) */
+/* OTP Input fields (styled like code boxes) */
 .reset-otp-page .otp-input {
     width: 50px;
     height: 55px;
-    margin: 0 5px;
+    margin: 0 6px;
     text-align: center;
-    font-size: 1.4rem;
-    background: rgba(255, 255, 255, 0.1);
+    font-size: 1.3rem;
+    background: #1f1f2e;
     border: 1px solid #444;
     color: #fff;
     border-radius: 8px;
-    transition: 0.3s;
+    transition: border-color 0.3s, background 0.3s;
 }
 
 .reset-otp-page .otp-input:focus {
-    border-color: #00BFFF;
-    box-shadow: 0 0 12px rgba(0, 191, 255, 0.6);
-    background: rgba(255, 255, 255, 0.15);
+    border-color: #FFD700;
+    background: #2a2a3b;
     outline: none;
 }
 
 /* Primary button */
 .reset-otp-page .btn-primary {
-    background: linear-gradient(135deg, #00BFFF, #1E90FF);
+    background: linear-gradient(135deg, #FFD700, #FFA500);
     border: none;
     font-weight: bold;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: 0.3s;
     width: 100%;
+    color: #000;
 }
 
 .reset-otp-page .btn-primary:hover {
-    background: linear-gradient(135deg, #1E90FF, #00BFFF);
-    box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.6);
-    transform: scale(1.03);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+    transform: scale(1.02);
 }
 
 /* Link button (Resend OTP) */
 .reset-otp-page .btn-link {
-    color: #00BFFF;
+    color: #FFD700;
     font-weight: 500;
     text-decoration: none;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .reset-otp-page .btn-link:hover {
     text-decoration: underline;
-    color: #1E90FF;
+    color: #FFA500;
 }
 
 /* Error message */
 .reset-otp-page .alert-danger {
-    background: rgba(220, 53, 69, 0.85);
+    background: #dc3545;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     text-align: center;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
 /* Animations */
@@ -1800,3 +1825,4 @@ body.reset-otp-page {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
+
