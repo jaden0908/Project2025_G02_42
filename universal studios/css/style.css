@@ -1709,102 +1709,86 @@ body.verify-otp-page {
     }
 }
 
-/* ============================= */
-/* Verify Reset OTP Page Styles  */
-/* ============================= */
-
+/* Force OTP Page Styles */
 body.reset-otp-page {
-    background: #0d0d0d; /* Dark background */
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: #0d0d0d !important;
+    color: #fff !important;
 }
 
-/* Card container */
-.reset-otp-page .container {
-    background: #1b1b1b;
-    padding: 40px 35px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.25);
-    animation: zoomIn 0.9s ease-in-out;
+/* Container override */
+body.reset-otp-page .container {
+    background-color: #1b1b1b !important;
+    padding: 40px 35px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.25) !important;
 }
 
 /* Headings */
-.reset-otp-page h2 {
-    color: #00BFFF;
-    text-align: center;
-    font-weight: 600;
+body.reset-otp-page h2 {
+    color: #00BFFF !important;
+    text-align: center !important;
+    font-weight: 600 !important;
 }
 
-.reset-otp-page p.text-muted {
+/* Paragraph text */
+body.reset-otp-page p.text-muted {
     color: #aaa !important;
-    text-align: center;
+    text-align: center !important;
 }
 
-/* OTP Input */
-.reset-otp-page input.form-control {
-    background: #262626;
-    border: 1px solid #444;
-    color: #fff;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    text-align: center;
-    transition: 0.3s;
+/* Input fields */
+body.reset-otp-page input.form-control {
+    background-color: #262626 !important;
+    border: 1px solid #444 !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    font-size: 1.2rem !important;
+    text-align: center !important;
 }
 
-.reset-otp-page input.form-control:focus {
-    border-color: #00BFFF;
-    background: #303030;
-    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
-    outline: none;
+/* Input focus */
+body.reset-otp-page input.form-control:focus {
+    border-color: #00BFFF !important;
+    background-color: #303030 !important;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5) !important;
+    outline: none !important;
 }
 
-/* Primary button */
-.reset-otp-page .btn-primary {
-    background: linear-gradient(135deg, #00BFFF, #1E90FF);
-    border: none;
-    padding: 12px;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: 0.3s;
-    width: 100%;
+/* Button */
+body.reset-otp-page .btn-primary {
+    background: linear-gradient(135deg, #00BFFF, #1E90FF) !important;
+    border: none !important;
+    padding: 12px !important;
+    font-weight: bold !important;
+    border-radius: 8px !important;
+    width: 100% !important;
 }
 
-.reset-otp-page .btn-primary:hover {
-    transform: scale(1.02);
-    background: linear-gradient(135deg, #1E90FF, #00BFFF);
-    box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
+body.reset-otp-page .btn-primary:hover {
+    transform: scale(1.02) !important;
+    background: linear-gradient(135deg, #1E90FF, #00BFFF) !important;
 }
 
-/* Link button */
-.reset-otp-page .btn-link {
-    color: #00BFFF;
-    text-decoration: none;
+/* Link */
+body.reset-otp-page .btn-link {
+    color: #00BFFF !important;
+    text-decoration: none !important;
 }
 
-.reset-otp-page .btn-link:hover {
-    color: #1E90FF;
-    text-decoration: underline;
+body.reset-otp-page .btn-link:hover {
+    color: #1E90FF !important;
+    text-decoration: underline !important;
 }
 
-/* Error/info messages */
-.reset-otp-page .alert-danger {
-    background: rgba(220, 53, 69, 0.9);
-    color: #fff;
-    border: none;
+/* Alerts */
+body.reset-otp-page .alert-danger {
+    background: rgba(220, 53, 69, 0.9) !important;
+    color: #fff !important;
+    border: none !important;
 }
 
-.reset-otp-page .alert-info {
-    background: rgba(0, 191, 255, 0.2);
-    border: none;
-    color: #00BFFF;
-}
-
-/* Animations */
-@keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+body.reset-otp-page .alert-info {
+    background: rgba(0, 191, 255, 0.2) !important;
+    border: none !important;
+    color: #00BFFF !important;
 }
