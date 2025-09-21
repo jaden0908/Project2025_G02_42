@@ -1505,7 +1505,7 @@ a{text-decoration:none}
 
 /* Background with dark cinematic gradient + spotlight feel */
 body.reset-password-page {
-    background: radial-gradient(circle at top, #0b0d17 0%, #000 100%);
+    background: radial-gradient(circle at top, #1e2236 0%, #0b1145 100%);
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
@@ -1528,7 +1528,7 @@ body.reset-password-page {
     color: #FFD700; /* Universal gold */
     text-align: center;
     font-weight: bold;
-    text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.7);
+    text-shadow: 0px 0px 10px rgba(22, 22, 21, 0.7);
 }
 
 .reset-password-page p{
@@ -1607,7 +1607,7 @@ body.reset-password-page {
 
 /* Page background */
 body.verify-otp-page {
-    background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+    background: linear-gradient(135deg, #3b526a 0%, #192022 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1699,7 +1699,7 @@ body.verify-otp-page {
 
 /* Background with cinematic gradient + glowing spotlight */
 body.reset-otp-page {
-    background: radial-gradient(circle at center, #f2f3f4 0%, #f5f2f2 100%);
+    background: radial-gradient(circle at center, #262a2d 0%, #3d3d36 100%);
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
@@ -1710,7 +1710,7 @@ body.reset-otp-page {
 
 /* Card container */
 .reset-otp-page.container {
-    background: rgba(57, 57, 93, 0.92);
+    background: rgba(45, 45, 59, 0.92);
     padding: 45px 40px;
     border-radius: 15px;
     box-shadow: 0px 0px 25px rgba(0, 191, 255, 0.3); /* Cool blue glow */
@@ -1726,7 +1726,7 @@ body.reset-otp-page {
 }
 
 .reset-otp-page p.text-muted {
-    color: #aaa !important;
+    color: #191717 !important;
     text-align: center;
 }
 

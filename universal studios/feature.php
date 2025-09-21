@@ -125,12 +125,14 @@ define('BRAND_NAME', 'Universal Studios');
                             <?php elseif (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin'): ?>
                                 <a href="admin_dashboard.php" class="dropdown-item"><i class="fa fa-cogs me-2"></i> Dashboard</a>
                             <?php endif; ?>
-                            <a href="logout.php" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i>SSign Out</a>
+                            <a href="logout.php" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i>Sign Out</a>
                         </div>
                     </div>
                 <?php endif; ?>
             </div>
-       <a href="package.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Ticket Packages</a>
+        <a href="package.php" class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center py-1 px-3 flex-shrink-0">
+  Ticket Packages
+      </a>
         </div>
     </nav>
 </div>
