@@ -1790,3 +1790,149 @@ body.reset-otp-page .alert-info {
     border: none !important;
     color: #00BFFF !important;
 }
+
+/* =========================
+   Profile Page Theme
+   Matches Android Studio dark/blue style
+   ========================= */
+body.profile-page {
+    background: radial-gradient(circle at top, #fbfbfd 100%, #fefeff 40%) !important;
+    color: #fff !important;
+    font-family: 'Poppins', 'Segoe UI', sans-serif !important;
+    min-height: 100vh !important;
+    padding: 20px !important;
+}
+
+/* Profile Header */
+body.profile-page .profile-header {
+    text-align: center !important;
+    padding: 35px 20px !important;
+    background: linear-gradient(135deg, #181A3E, #2D459D) !important;
+    color: #fff !important;
+    border-radius: 15px !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.3) !important;
+}
+body.profile-page .profile-header img {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    border: 3px solid #fff !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+}
+
+/* Status badge */
+body.profile-page .badge-status {
+    font-size: 0.85rem !important;
+    padding: 6px 12px !important;
+    border-radius: 50px !important;
+    margin-left: 8px !important;
+    font-weight: 600 !important;
+}
+
+/* Cards */
+body.profile-page .card-custom {
+    background: rgba(20, 20, 30, 0.95) !important;
+    border-radius: 15px !important;
+    padding: 25px !important;
+    margin-bottom: 25px !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(0, 191, 255, 0.2) !important;
+}
+body.profile-page .card-custom h5 {
+    color: #00BFFF !important;
+    font-weight: 600 !important;
+    margin-bottom: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+/* Forms */
+body.profile-page .form-label {
+    color: #ddd !important;
+    font-weight: 500 !important;
+}
+body.profile-page .form-control {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid #444 !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+}
+body.profile-page .form-control:focus {
+    border-color: #00BFFF !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 191, 255, 0.25) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Buttons */
+body.profile-page .btn {
+    border-radius: 10px !important;
+    padding: 10px 18px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+body.profile-page .btn-primary {
+    background: #00BFFF !important;
+    border: none !important;
+}
+body.profile-page .btn-primary:hover {
+    background: #009acd !important;
+}
+body.profile-page .btn-danger {
+    background: #ff4d4d !important;
+    border: none !important;
+}
+body.profile-page .btn-danger:hover {
+    background: #e60000 !important;
+}
+body.profile-page .btn-warning {
+    background: #f0ad4e !important;
+    border: none !important;
+    color: #fff !important;
+}
+body.profile-page .btn-outline-primary {
+    border: 2px solid #00BFFF !important;
+    color: #00BFFF !important;
+}
+body.profile-page .btn-outline-primary:hover {
+    background: #00BFFF !important;
+    color: #fff !important;
+}
+body.profile-page .btn-outline-secondary {
+    border: 2px solid #aaa !important;
+    color: #aaa !important;
+}
+body.profile-page .btn-outline-secondary:hover {
+    background: #aaa !important;
+    color: #000 !important;
+}
+
+/* Alerts */
+body.profile-page .alert {
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+}
+body.profile-page .alert-success {
+    background: rgba(40, 167, 69, 0.9) !important;
+    color: #fff !important;
+}
+body.profile-page .alert-danger {
+    background: rgba(220, 53, 69, 0.9) !important;
+    color: #fff !important;
+}
+body.profile-page .alert-warning {
+    background: rgba(255, 193, 7, 0.9) !important;
+    color: #000 !important;
+}
+body.profile-page .alert-info {
+    background: rgba(0, 123, 255, 0.9) !important;
+    color: #fff !important;
+}
+
+/* Footer link */
+body.profile-page .text-center a {
+    font-weight: 500 !important;
+}
