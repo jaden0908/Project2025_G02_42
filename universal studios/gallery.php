@@ -76,17 +76,11 @@ define('BRAND_NAME', 'Universal Studios');
                     <div class="dropdown-menu m-0">
                         <a href="feature.php" class="dropdown-item">Our Feature</a>
                         <a href="gallery.php" class="dropdown-item">Our Gallery</a>
-                        <a href="attraction.php" class="dropdown-item">Attractions</a>
                         <a href="package.php" class="dropdown-item active">Ticket Packages</a>
-                        <a href="team.php" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-
                         <?php if ($canFeedback): ?>
                             <!-- Show only to guests and customers -->
                             <a href="feedback.php" class="dropdown-item">Give Feedback</a>
                         <?php endif; ?>
-
-                        <a href="404.php" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
 

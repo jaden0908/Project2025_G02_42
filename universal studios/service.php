@@ -94,14 +94,10 @@ define('BRAND_NAME', 'Universal Studios');
           <div class="dropdown-menu m-0">
             <a href="feature.php"      class="dropdown-item<?= $active('feature.php') ?>">Our Feature</a>
             <a href="gallery.php"      class="dropdown-item<?= $active('gallery.php') ?>">Our Gallery</a>
-            <a href="attraction.php"   class="dropdown-item<?= $active('attraction.php') ?>">Attractions</a>
             <a href="package.php"      class="dropdown-item<?= $active('package.php') ?>">Ticket Packages</a>
-            <a href="team.php"         class="dropdown-item<?= $active('team.php') ?>">Our Team</a>
-            <a href="testimonial.php"  class="dropdown-item<?= $active('testimonial.php') ?>">Testimonial</a>
             <?php if ($canFeedback): ?>
               <a href="feedback.php"   class="dropdown-item<?= $active('feedback.php') ?>">Give Feedback</a>
             <?php endif; ?>
-            <a href="404.php"          class="dropdown-item<?= $active('404.php') ?>">404 Page</a>
           </div>
         </div>
 
@@ -285,7 +281,7 @@ define('BRAND_NAME', 'Universal Studios');
 </div>
 <!-- Feature End -->
 
-<!-- Testimonial Start -->
+<!-- Testimonial Start 
 <div class="container-fluid testimonial py-5">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
@@ -345,7 +341,7 @@ define('BRAND_NAME', 'Universal Studios');
         </div>
     </div>
 </div>
-<!-- Testimonial End -->
+Testimonial End -->
 
 <!-- Footer Start -->
 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">

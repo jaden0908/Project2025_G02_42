@@ -1500,114 +1500,112 @@ a{text-decoration:none}
   background-color: #e0e0e0;
 }
 
-/* reset_password.css */
-/* Universal Studios Theme for Reset Password Page (No Glow) */
-
-/* Background - dark cinematic gradient */
+/* =========================
+   Reset Password Page Theme
+   ========================= */
 body.reset-password-page {
-    background: radial-gradient(circle at top, #0b0d17 0%, #000 100%);
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+    background: radial-gradient(circle at top, #1a1a1a 0%, #35384d 100%) !important;
+    color: #fff !important;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* Card container */
-.reset-password-page .container {
-    background: #14141e; /* solid dark background */
-    padding: 40px 35px;
-    border-radius: 12px;
-    border: 1px solid #333; /* subtle border instead of glow */
-    width: 100%;
-    max-width: 420px;
+body.reset-password-page .container {
+    background: rgba(20, 20, 30, 0.95) !important;
+    padding: 40px 35px !important;
+    border-radius: 15px !important;
+    border: 1px solid rgba(0, 191, 255, 0.25) !important;
+    max-width: 500px !important;
+    width: 100% !important;
 }
 
 /* Headings */
-.reset-password-page h2 {
-    color: #FFD700; /* Universal gold */
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
+body.reset-password-page h2 {
+    color: #bd8912 !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-family: 'Cinzel Decorative', serif !important;
+    margin-bottom: 15px !important;
 }
 
-.reset-password-page p {
-    color: #bbb;
-    text-align: center;
-    margin-bottom: 25px;
+/* Subtext */
+body.reset-password-page p {
+    color: #bbb !important;
+    text-align: center !important;
 }
 
 /* Form labels */
-.reset-password-page .form-label {
-    color: #fff;
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: block;
+body.reset-password-page .form-label {
+    color: #fff !important;
+    font-weight: 500 !important;
 }
 
 /* Inputs */
-.reset-password-page .form-control {
-    background: #1f1f2e;
-    border: 1px solid #444;
-    color: #fff;
-    border-radius: 8px;
-    padding: 12px;
-    width: 100%;
-    margin-bottom: 18px;
-    transition: border-color 0.3s, background 0.3s;
+body.reset-password-page .form-control {
+    background: rgb(32, 29, 49) !important;
+    border: 1px solid #555 !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
 }
 
-.reset-password-page .form-control:focus {
-    border-color: #FFD700;
-    background: #2a2a3b;
-    outline: none;
+body.reset-password-page .form-control:focus {
+    border-color: #00BFFF !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
 }
 
 /* Primary button */
-.reset-password-page .btn-primary {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    border: none;
-    font-weight: bold;
-    padding: 12px;
-    border-radius: 8px;
-    transition: 0.3s;
-    width: 100%;
-    color: #000;
+body.reset-password-page .btn-primary {
+    background: linear-gradient(90deg, #113b4a, #0c2a34) !important;
+    border: none !important;
+    font-weight: bold !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    transition: 0.3s !important;
+    width: 100% !important;
+    color: #fff !important;
 }
 
-.reset-password-page .btn-primary:hover {
-    background: linear-gradient(135deg, #FFA500, #FFD700);
-    transform: scale(1.02);
+body.reset-password-page .btn-primary:hover {
+    background: linear-gradient(90deg, #0c2a34, #113b4a) !important;
 }
 
-/* Link button (Cancel) */
-.reset-password-page .btn-link {
-    color: #FFD700;
-    font-weight: 500;
-    text-decoration: none;
-    display: block;
-    margin-top: 15px;
-    text-align: center;
+/* Link button */
+body.reset-password-page .btn-link {
+    color: #bd8912  !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
 }
 
-.reset-password-page .btn-link:hover {
-    text-decoration: underline;
-    color: #FFA500;
+body.reset-password-page .btn-link:hover {
+    text-decoration: underline !important;
+    color: #e8ebec !important;
 }
 
 /* Error message */
-.reset-password-page .alert-danger {
-    background: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 15px;
+body.reset-password-page .alert-danger {
+    background: rgba(220, 53, 69, 0.9) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    text-align: center !important;
 }
 
+/* Info message */
+body.reset-password-page .alert-info {
+    background: rgba(0, 123, 255, 0.9) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+}
 
 /* Animations */
 @keyframes fadeIn {
@@ -1622,110 +1620,110 @@ body.reset-password-page {
 
 /* Page background */
 body.verify-otp-page {
-    background: linear-gradient(135deg, #3b526a 0%, #192022 100%);
+    background: linear-gradient(135deg, #19191a 40%, #40545a 100%) ;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex ;
+    align-items: center ;
+    justify-content: center ;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif ;
 }
 
 /* Card wrapper */
 .verify-otp-page .container {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    animation: fadeInUp 0.6s ease;
+    background: #fff ;
+    border-radius: 12px ;
+    padding: 2rem ;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) ;
+    animation: fadeInUp 0.6s ease ;
 }
 
 /* Heading */
 .verify-otp-page h2 {
-    font-weight: 700;
-    text-align: center;
+    font-weight: 700 ;
+    text-align: center ;
     margin-bottom: 1rem;
-    color: #333;
+    color: #bd8912 ;
 }
 
 /* Alerts */
 .verify-otp-page .alert {
-    border-radius: 8px;
-    font-size: 0.9rem;
+    border-radius: 8px ;
+    font-size: 0.9rem ;
 }
 
 /* Form labels */
 .verify-otp-page .form-label {
-    font-weight: 600;
-    color: #444;
+    font-weight: 600 ;
+    color: #444 ;
 }
 
 /* Input field */
 .verify-otp-page .form-control {
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease;
+    border-radius: 8px ;
+    padding: 0.75rem 1rem ;
+    border: 1px solid #ddd ;
+    transition: all 0.3s ease ;
 }
 
 .verify-otp-page .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    border-color: #007bff ;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3) ;
 }
 
 /* Verify button */
 .verify-otp-page .btn-primary {
-    border-radius: 8px;
-    font-weight: 600;
-    padding: 0.75rem;
-    transition: all 0.3s ease;
+    border-radius: 8px ;
+    font-weight: 600 ;
+    padding: 0.75rem ;
+    transition: all 0.3s ease ;
 }
 
 .verify-otp-page .btn-primary:hover {
-    background: #0056b3;
+    background: #0056b3 ;
 }
 
 /* Resend link */
 .verify-otp-page .btn-link {
-    font-size: 0.9rem;
-    color: #007bff;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    font-size: 0.9rem ;
+    color: #bd8912 ;
+    text-decoration: none ;
+    transition: all 0.3s ease ;
 }
 
 .verify-otp-page .btn-link:hover {
-    text-decoration: underline;
-    color: #0056b3;
+    text-decoration: underline ;
+    color: #f4f4f5 ;
 }
 
 /* Fade-in animation */
 @keyframes fadeInUp {
     from {
-        transform: translateY(30px);
-        opacity: 0;
+        transform: translateY(30px) ;
+        opacity: 0 ;
     }
     to {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(0) ;
+        opacity: 1 ;
     }
 }
 
 /* Force OTP Page Styles */
 body.reset-otp-page {
-    background-color: #0d0d0d !important;
+    background-color: #1c1b1c !important;
     color: #fff !important;
 }
 
 /* Container override */
 body.reset-otp-page .container {
-    background-color: #1b1b1b !important;
+    background-color: #161617 !important;
     padding: 40px 35px !important;
     border-radius: 12px !important;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.25) !important;
+    box-shadow: 0 0 15px rgba(7, 7, 7, 0.25) !important;
 }
 
 /* Headings */
 body.reset-otp-page h2 {
-    color: #00BFFF !important;
+    color: #bd8912  !important;
     text-align: center !important;
     font-weight: 600 !important;
 }
@@ -1756,7 +1754,7 @@ body.reset-otp-page input.form-control:focus {
 
 /* Button */
 body.reset-otp-page .btn-primary {
-    background: linear-gradient(135deg, #00BFFF, #1E90FF) !important;
+    background: linear-gradient(90deg, #113b4a, #0c2a34) !important;
     border: none !important;
     padding: 12px !important;
     font-weight: bold !important;
@@ -1766,17 +1764,17 @@ body.reset-otp-page .btn-primary {
 
 body.reset-otp-page .btn-primary:hover {
     transform: scale(1.02) !important;
-    background: linear-gradient(135deg, #1E90FF, #00BFFF) !important;
+    background: linear-gradient(90deg, #0c2a34, #113b4a) !important;
 }
 
 /* Link */
 body.reset-otp-page .btn-link {
-    color: #00BFFF !important;
+    color:#bd8912  !important;
     text-decoration: none !important;
 }
 
 body.reset-otp-page .btn-link:hover {
-    color: #1E90FF !important;
+    color: #e8e8e9 !important;
     text-decoration: underline !important;
 }
 
