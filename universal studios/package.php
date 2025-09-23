@@ -245,11 +245,11 @@ $stmt->close();
            
 
             <!-- Add to Cart button -->
-            <button
-              onclick="addToCart('<?= e($p['title']) ?>', <?= json_encode((float)$p['price_usd']) ?>, {unit:'from', currency:'USD', package_id: <?= (int)$p['id'] ?>})"
-              class="btn <?= $dark ? 'btn-light' : 'btn-primary' ?> rounded-pill py-3 px-5 mt-auto">
-              Add to Cart
-            </button>
+           <button
+  onclick="openQtyModal(<?= (int)$p['id'] ?>)"
+  class="btn <?= $dark ? 'btn-light' : 'btn-primary' ?> rounded-pill py-3 px-5 mt-auto">
+  Add to Cart
+</button>
           </div>
         </div>
       <?php endforeach; ?>
@@ -377,12 +377,40 @@ $stmt->close();
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+<!-- ===== Quantity Modal ===== -->
+<div class="modal fade" id="qtyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa fa-shopping-cart me-2"></i>Select quantity</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalItemName" class="fw-bold mb-2"></p>
+        <p id="modalItemPrice" class="text-muted"></p>
+        <label for="qtyInput" class="form-label">Quantity:</label>
+        <input type="number" id="qtyInput" class="form-control" value="1" min="1">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmAddBtn">Confirm</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- ===================== Cart Helper =====================
      - Accepts numeric price OR a string label like "Price varies by date"
      - Now we pass numeric "from" prices so cart shows actual numbers.
 =========================================================== -->
 <script>
+let pendingItem = null;
+
+// Open modal when user clicks "Add to Cart"
 function addToCart(name, priceOrLabel, meta = {}) {
     let price = null;
     let label = '';
@@ -395,33 +423,156 @@ function addToCart(name, priceOrLabel, meta = {}) {
         label = 'TBD';
     }
 
-    const item = {
+    // Save item temporarily before confirmation
+    pendingItem = {
         name: String(name || 'Package'),
-        price: price,   // numeric when provided
-        label: label,   // user-friendly label
+        price: price,
+        label: label,
         meta: meta || {},
-        qty: 1,
+    };
+
+    // Update modal content
+    document.getElementById('modalItemName').textContent = pendingItem.name;
+    document.getElementById('modalItemPrice').textContent = "Price: " + pendingItem.label;
+    const qtyInput = document.getElementById('qtyInput');
+    qtyInput.value = 1;
+
+    // Show Bootstrap modal
+    const modalEl = document.getElementById('qtyModal');
+    const modal = new bootstrap.Modal(modalEl);
+    modal.show();
+
+    // Autofocus quantity input after modal is shown
+    modalEl.addEventListener('shown.bs.modal', function onShown() {
+        qtyInput.focus();
+        qtyInput.select();
+        // remove this one-time listener
+        modalEl.removeEventListener('shown.bs.modal', onShown);
+    });
+}
+
+// Confirm button → actually add to cart
+document.getElementById('confirmAddBtn').addEventListener('click', function () {
+    if (!pendingItem) return;
+
+    // Validate quantity: disallow invalid/zero/negative/decimal
+    let qty = parseInt(document.getElementById('qtyInput').value, 10);
+    if (!Number.isFinite(qty) || qty < 1) qty = 1;
+
+    const item = {
+        ...pendingItem,
+        qty: qty,
         addedAt: new Date().toISOString()
     };
 
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    // Merge identical items (same name+label+meta) by increasing qty
+    // Check if the same item already exists (same name + label + meta)
     const sameIndex = cart.findIndex(i =>
         i.name === item.name &&
         i.label === item.label &&
         JSON.stringify(i.meta) === JSON.stringify(item.meta)
     );
 
+    // Merge quantity if item exists, otherwise push as new
     if (sameIndex > -1) {
-        cart[sameIndex].qty += 1;
+        cart[sameIndex].qty += qty;
     } else {
         cart.push(item);
     }
 
+    // Save back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(item.name + ' added to cart! ' + (item.price !== null ? '(' + item.label + ')' : '(Pricing will be confirmed)'));
+
+    // Close modal
+    bootstrap.Modal.getInstance(document.getElementById('qtyModal')).hide();
+
+    alert(item.name + " added to cart, quantity: " + qty);
+});
+
+// Press Enter in the quantity input to trigger confirm
+document.getElementById('qtyInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    document.getElementById('confirmAddBtn').click();
+  }
+});
+
+// Cleanup state when modal is fully hidden (avoid reusing stale item)
+document.getElementById('qtyModal').addEventListener('hidden.bs.modal', () => {
+  pendingItem = null;
+});
+</script>
+
+<!-- Quantity Modal (only one per page) -->
+<div class="modal fade" id="qtyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa fa-shopping-cart me-2"></i>Select Quantity</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Hidden field to remember which package was selected -->
+        <input type="hidden" id="pkgIdHidden">
+        <label for="qtyInput" class="form-label">Quantity</label>
+        <input type="number" id="qtyInput" class="form-control" value="1" min="1">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmAddBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Open the modal and set the selected package ID
+function openQtyModal(packageId) {
+  document.getElementById('pkgIdHidden').value = packageId;
+  document.getElementById('qtyInput').value = 1;
+  new bootstrap.Modal(document.getElementById('qtyModal')).show();
 }
+
+// When user clicks Confirm → send POST request to backend
+document.getElementById('confirmAddBtn').addEventListener('click', async () => {
+  const pkgId = parseInt(document.getElementById('pkgIdHidden').value, 10);
+  let qty = parseInt(document.getElementById('qtyInput').value, 10);
+
+  // Validate quantity: must be >= 1
+  if (!Number.isFinite(qty) || qty < 1) qty = 1;
+
+  // Build form data
+  const form = new FormData();
+  form.append('package_id', pkgId);
+  form.append('qty', qty);
+
+  try {
+    // Send request to backend API
+    const res = await fetch('api/cart_add.php', { method: 'POST', body: form });
+    const data = await res.json().catch(() => ({}));
+
+    if (res.status === 401) {
+      // Not logged in → redirect to login
+      alert('Please log in to add items to cart.');
+      location.href = 'login.php';
+      return;
+    }
+
+    if (data.ok) {
+      // Success → close modal and show message
+      bootstrap.Modal.getInstance(document.getElementById('qtyModal')).hide();
+      alert('Added to cart!');
+    } else {
+      alert(data.msg || 'Failed to add to cart.');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Network error, please try again.');
+  }
+});
 </script>
 
 </body>
