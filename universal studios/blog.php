@@ -45,7 +45,7 @@ define('BRAND_NAME', 'Universal Studios');
 </div>
 <!-- Spinner End -->
 
-<!-- ===================== Navbar & Hero Start =============== -->
+    <!-- ===================== Navbar & Hero Start =============== -->
 <div class="container-fluid nav-bar sticky-top px-4 py-2 py-lg-0">
   <nav class="navbar navbar-expand-lg navbar-light">
     <a href="index.php" class="navbar-brand p-0">
@@ -96,52 +96,80 @@ define('BRAND_NAME', 'Universal Studios');
         </div>
 
         <a href="contact.php" class="nav-item nav-link<?= $active('contact.php') ?>">Contact</a>
-        </div>
+      </div>
 
-       <div class="d-flex align-items-center ms-auto">
-        <?php if (empty($_SESSION['user'])): ?> 
-          <!-- Show single icon for guests -->
-           <div class="nav-item dropdown">
-             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-             <i class="fa fa-user"></i></a>
-                <div class="dropdown-menu dropdown-menu-end m-0">
-                     <a href="signup.php" class="dropdown-item<?= $active('signup.php') ?>">
-                     <i class="fa fa-user-plus me-2"></i> Sign Up</a>
-                     <a href="login.php" class="dropdown-item<?= $active('login.php') ?>">
-                     <i class="fa fa-sign-in-alt me-2"></i> Sign In</a>
-                 </div>
-            </div>
-        <?php else: ?> 
-        <!-- Show name & role if logged in -->
-          <div class="nav-item dropdown">
+      <!-- 右侧：用户下拉 + Ticket Packages 按钮 -->
+      <div class="d-flex align-items-center ms-auto gap-2 flex-nowrap">
+
+        <?php if ($isGuest): ?> 
+          <!-- Guest -->
+          <div class="nav-item dropdown me-2 flex-shrink-0">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-               <i class="fa fa-user-circle me-1"></i>
-        <?php 
-          echo htmlspecialchars($_SESSION['user']['name']); 
-            if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'customer') { 
-          echo ' (' . ucfirst($_SESSION['user']['role']) . ')'; 
-        } ?>
-    </a>
-    <div class="dropdown-menu dropdown-menu-end m-0">
-      <a href="profile.php" class="dropdown-item<?= $active('profile.php') ?>">
-        <i class="fa fa-id-badge me-2"></i> Profile
-      </a>
-      <?php if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'staff'): ?>
-        <a href="staff_dashboard.php" class="dropdown-item"><i class="fa fa-briefcase me-2"></i> Dashboard</a>
-      <?php elseif (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin'): ?> 
-        <a href="admin_dashboard.php" class="dropdown-item"><i class="fa fa-cogs me-2"></i> Dashboard</a>
-      <?php endif; ?>
-      <a href="logout.php" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i> Sign Out</a>
-    </div>
-    </div>
-  </div>
-<?php endif; ?>
-       <a href="package.php" class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center py-1 px-3 flex-shrink-0">
-  Ticket Packages
-      </a>
+              <i class="fa fa-user"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end m-0">
+              <a href="signup.php" class="dropdown-item<?= $active('signup.php') ?>">
+                <i class="fa fa-user-plus me-2"></i> Sign Up
+              </a>
+              <a href="login.php" class="dropdown-item<?= $active('login.php') ?>">
+                <i class="fa fa-sign-in-alt me-2"></i> Sign In
+              </a>
+            </div>
+          </div>
+
+        <?php else: ?> 
+          <!-- Logged in -->
+          <div class="nav-item dropdown me-2 flex-shrink-0">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="fa fa-user-circle me-1"></i>
+              <?php 
+                echo htmlspecialchars($_SESSION['user']['name']); 
+                if (!empty($sessionRole) && $sessionRole !== 'customer') { 
+                  echo ' (' . ucfirst($sessionRole) . ')'; 
+                }
+              ?>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end m-0">
+              <a href="profile.php" class="dropdown-item<?= $active('profile.php') ?>">
+                <i class="fa fa-id-badge me-2"></i> Profile
+              </a>
+              <?php if ($sessionRole === 'customer'): ?>
+                <a href="cart.php" class="dropdown-item<?= $active('cart.php') ?>">
+                  <i class="fa fa-shopping-cart me-2"></i> Cart
+                </a>
+              <?php elseif ($sessionRole === 'staff'): ?>
+                <a href="staff_dashboard.php" class="dropdown-item"><i class="fa fa-briefcase me-2"></i> Dashboard</a>
+              <?php elseif ($sessionRole === 'admin'): ?> 
+                <a href="admin_dashboard.php" class="dropdown-item"><i class="fa fa-cogs me-2"></i> Dashboard</a>
+              <?php endif; ?>
+              <a href="logout.php" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i> Sign Out</a>
+            </div>
+          </div>
+        <?php endif; ?>
+
+        <!-- Ticket Packages 按钮 -->
+        <a href="package.php" 
+           class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center py-1 px-3 flex-shrink-0">
+          Ticket Packages
+        </a>
+      </div>
     </div>
   </nav>
 </div>
+
+
+
+<!--
+      <div class="team-icon d-none d-xl-flex justify-content-center me-3">
+        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-square btn-light rounded-circle mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <a href="package.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Ticket Packages</a>
+    </div>
+  </nav>
+</div> -->
 <!-- ===================== Navbar & Hero End ================= -->
 
 
