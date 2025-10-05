@@ -1130,15 +1130,15 @@ body.login-page {
   font-weight: bold;
   color: #113b4a;
   text-transform: uppercase;
-  margin-top: -10px; /* moves closer to the arch */
+  margin-top: 0px !important; /* moves closer to the arch */
 }
 
 /* Globe icon between arched text and Sign In */
 .globe-icon {
   font-size: 36px;
   color: #113b4a;
-  margin-top: -5px;
-  margin-bottom: 10px;
+  margin-top: -10px !important;
+  margin-bottom: -8px !important;
   display: block;
   text-align: center;
   animation: spin-globe 12s linear infinite;
@@ -1185,102 +1185,218 @@ body.login-page {
 }
 
 
-/* signup.css - Universal Studios Theme for Signup Page */
+/* --- Universal Studios UISOCIAL-Style Signup Page --- */
 
-/* Global */
+/* Fullscreen body */
 body.signup-page {
-  background: linear-gradient(135deg, #113b4a 40%, #1a1a1a 100%);
-  color: #fff;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #a0d8f1 40%, #acc4e3 100%);
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Container box */
-.signup-page .container {
-  background: rgba(255, 255, 255, 0.1);
+/* Main wrapper - two column layout */
+.signup-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  height: 650px;
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+/* --- Left Side (Framed Image) --- */
+.image-side {
+  flex: 1.2;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image-side img {
+  width: 92%;
+  height: 90%;
+  object-fit: cover;
   border-radius: 20px;
-  padding: 40px 30px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-  animation: signup-page-slideUp 0.8s ease-out;
+  border: 10px solid #fff; /* white frame like UISOCIAL */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s ease;
 }
 
-/* Title */
-.signup-page h2 {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #f1c40f; /* Universal Studios golden highlight */
-  letter-spacing: 1px;
+.image-side img:hover {
+  transform: scale(1.02);
+}
+
+/* --- Right Side (Form Section) --- */
+.form-side {
+  flex: 1;
+  background: #ffffff;
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Title Area */
+.title-area {
   text-align: center;
   margin-bottom: 25px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  position: relative;
 }
 
-/* Labels */
-.signup-page .form-label {
+/* SVG arch container */
+.arch-text {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+  height: 130px;
+  overflow: visible;
+  margin-bottom: -70px;
+}
+
+/* Curved text */
+.arch-text text {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  fill: #113b4a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Globe icon between text and Sign Up */
+.globe-icon {
+  font-size: 36px;
+  color: #113b4a;
+  margin-top: -5px !important;
+  margin-bottom: 20px !important;
+  display: block;
+  text-align: center;
+  animation: spin-globe 12s linear infinite;
+}
+
+/* Spinning animation */
+@keyframes spin-globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* "Sign Up" below the arch */
+.sign-title {
+  font-size: 30px;
   font-weight: bold;
-  color: #fff;
+  color: #113b4a;
+  text-transform: uppercase;
+  margin-top: 10px !important;
+ 
 }
 
 /* Inputs */
-.signup-page .form-control {
+.form-side .form-control {
   border-radius: 10px;
   border: 2px solid #113b4a;
   padding: 12px;
-  background-color: rgba(255,255,255,0.9);
-  transition: all 0.3s;
+  transition: 0.3s;
+  font-size: 1rem;
 }
 
-.signup-page .form-control:focus {
-  border-color: #f1c40f;
-  box-shadow: 0 0 10px rgba(241,196,15,0.8);
+.form-side .form-control:focus {
+  border-color: #0d2f3b;
+  box-shadow: 0 0 10px rgba(17, 59, 74, 0.5);
 }
 
 /* Button */
-.signup-page .btn-primary {
-  background: linear-gradient(90deg, #113b4a, #0c2a34);
+.form-side .btn-primary {
+  background-color: #113b4a;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: bold;
   padding: 12px;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  transition: all 0.3s;
+  transition: 0.3s;
+  width: 100%;
 }
 
-.signup-page .btn-primary:hover {
-  background: linear-gradient(90deg, #0c2a34, #113b4a);
-  transform: scale(1.05);
+.form-side .btn-primary:hover {
+  background-color: #0c2a34;
+  transform: translateY(-2px);
 }
 
 /* Link */
-.signup-page .btn-link {
-  color: #f1c40f !important;
+.form-side .btn-link {
+  color: #113b4a !important;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.form-side .btn-link:hover {
+  text-decoration: underline;
+  color: #0c2a34 !important;
+}
+
+/* Footer text */
+.form-side .signin-text {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.95rem;
+}
+
+.form-side .signin-text a {
+  color: #113b4a;
   font-weight: bold;
   text-decoration: none;
 }
 
-.signup-page .btn-link:hover {
-  color: #fff !important;
+.form-side .signin-text a:hover {
+  color: #0c2a34;
   text-decoration: underline;
 }
 
 /* Alerts */
-.signup-page .alert-danger {
-  background-color: rgba(139, 0, 0, 0.85);
-  color: #fff;
+.alert-success, .alert-danger {
   border-radius: 10px;
-  border: none;
+  padding: 12px;
+  font-size: 0.95rem;
+  text-align: center;
 }
 
-/* Subtle animation */
-@keyframes signup-page-slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.alert-success {
+  background-color: #0c2a34;
+  color: #fff;
 }
+
+.alert-danger {
+  background-color: #8b0000;
+  color: #fff;
+}
+
+/* Responsive layout */
+@media (max-width: 992px) {
+  .signup-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+  .image-side {
+    order: 1;
+    height: 280px;
+  }
+  .form-side {
+    order: 2;
+    padding: 30px;
+  }
+}
+
 
 /* ============================= */
 /* Forgot Password Page Styling  */
@@ -2059,4 +2175,26 @@ body.profile-page .alert-info {
 /* Footer link */
 body.profile-page .text-center a {
     font-weight: 500 !important;
+}
+
+/* --- Fine-tuning title spacing for both pages separately --- */
+
+/* LOGIN PAGE */
+body.login-page .globe-icon {
+  margin-top: -10px !important;   /* closer to arch */
+  margin-bottom: -8px !important; /* tight spacing */
+}
+
+body.login-page .sign-title {
+  margin-top: 0px !important;     /* aligns with UISOCIAL look */
+}
+
+/* SIGNUP PAGE */
+body.signup-page .globe-icon {
+  margin-top: -10px !important;     /* slightly lower than login */
+  margin-bottom: -8px !important; /* more breathing room above text */
+}
+
+body.signup-page .sign-title {
+  margin-top: 30px !important;     /* balanced spacing below globe */
 }

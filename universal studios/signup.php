@@ -72,29 +72,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Sign Up - WaterLand</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class = "signup-page">
-<div class="container mt-5" style="max-width:520px;">
-    <h2 class="mb-4">Sign Up</h2>
-    <?php if (!empty($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
-    <form method="POST" action="">
-        <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" required value="<?php echo htmlspecialchars($name ?? ''); ?>">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required value="<?php echo htmlspecialchars($email ?? ''); ?>">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" required minlength="6" placeholder="At least 6 characters">
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Create Account</button>
-        <div class="text-center mt-3">
-            <a href="login.php" class="btn btn-link">Already have an account? Sign In</a>
-        </div>
+<body class="signup-page">
+
+<div class="signup-wrapper" role="main">
+  <!-- LEFT SIDE -->
+  <div class="image-side" aria-hidden="true">
+    <img src="img/background.jpg" alt="Signup Visual">
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="form-side">
+    <div class="title-area">
+      <svg viewBox="0 0 500 200" class="arch-text">
+        <path id="curve" d="M50,150 A200,100 0 0,1 450,150" fill="transparent" />
+        <text width="500">
+          <textPath href="#curve" startOffset="50%" text-anchor="middle">
+            UNIVERSAL STUDIOS
+          </textPath>
+        </text>
+      </svg>
+      <i class="fa-solid fa-globe globe-icon"></i>
+      <h2 class="sign-title">Sign Up</h2>
+    </div>
+
+    <?php if (!empty($error)): ?>
+      <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <form method="POST">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" required value="<?= htmlspecialchars($name ?? '') ?>">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required value="<?= htmlspecialchars($email ?? '') ?>">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required minlength="6">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create Account</button>
+
+      <div class="signin-text">
+        Already have an account?
+        <a href="login.php">Sign In</a>
+      </div>
     </form>
+  </div>
 </div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
