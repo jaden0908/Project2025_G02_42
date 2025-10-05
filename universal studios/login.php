@@ -181,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           </svg>
           <i class="fa-solid fa-globe globe-icon"></i>
         </div>
-        <h2 class="sign-title">Log In</h2>
+        <h2 class="sign-title">Sign In</h2>
 
         <?php if (!empty($success)): ?>
             <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
