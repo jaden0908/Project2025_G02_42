@@ -153,58 +153,86 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login - WaterLand</title>
+    <title>Login - Universal Studios</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css?v=999" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body class="login-page">
-<div class="container mt-5" style="max-width:520px;">
-    <h2 class="mb-4 text-center">Sign In</h2>
 
-    <?php if (!empty($success)): ?>
-        <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
-    <?php endif; ?>
-    <?php if (!empty($error)): ?>
-        <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
-    <?php endif; ?>
+  <div class="login-wrapper" role="main">
+    <!-- LEFT: fullscreen-cover image (fills left half) -->
+    <div class="image-side" aria-hidden="true">
+       <img src="img/background.jpg" alt="Login Visual">
+    </div>
 
-    <form method="POST" action="">
-        <div class="mb-3">
-            <label class="form-label">Email address</label>
+
+    <!-- RIGHT: form section -->
+    <div class="form-side">
+      <div class="form-card" role="region" aria-label="Sign in form">
+        <div class="title-area">
+          <svg viewBox="0 0 500 200" class="arch-text">
+           <path id="curve" d="M50,150 A200,100 0 0,1 450,150" fill="transparent" />
+           <text width="500">
+              <textPath href="#curve" startOffset="50%" text-anchor="middle">UNIVERSAL STUDIOS</textPath>
+           </text>
+          </svg>
+          <i class="fa-solid fa-globe globe-icon"></i>
+        </div>
+        <h2 class="sign-title">Sign In</h2>
+
+        <?php if (!empty($success)): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+        <?php if (!empty($error)): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
             <input
-                type="email"
-                name="email"
-                class="form-control"
-                placeholder="you@example.com"
-                required
-                value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
-        </div>
+              id="email"
+              type="email"
+              name="email"
+              class="form-control"
+              placeholder="you@example.com"
+              required
+              value="<?= isset($email) ? htmlspecialchars($email) : '' ?>">
+          </div>
 
-        <div class="mb-3">
-            <label class="form-label">Password</label>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
             <input
-                type="password"
-                name="password"
-                class="form-control"
-                required
-                placeholder="Your password">
-        </div>
+              id="password"
+              type="password"
+              name="password"
+              class="form-control"
+              required
+              placeholder="Your password">
+          </div>
 
-        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-submit w-100">Sign In</button>
 
-        <div class="d-flex justify-content-between mt-3">
-            <a href="forgot_password.php" class="btn btn-link p-0">Forgot Password?</a>
-            <a href="signup.php" class="btn btn-link p-0">Don't have an account? Sign Up</a>
-        </div>
+          <div class="d-flex justify-content-between mt-3">
+             <a href="forgot_password.php" class="btn btn-link p-0">Forgot Password?</a>
+          </div>
 
-        <div class="text-center mt-3">
+          <div class="signup-text"> Don’t have an account?
+             <a href="signup.php">Sign Up</a>
+          </div>
+
+         <div class="text-center mt-3">
             <a href="signup_admin_staff.php" class="btn btn-outline-secondary btn-sm mt-1">
-                Sign In as Admin/Staff
-            </a>
+                Sign In as Admin/Staff</a>
         </div>
-    </form>
-</div>
+
+        </form>
+      </div>
+    </div>
+  </div>
 
 <script src="js/bootstrap.bundle.min.js"></script>
 </body>

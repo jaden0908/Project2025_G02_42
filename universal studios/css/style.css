@@ -958,106 +958,230 @@
 }
 /*** copyright end ***/
 
-/* style.css - Universal Studios Theme for Login Page */
+/* --- Universal Studios UISOCIAL-Style Login Page --- */
 
-/* Global body styling */
-.body.login-body {
-  background: linear-gradient(135deg, #113b4a 60%, #000 100%);
-  color: #fff;
+/* Fullscreen body */
+body.login-page {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #a0d8f1 40%, #acc4e3 100%);
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
+/* Main wrapper - two column layout */
+.login-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  height: 650px;
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
 
-/* Card-like container */
-.login-page .container {
-  background: rgba(17, 59, 74, 0.9);
+/* --- Left Side (Framed Image) --- */
+.image-side {
+  flex: 1.2;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image-side img {
+  width: 92%;
+  height: 90%;
+  object-fit: cover;
   border-radius: 20px;
-  padding: 40px 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-  animation: login-page-fadeIn 1s ease-in-out;
+  border: 10px solid #fff; /* white frame like UISOCIAL */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* soft shadow */
+  transition: transform 0.5s ease;
 }
 
-/* Heading - cinematic feel */
-.login-page h2 {
+.image-side img:hover {
+  transform: scale(1.02);
+}
+
+/* --- Right Side (Form Section) --- */
+.form-side {
+  flex: 1;
+  background: #ffffff;
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-side h2 {
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
-  letter-spacing: 2px;
+  color: #113b4a;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Labels */
-.login-page .form-label {
-  font-weight: bold;
-  color: #fff;
-}
-
-/* Inputs */
-.login-page .form-control {
+/* Input styles */
+.form-side .form-control {
   border-radius: 10px;
   border: 2px solid #113b4a;
   padding: 12px;
-  background-color: #fff;
-  transition: all 0.3s;
+  transition: 0.3s;
+  font-size: 1rem;
 }
 
-.login-page .form-control:focus {
-  border-color: #fff;
-  box-shadow: 0 0 10px rgba(17, 59, 74, 0.8);
+.form-side .form-control:focus {
+  border-color: #0d2f3b;
+  box-shadow: 0 0 10px rgba(17, 59, 74, 0.5);
 }
 
-/* Primary Button */
-.login-page .btn-primary {
+/* Button styles */
+.form-side .btn-primary {
   background-color: #113b4a;
   border: none;
   border-radius: 10px;
   font-weight: bold;
   padding: 12px;
-  transition: all 0.3s;
+  transition: 0.3s;
+  width: 100%;
 }
 
-.login-page .btn-primary:hover {
+.form-side .btn-primary:hover {
   background-color: #0c2a34;
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 /* Links */
-.login-page .btn-link {
-  color: #fff !important;
+.form-side .btn-link {
+  color: #113b4a !important;
   text-decoration: none;
   font-weight: bold;
+  font-size: 0.95rem;
 }
 
-.login-page .btn-link:hover {
-  color: #f1c40f !important; /* Universal Studios golden accent */
+.form-side .btn-link:hover {
+  text-decoration: underline;
+  color: #0c2a34 !important;
+}
+
+/* Spacing adjustments for links area */
+.form-side .d-flex {
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* “Don’t have an account?” placement fix */
+.form-side .signup-text {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.95rem;
+}
+
+.form-side .signup-text a {
+  color: #113b4a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.form-side .signup-text a:hover {
+  color: #0c2a34;
   text-decoration: underline;
 }
 
-/* Alerts */
-.login-page .alert-success {
+.title-area {
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/* SVG arch container */
+.arch-text {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+  height: 130px;
+  overflow: visible;
+  margin-bottom: -70px;
+}
+
+/* Style the curved text */
+.arch-text text {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  fill: #113b4a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* "Sign In" below the curve */
+.sign-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #113b4a;
+  text-transform: uppercase;
+  margin-top: -10px; /* moves closer to the arch */
+}
+
+/* Globe icon between arched text and Sign In */
+.globe-icon {
+  font-size: 36px;
+  color: #113b4a;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  animation: spin-globe 12s linear infinite;
+}
+
+/* Subtle spinning animation */
+@keyframes spin-globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Alert boxes */
+.alert-success, .alert-danger {
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.alert-success {
   background-color: #0c2a34;
-  border: 1px solid #fff;
   color: #fff;
-  border-radius: 10px;
 }
 
-.login-page .alert-danger {
+.alert-danger {
   background-color: #8b0000;
-  border: none;
   color: #fff;
-  border-radius: 10px;
 }
 
-/* Subtle animation */
-@keyframes login-page-fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Responsive Design */
+@media (max-width: 992px) {
+  .login-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+  .image-side {
+    order: 1;
+    height: 280px;
+  }
+  .form-side {
+    order: 2;
+    padding: 30px;
+  }
 }
 
 
