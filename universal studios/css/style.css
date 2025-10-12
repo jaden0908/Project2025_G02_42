@@ -1403,98 +1403,130 @@ body.signup-page {
 /* ============================= */
 
 body.forgot-password-page {
-  background: linear-gradient(135deg, #1a1a1a 40%, #113b4a 100%);
-  color: #fff;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #6dccec 40%, #00BFFF  100%) !important;
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Container */
-.forgot-password-page .container {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 40px 30px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-  animation: slideUp 0.8s ease-out;
-  max-width: 450px;
+/* Wrapper (centered box) */
+.forgot-wrapper {
   width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  padding: 50px 60px;
+  text-align: center;
 }
 
-/* Title */
-.forgot-password-page h2 {
-  font-size: 2rem;
+/* Title Area */
+.title-area {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Arch logo */
+.arch-text {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+  height: 130px;
+  overflow: visible;
+  margin-bottom: -30px;
+}
+
+.arch-text text {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  fill: #113b4a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Globe icon */
+.globe-icon {
+  font-size: 36px;
+  color: #113b4a;
+  margin-top: -8px;
+  margin-bottom: -2px;
+  display: block;
+  text-align: center;
+  animation: spin-globe 12s linear infinite;
+}
+
+/* Forgot Password title */
+.sign-title {
+  font-size: 30px;
   font-weight: bold;
-  color: #f1c40f;
-  text-align: center;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  color: #113b4a;
+  text-transform: uppercase;
+  margin-top: 16px;
 }
 
-/* Instructions text */
-.forgot-password-page p {
-  color: #ddd;
-  text-align: center;
+/* Subtitle */
+.subtitle-text {
+  color: #555;
   margin-bottom: 25px;
   font-size: 0.95rem;
 }
 
-/* Labels */
-.forgot-password-page .form-label {
-  font-weight: bold;
-  color: #fff;
-}
-
-/* Input field */
-.forgot-password-page .form-control {
+/* Inputs */
+.forgot-wrapper .form-control {
   border-radius: 10px;
   border: 2px solid #113b4a;
   padding: 12px;
-  background-color: rgba(255,255,255,0.9);
-  transition: all 0.3s;
+  transition: 0.3s;
+  font-size: 1rem;
 }
 
-.forgot-password-page .form-control:focus {
-  border-color: #f1c40f;
-  box-shadow: 0 0 10px rgba(241,196,15,0.8);
+.forgot-wrapper .form-control:focus {
+  border-color: #0d2f3b;
+  box-shadow: 0 0 10px rgba(17, 59, 74, 0.5);
 }
 
-/* Submit Button */
-.forgot-password-page .btn-primary {
-  background: linear-gradient(90deg, #113b4a, #0c2a34);
+/* Button */
+.forgot-wrapper .btn-primary {
+  background-color: #113b4a;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: bold;
   padding: 12px;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  transition: all 0.3s;
+  transition: 0.3s;
   width: 100%;
 }
 
-.forgot-password-page .btn-primary:hover {
-  background: linear-gradient(90deg, #0c2a34, #113b4a);
-  transform: scale(1.05);
+.forgot-wrapper .btn-primary:hover {
+  background-color: #0c2a34;
+  transform: translateY(-2px);
 }
 
-/* Back to login link */
-.forgot-password-page .btn-link {
-  display: block;
-  text-align: center;
-  margin-top: 15px;
-  color: #f1c40f !important;
-  font-weight: bold;
+/* Back link */
+.forgot-wrapper .btn-link {
+  color: #113b4a !important;
   text-decoration: none;
-  transition: all 0.3s;
+  font-weight: bold;
 }
 
-.forgot-password-page .btn-link:hover {
-  color: #fff !important;
+.forgot-wrapper .btn-link:hover {
   text-decoration: underline;
+  color: #0c2a34 !important;
 }
+
+/* Spin animation */
+@keyframes spin-globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 /* ================================
    Admin Dashboard Styles

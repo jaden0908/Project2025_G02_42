@@ -69,32 +69,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Forgot Password - WaterLand</title>
+    <title>Forgot Password - Universal Studios</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class = "forgot-password-page">
-<div class="container mt-5" style="max-width:520px;">
-    <h2 class="mb-3">Forgot Password</h2>
-    <p class="text-muted">Enter your account email. We'll send a 6-digit code to verify it's you.</p>
+<div class="forgot-wrapper">
+  <div class="forgot-form-area">
+    <div class="title-area">
+      <svg viewBox="0 0 500 150" class="arch-text">
+        <path id="curve" d="M50,150 Q250,20 450,150" fill="transparent"/>
+        <text text-anchor="middle">
+          <textPath xlink:href="#curve" startOffset="50%">Universal Studios</textPath>
+        </text>
+      </svg>
+      <i class="fa-solid fa-globe globe-icon"></i>
+      <div class="sign-title">Forgot Password</div>
+    </div>
+
+    <p class="subtitle-text">Enter your account email. We’ll send a 6-digit code to verify it’s you.</p>
 
     <?php if (!empty($error)): ?>
-        <div class="alert alert-danger"><?= $error ?></div>
+      <div class="alert alert-danger"><?= $error ?></div>
     <?php endif; ?>
     <?php if (!empty($info)): ?>
-        <div class="alert alert-info"><?= $info ?></div>
+      <div class="alert alert-info"><?= $info ?></div>
     <?php endif; ?>
 
     <form method="POST" action="">
-        <div class="mb-3">
-            <label class="form-label">Email address</label>
-            <input type="email" name="email" class="form-control" required placeholder="you@example.com">
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Send Reset Code</button>
-        <div class="text-center mt-3">
-            <a href="login.php" class="btn btn-link">Back to Sign In</a>
-        </div>
+      <div class="mb-3">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" class="form-control" required placeholder="you@example.com">
+      </div>
+      <button type="submit" class="btn btn-primary">Send Reset Code</button>
+
+      <div class="text-center mt-3">
+        <a href="login.php" class="btn-link">← Back to Sign In</a>
+      </div>
     </form>
+  </div>
 </div>
+
 </body>
 </html>
