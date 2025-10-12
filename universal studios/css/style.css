@@ -1979,88 +1979,134 @@ body.verify-otp-page {
     }
 }
 
-/* Force OTP Page Styles */
+/* ============================= */
+/* Verify Reset OTP Page Styling */
+/* ============================= */
+
 body.reset-otp-page {
-    background-color: #1c1b1c !important;
-    color: #fff !important;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #6dccec 40%, #00BFFF 100%);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Container override */
-body.reset-otp-page .container {
-    background-color: #161617 !important;
-    padding: 40px 35px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 0 15px rgba(7, 7, 7, 0.25) !important;
+/* Wrapper (same as forgot) */
+.reset-otp-page .forgot-wrapper {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  padding: 50px 60px;
+  text-align: center;
 }
 
-/* Headings */
-body.reset-otp-page h2 {
-    color: #bd8912  !important;
-    text-align: center !important;
-    font-weight: 600 !important;
+/* Title Area */
+.reset-otp-page .title-area {
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
 }
 
-/* Paragraph text */
-body.reset-otp-page p.text-muted {
-    color: #aaa !important;
-    text-align: center !important;
+/* Arch logo */
+.reset-otp-page .arch-text {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+  height: 130px;
+  overflow: visible;
+  margin-bottom: -50px;
 }
 
-/* Input fields */
-body.reset-otp-page input.form-control {
-    background-color: #262626 !important;
-    border: 1px solid #444 !important;
-    color: #fff !important;
-    border-radius: 8px !important;
-    font-size: 1.2rem !important;
-    text-align: center !important;
+.reset-otp-page .arch-text text {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  fill: #113b4a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-/* Input focus */
-body.reset-otp-page input.form-control:focus {
-    border-color: #00BFFF !important;
-    background-color: #303030 !important;
-    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5) !important;
-    outline: none !important;
+/* Globe icon */
+.reset-otp-page .globe-icon {
+  font-size: 36px;
+  color: #113b4a;
+  margin-top: -8px;
+  margin-bottom: -2px;
+  display: block;
+  text-align: center;
+  animation: spin-globe 12s linear infinite;
+}
+
+/* Page title */
+.reset-otp-page .sign-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #113b4a;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* Subtitle */
+.reset-otp-page .subtitle-text {
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+/* Input field */
+.reset-otp-page .form-control {
+  border-radius: 10px;
+  border: 2px solid #113b4a;
+  padding: 12px;
+  transition: 0.3s;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.reset-otp-page .form-control:focus {
+  border-color: #0d2f3b;
+  box-shadow: 0 0 10px rgba(17, 59, 74, 0.5);
 }
 
 /* Button */
-body.reset-otp-page .btn-primary {
-    background: linear-gradient(90deg, #113b4a, #0c2a34) !important;
-    border: none !important;
-    padding: 12px !important;
-    font-weight: bold !important;
-    border-radius: 8px !important;
-    width: 100% !important;
+.reset-otp-page .btn-primary {
+  background-color: #113b4a;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 12px;
+  transition: 0.3s;
+  width: 100%;
 }
 
-body.reset-otp-page .btn-primary:hover {
-    transform: scale(1.02) !important;
-    background: linear-gradient(90deg, #0c2a34, #113b4a) !important;
+.reset-otp-page .btn-primary:hover {
+  background-color: #0c2a34;
+  transform: translateY(-2px);
 }
 
 /* Link */
-body.reset-otp-page .btn-link {
-    color:#bd8912  !important;
-    text-decoration: none !important;
+.reset-otp-page .btn-link {
+  color: #113b4a !important;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-body.reset-otp-page .btn-link:hover {
-    color: #e8e8e9 !important;
-    text-decoration: underline !important;
+.reset-otp-page .btn-link:hover {
+  text-decoration: underline;
+  color: #0c2a34 !important;
 }
 
-/* Alerts */
-body.reset-otp-page .alert-danger {
-    background: rgba(220, 53, 69, 0.9) !important;
-    color: #fff !important;
-    border: none !important;
-}
-
-body.reset-otp-page .alert-info {
-    background: rgba(0, 191, 255, 0.2) !important;
-    border: none !important;
-    color: #00BFFF !important;
+/* Spin animation */
+@keyframes spin-globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* =========================

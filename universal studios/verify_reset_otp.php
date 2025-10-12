@@ -97,24 +97,43 @@ if (isset($_GET['resend']) && $_GET['resend'] === '1') {
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class = "reset-otp-page">
-<div class="container mt-5" style="max-width:520px;">
-    <h2 class="mb-3">Enter Reset Code</h2>
-    <p class="text-muted">We sent a 6-digit code to <strong><?= htmlspecialchars($email) ?></strong>. Check your inbox (and spam).</p>
+<body class="reset-otp-page">
+  <div class="forgot-wrapper">
+    <div class="title-area">
+      <!-- Arch text -->
+      <svg viewBox="0 0 500 150" class="arch-text">
+        <path id="curve" fill="transparent" d="M75,100 Q250,20 425,100" />
+        <text width="500">
+          <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
+            UNIVERSAL STUDIOS
+          </textPath>
+        </text>
+      </svg>
+
+      <!-- Globe icon -->
+      <i class="fa-solid fa-globe globe-icon"></i>
+
+      <!-- Page title -->
+      <h2 class="sign-title">Verify Reset Code</h2>
+      <p class="subtitle-text">
+        We sent a 6-digit code to <strong><?= htmlspecialchars($email) ?></strong>. Check your inbox (and spam).
+      </p>
+    </div>
 
     <?php if (!empty($error)): ?>
-        <div class="alert alert-danger"><?= $error ?></div>
+      <div class="alert alert-danger"><?= $error ?></div>
     <?php endif; ?>
     <?php if (!empty($info)): ?>
-        <div class="alert alert-info"><?= $info ?></div>
+      <div class="alert alert-info"><?= $info ?></div>
     <?php endif; ?>
 
     <form method="POST" action="">
-        <div class="mb-3">
-            <label class="form-label">6-digit code</label>
-            <input type="text" name="otp" class="form-control" required maxlength="6" pattern="\d{6}" placeholder="e.g. 123456">
-        </div>
+      <div class="mb-3">
+        <label class="form-label">6-digit code</label>
+        <input type="text" name="otp" class="form-control" required maxlength="6" pattern="\d{6}" placeholder="e.g. 123456">
+      </div>
         <button type="submit" class="btn btn-primary w-100">Verify Code</button>
 
         <div class="text-center mt-3">
