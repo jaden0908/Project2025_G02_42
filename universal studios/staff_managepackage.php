@@ -49,38 +49,37 @@ unset($_SESSION['flash']);
 </head>
 <body>
 <div class="layout">
-  <!-- Sidebar -->
+  <!-- Sidebar (STAFF VERSION) -->
   <aside class="sidebar">
-    <div class="brand"><i class="bi bi-film"></i><span><?= BRAND_NAME ?></span></div>
-    <div class="nav-sec">
-     <!-- Dashboard (this page) -->
+    <div class="brand mb-3"><i class="bi bi-film me-2"></i><?= BRAND_NAME ?></div>
+
+    <div class="nav-sec mb-3">
+      <div class="nav-title text-muted small mb-1">Main</div>
+
+      <!-- Dashboard -->
       <a class="nav-link<?= nav_active('staff_dashboard.php') ?>" href="staff_dashboard.php">
         <i class="bi bi-speedometer2 me-1"></i>Dashboard
       </a>
 
-      <!-- Staff functions (mirrors admin sections but staff-friendly) -->
-      <a class="nav-link" href="package.php">
-        <i class="bi bi-card-list me-1"></i>View Packages
-      </a>
-     <a class="nav-link<?= nav_active('staff_managepackage.php') ?>" href="staff_managepackage.php">
-  <i class="bi bi-ticket-perforated me-1"></i>Manage Packages
-</a>
+      <!-- Staff functions -->
+      <a class="nav-link" href="package.php"><i class="bi bi-card-list me-1"></i>View Packages</a>
+      <a class="nav-link<?= nav_active('staff_managepackage.php') ?>" href="staff_managepackage.php"><i class="bi bi-ticket-perforated me-1"></i>Manage Packages</a>
+      <a class="nav-link<?= nav_active('staff_manage_customers.php') ?>" href="staff_manage_customers.php"><i class="bi bi-people me-1"></i>View Customers</a>
+      <a class="nav-link<?= nav_active('staff_view_feedback.php') ?>" href="staff_view_feedback.php"><i class="bi bi-chat-left-text me-1"></i>View Feedback</a>
 
-      <a class="nav-link" href="staff_manage_customers.php">
-        <i class="bi bi-people me-1"></i>View Customers
-      </a>
-      <a class="nav-link" href="staff_view_feedback.php">
-        <i class="bi bi-chat-left-text me-1"></i>View Feedback
+      <!-- Sales Report (this page) -->
+      <a class="nav-link<?= nav_active('staff_sales_report.php') ?>" href="staff_sales_report.php">
+        <i class="bi bi-graph-up me-1"></i>Sales Report
       </a>
     </div>
+
     <div class="nav-sec">
-      <div class="nav-title">Account</div>
-      <a class="nav-link" href="profile.php"><i class="bi bi-person"></i>My Profile</a>
-      <a class="nav-link" href="index.php"><i class="bi bi-house-door"></i>Back to Home</a>
-      <a class="nav-link" href="logout.php"><i class="bi bi-box-arrow-right"></i>Sign Out</a>
+      <div class="nav-title text-muted small mb-1">Account</div>
+      <a class="nav-link" href="profile.php"><i class="bi bi-person me-1"></i>My Profile</a>
+      <a class="nav-link" href="index.php"><i class="bi bi-house-door me-1"></i>Back to Home</a>
+      <a class="nav-link" href="logout.php"><i class="bi bi-box-arrow-right me-1"></i>Sign Out</a>
     </div>
   </aside>
-
   <!-- Content -->
   <div>
     <div class="topbar">
