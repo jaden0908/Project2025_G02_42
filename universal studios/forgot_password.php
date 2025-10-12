@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="forgot-form-area">
     <div class="title-area">
       <svg viewBox="0 0 500 150" class="arch-text">
-        <path id="curve" d="M50,150 Q250,20 450,150" fill="transparent"/>
+        <path id="curve" d="M50,170 A200,100 0 0,1 450,170"fill="transparent"/>
         <text text-anchor="middle">
           <textPath xlink:href="#curve" startOffset="50%">Universal Studios</textPath>
         </text>

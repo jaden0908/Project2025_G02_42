@@ -53,33 +53,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create New Password - WaterLand</title>
+    <title>Create New Password - Universal Studios</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
-<body class ="reset-password-page">
-<div class="container mt-5" style="max-width:520px;">
-    <h2 class="mb-3">Create a New Password</h2>
-    <p class="text-muted">For account: <strong><?= htmlspecialchars($email) ?></strong></p>
+<body class="reset-password-page">
+  <div class="forgot-wrapper">
+    <div class="title-area">
+      <!-- UNIVERSAL STUDIOS arch -->
+      <svg viewBox="0 0 500 150" class="arch-text">
+        <path id="curve" d="M50,190 A200,200 0 0,1 450,190" fill="transparent" />
+        <text width="500">
+          <textPath href="#curve" startOffset="50%" text-anchor="middle">
+            UNIVERSAL STUDIOS
+          </textPath>
+        </text>
+      </svg>
+
+      <!-- Spinning globe icon -->
+      <i class="fa-solid fa-globe globe-icon"></i>
+
+      <!-- Page title -->
+      <h2 class="sign-title">Reset Password</h2>
+    </div>
+
+    <p class="subtitle-text">For account: <strong><?= htmlspecialchars($email) ?></strong></p>
 
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error ?></div>
     <?php endif; ?>
 
     <form method="POST" action="">
-        <div class="mb-3">
-            <label class="form-label">New password</label>
-            <input type="password" name="password" class="form-control" required minlength="6" placeholder="At least 6 characters">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Confirm new password</label>
-            <input type="password" name="confirm_password" class="form-control" required minlength="6">
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Update Password</button>
-        <div class="text-center mt-3">
-            <a href="login.php" class="btn btn-link">Cancel</a>
-        </div>
+      <div class="mb-3">
+        <label class="form-label">New Password</label>
+        <input type="password" name="password" class="form-control" required minlength="6" placeholder="At least 6 characters">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" name="confirm_password" class="form-control" required minlength="6">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Update Password</button>
+      <div class="text-center mt-3">
+        <a href="login.php" class="btn btn-link">Cancel</a>
+      </div>
     </form>
-</div>
+  </div>
 </body>
-</html>
+

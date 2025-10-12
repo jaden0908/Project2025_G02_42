@@ -148,48 +148,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Email Verification - WaterLand</title>
+  <title>Email Verification - Universal Studios</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css?v=2" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="verify-otp-page">
-<div class="container mt-5" style="max-width:520px;">
-  <h2 class="mb-3">Verify Your Email</h2>
+  <div class="verify-otp-wrapper">
+    <!-- Arch Header -->
+    <svg viewBox="0 0 500 150" class="arch-text">
+      <path id="curve" fill="transparent" d="M75,120 Q250,0 425,120" />
+      <text width="500">
+        <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
+          Universal Studios
+        </textPath>
+      </text>
+    </svg>
 
-  <?php if (!empty($displayInfo)): ?>
-    <div class="alert alert-info"><?= e($displayInfo) ?></div>
-  <?php endif; ?>
-  <?php if (!empty($success)): ?>
-    <div class="alert alert-success"><?= e($success) ?></div>
-  <?php endif; ?>
-  <?php if (!empty($error)): ?>
-    <div class="alert alert-danger"><?= e($error) ?></div>
-  <?php endif; ?>
+    <i class="fas fa-globe globe-icon"></i>
+    <h2 class="sign-title">Verify OTP</h2>
 
-  <form method="POST" action="">
-    <?php if ($sessionEmail === ''): ?>
+    <?php if ($displayInfo): ?><div class="alert alert-info"><?= e($displayInfo) ?></div><?php endif; ?>
+    <?php if ($success): ?><div class="alert alert-success"><?= e($success) ?></div><?php endif; ?>
+    <?php if ($error): ?><div class="alert alert-danger"><?= e($error) ?></div><?php endif; ?>
+
+    <form method="POST" class="verify-otp-form">
+      <?php if ($sessionEmail === ''): ?>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" required>
+        </div>
+      <?php else: ?>
+        <div class="mb-2 text-center text-muted">
+          Verifying: <?= e($sessionEmail) ?>
+        </div>
+      <?php endif; ?>
+
       <div class="mb-3">
-        <label class="form-label">Email (the one you used to sign up)</label>
-        <input type="email" name="email" class="form-control" required>
+        <label class="form-label">Verification Code (OTP)</label>
+        <input type="text" name="otp" class="form-control" inputmode="numeric" pattern="\d{6}" maxlength="6" placeholder="6-digit code" required>
       </div>
-    <?php else: ?>
-      <div class="mb-2">
-        <small class="text-muted">Verifying: <?= e($sessionEmail) ?></small>
-      </div>
-    <?php endif; ?>
 
-    <div class="mb-3">
-      <label class="form-label">Verification Code (OTP)</label>
-      <input type="text" name="otp" class="form-control" inputmode="numeric" pattern="\d{6}" maxlength="6" placeholder="6-digit code" required>
+        <button type="submit" class="btn btn-primary">Verify</button>
+      </form>
+
+      <div class="text-center mt-3">
+        <a href="verify_otp.php?resend=1" class="btn btn-link">Resend code</a>
+      </div>
     </div>
-
-    <button type="submit" class="btn btn-primary w-100">Verify</button>
-  </form>
-
-  <div class="text-center mt-3">
-    <a href="verify_otp.php?resend=1" class="btn btn-link">Resend code</a>
   </div>
-</div>
 </body>
 </html>

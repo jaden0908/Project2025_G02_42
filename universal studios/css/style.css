@@ -1241,16 +1241,17 @@ body.signup-page {
 .form-side {
   flex: 1;
   background: #ffffff;
-  padding: 50px 60px;
+  padding: 30px 60px 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 30px !important;
 }
 
 /* Title Area */
 .title-area {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   position: relative;
 }
 
@@ -1262,7 +1263,8 @@ body.signup-page {
   max-width: 420px;
   height: 130px;
   overflow: visible;
-  margin-bottom: -70px;
+  margin-top: 40px;
+  margin-bottom: -100px ;
 }
 
 /* Curved text */
@@ -1279,8 +1281,8 @@ body.signup-page {
 .globe-icon {
   font-size: 36px;
   color: #113b4a;
-  margin-top: -5px !important;
-  margin-bottom: 20px !important;
+  margin-top: -10px !important;
+  margin-bottom: -10px;
   display: block;
   text-align: center;
   animation: spin-globe 12s linear infinite;
@@ -1298,7 +1300,8 @@ body.signup-page {
   font-weight: bold;
   color: #113b4a;
   text-transform: uppercase;
-  margin-top: 10px !important;
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
  
 }
 
@@ -1306,7 +1309,7 @@ body.signup-page {
 .form-side .form-control {
   border-radius: 10px;
   border: 2px solid #113b4a;
-  padding: 12px;
+  padding: 12px ;
   transition: 0.3s;
   font-size: 1rem;
 }
@@ -1433,7 +1436,7 @@ body.forgot-password-page {
 }
 
 /* Arch logo */
-.arch-text {
+.forgot-password-page.arch-text {
   display: block;
   margin: 0 auto;
   width: 100%;
@@ -1772,212 +1775,264 @@ a{text-decoration:none}
   background-color: #e0e0e0;
 }
 
-/* =========================
-   Reset Password Page Theme
-   ========================= */
+/* ============================= */
+/* Reset Password Page Styling   */
+/* ============================= */
+
 body.reset-password-page {
-    background: radial-gradient(circle at top, #1a1a1a 0%, #35384d 100%) !important;
-    color: #fff !important;
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-    min-height: 100vh !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #6dccec 40%, #00BFFF 100%);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Card container */
-body.reset-password-page .container {
-    background: rgba(20, 20, 30, 0.95) !important;
-    padding: 40px 35px !important;
-    border-radius: 15px !important;
-    border: 1px solid rgba(0, 191, 255, 0.25) !important;
-    max-width: 500px !important;
-    width: 100% !important;
+/* Wrapper (same as forgot and reset-otp) */
+.reset-password-page .forgot-wrapper {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  padding: 50px 60px;
+  text-align: center;
 }
 
-/* Headings */
-body.reset-password-page h2 {
-    color: #bd8912 !important;
-    text-align: center !important;
-    font-weight: bold !important;
-    font-family: 'Cinzel Decorative', serif !important;
-    margin-bottom: 15px !important;
+/* Title Area */
+.reset-password-page .title-area {
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
 }
 
-/* Subtext */
-body.reset-password-page p {
-    color: #bbb !important;
-    text-align: center !important;
+/* Arch logo */
+.reset-password-page .arch-text {
+     display: block;
+      margin: 0 auto; 
+      width: 100%; 
+      max-width: 420px; 
+      height: 130px; 
+      overflow: visible; 
+      margin-top: 10px; 
+      margin-bottom: -100px;
+ }
+
+.reset-password-page .arch-text text {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  fill: #113b4a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-/* Form labels */
-body.reset-password-page .form-label {
-    color: #fff !important;
-    font-weight: 500 !important;
+/* Globe icon */
+.reset-password-page .globe-icon {
+  font-size: 36px;
+  color: #113b4a;
+  margin-top: 15px;  /* moved slightly down for balance */
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+  animation: spin-globe 12s linear infinite;
 }
 
-/* Inputs */
-body.reset-password-page .form-control {
-    background: rgb(32, 29, 49) !important;
-    border: 1px solid #555 !important;
-    color: #fff !important;
-    border-radius: 8px !important;
-    padding: 12px !important;
+/* Page title */
+.reset-password-page .sign-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #113b4a;
+  text-transform: uppercase;
+  margin-top: 15px; /* adds nice spacing below globe */
 }
 
-body.reset-password-page .form-control:focus {
-    border-color: #00BFFF !important;
-    background: rgba(255, 255, 255, 0.12) !important;
-    outline: none !important;
-    box-shadow: none !important;
-    color: #fff !important;
+/* Input field */
+.reset-password-page .form-control {
+  border-radius: 10px;
+  border: 2px solid #113b4a;
+  padding: 12px;
+  transition: 0.3s;
+  font-size: 1rem;
 }
 
-/* Primary button */
-body.reset-password-page .btn-primary {
-    background: linear-gradient(90deg, #113b4a, #0c2a34) !important;
-    border: none !important;
-    font-weight: bold !important;
-    padding: 12px !important;
-    border-radius: 8px !important;
-    transition: 0.3s !important;
-    width: 100% !important;
-    color: #fff !important;
+.reset-password-page .form-control:focus {
+  border-color: #0d2f3b;
+  box-shadow: 0 0 10px rgba(17, 59, 74, 0.5);
 }
 
-body.reset-password-page .btn-primary:hover {
-    background: linear-gradient(90deg, #0c2a34, #113b4a) !important;
+/* Button */
+.reset-password-page .btn-primary {
+  background-color: #113b4a;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 12px;
+  transition: 0.3s;
+  width: 100%;
 }
 
-/* Link button */
-body.reset-password-page .btn-link {
-    color: #bd8912  !important;
-    font-weight: 500 !important;
-    text-decoration: none !important;
+.reset-password-page .btn-primary:hover {
+  background-color: #0c2a34;
+  transform: translateY(-2px);
 }
 
-body.reset-password-page .btn-link:hover {
-    text-decoration: underline !important;
-    color: #e8ebec !important;
+/* Link */
+.reset-password-page .btn-link {
+  color: #113b4a !important;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* Error message */
-body.reset-password-page .alert-danger {
-    background: rgba(220, 53, 69, 0.9) !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 8px !important;
-    text-align: center !important;
+.reset-password-page .btn-link:hover {
+  text-decoration: underline;
+  color: #0c2a34 !important;
 }
 
-/* Info message */
-body.reset-password-page .alert-info {
-    background: rgba(0, 123, 255, 0.9) !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 8px !important;
-    text-align: center !important;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Spin animation */
+@keyframes spin-globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 
 /* ================================
-   VERIFY OTP PAGE STYLES
+   VERIFY OTP / RESET PASSWORD PAGES
+   (Universal Studios Minimal Center Style)
    ================================ */
 
-/* Page background */
 body.verify-otp-page {
-    background: linear-gradient(135deg, #19191a 40%, #40545a 100%) ;
-    min-height: 100vh;
-    display: flex ;
-    align-items: center ;
-    justify-content: center ;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif ;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #6dccec 40%, #00BFFF 100%);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-/* Card wrapper */
-.verify-otp-page .container {
-    background: #fff ;
-    border-radius: 12px ;
-    padding: 2rem ;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) ;
-    animation: fadeInUp 0.6s ease ;
+/* Centered white box */
+.verify-otp-wrapper {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  padding: 50px 60px;
+  text-align: center;
 }
 
-/* Heading */
-.verify-otp-page h2 {
-    font-weight: 700 ;
-    text-align: center ;
-    margin-bottom: 1rem;
-    color: #bd8912 ;
+/* Arch text (Universal Studios title) */
+.arch-text {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+  height: 120px;
+  overflow: visible;
+  margin-bottom: -20px;
+}
+
+.arch-text text {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  fill: #113b4a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Rotating globe icon */
+.globe-icon {
+  font-size: 36px;
+  color: #113b4a;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  animation: spin-globe 12s linear infinite;
+}
+
+@keyframes spin-globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Page Title (e.g., Verify OTP / Reset Password) */
+.sign-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #113b4a;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+/* Form Controls */
+.verify-otp-form .form-control {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #113b4a;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.verify-otp-form .form-control:focus {
+  border-color: #0d2f3b;
+  box-shadow: 0 0 10px rgba(17, 59, 74, 0.5);
+}
+
+/* Primary Button */
+.verify-otp-form .btn-primary {
+  background-color: #113b4a;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 12px;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.verify-otp-form .btn-primary:hover {
+  background-color: #0c2a34;
+  transform: translateY(-2px);
+}
+
+/* Links */
+.verify-otp-form .btn-link {
+  color: #113b4a !important;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.verify-otp-form .btn-link:hover {
+  text-decoration: underline;
+  color: #0c2a34 !important;
 }
 
 /* Alerts */
-.verify-otp-page .alert {
-    border-radius: 8px ;
-    font-size: 0.9rem ;
+.alert-success, .alert-danger, .alert-info {
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 0.95rem;
+  text-align: center;
 }
 
-/* Form labels */
-.verify-otp-page .form-label {
-    font-weight: 600 ;
-    color: #444 ;
+/* Responsive */
+@media (max-width: 600px) {
+  .verify-otp-wrapper {
+    padding: 30px 25px;
+  }
 }
 
-/* Input field */
-.verify-otp-page .form-control {
-    border-radius: 8px ;
-    padding: 0.75rem 1rem ;
-    border: 1px solid #ddd ;
-    transition: all 0.3s ease ;
-}
 
-.verify-otp-page .form-control:focus {
-    border-color: #007bff ;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3) ;
-}
-
-/* Verify button */
-.verify-otp-page .btn-primary {
-    border-radius: 8px ;
-    font-weight: 600 ;
-    padding: 0.75rem ;
-    transition: all 0.3s ease ;
-}
-
-.verify-otp-page .btn-primary:hover {
-    background: #0056b3 ;
-}
-
-/* Resend link */
-.verify-otp-page .btn-link {
-    font-size: 0.9rem ;
-    color: #bd8912 ;
-    text-decoration: none ;
-    transition: all 0.3s ease ;
-}
-
-.verify-otp-page .btn-link:hover {
-    text-decoration: underline ;
-    color: #f4f4f5 ;
-}
-
-/* Fade-in animation */
-@keyframes fadeInUp {
-    from {
-        transform: translateY(30px) ;
-        opacity: 0 ;
-    }
-    to {
-        transform: translateY(0) ;
-        opacity: 1 ;
-    }
-}
 
 /* ============================= */
 /* Verify Reset OTP Page Styling */

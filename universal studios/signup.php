@@ -85,13 +85,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <!-- RIGHT SIDE -->
   <div class="form-side">
     <div class="title-area">
-      <svg viewBox="0 0 500 200" class="arch-text">
-        <path id="curve" d="M50,150 A200,100 0 0,1 450,150" fill="transparent" />
-        <text width="500">
-          <textPath href="#curve" startOffset="50%" text-anchor="middle">
-            UNIVERSAL STUDIOS
+      <svg viewBox="0 0 500 150" class="arch-text">
+        <path id="curve" d="M50,190 A200,100 0 0,1 450,190" fill="transparent" />
+          <text width="500">
+          <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle" style="font-size:20px; font-weight:700; fill:#113b4a;">
+             Universal Studios
           </textPath>
-        </text>
+          </text>
       </svg>
       <i class="fa-solid fa-globe globe-icon"></i>
       <h2 class="sign-title">Sign Up</h2>
