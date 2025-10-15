@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <svg viewBox="0 0 500 150" class="arch-text">
         <path id="curve" d="M50,190 A200,100 0 0,1 450,190" fill="transparent" />
           <text width="500">
-          <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle" style="font-size:20px; font-weight:700; fill:#113b4a;">
+          <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle" style="font-size:22px; font-weight:700; fill:#113b4a;">
              Universal Studios
           </textPath>
           </text>

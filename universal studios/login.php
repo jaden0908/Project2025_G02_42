@@ -174,9 +174,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="form-card" role="region" aria-label="Sign in form">
         <div class="title-area">
           <svg viewBox="0 0 500 200" class="arch-text">
-           <path id="curve" d="M50,150 A200,100 0 0,1 450,150" fill="transparent" />
+           <path id="curve" d="M50,200 A200,100 0 0,1 450,200" fill="transparent" />
            <text width="500">
-              <textPath href="#curve" startOffset="50%" text-anchor="middle">UNIVERSAL STUDIOS</textPath>
+              <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle" style="font-size:30px; font-weight:700; fill:#113b4a;">UNIVERSAL STUDIOS</textPath>
            </text>
           </svg>
           <i class="fa-solid fa-globe globe-icon"></i>
