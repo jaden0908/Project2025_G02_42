@@ -147,16 +147,20 @@ $stmt->close();
         } ?>
     </a>
     <div class="dropdown-menu dropdown-menu-end m-0">
-      <a href="profile.php" class="dropdown-item<?= $active('profile.php') ?>">
-        <i class="fa fa-id-badge me-2"></i> Profile
-      </a>
-      <?php if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'staff'): ?>
-        <a href="staff_dashboard.php" class="dropdown-item"><i class="fa fa-briefcase me-2"></i> Dashboard</a>
-      <?php elseif (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin'): ?> 
-        <a href="admin_dashboard.php" class="dropdown-item"><i class="fa fa-cogs me-2"></i> Dashboard</a>
-      <?php endif; ?>
-      <a href="logout.php" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i> Sign Out</a>
-    </div>
+              <a href="profile.php" class="dropdown-item<?= $active('profile.php') ?>">
+                <i class="fa fa-id-badge me-2"></i> Profile
+              </a>
+              <?php if ($sessionRole === 'customer'): ?>
+                <a href="cart.php" class="dropdown-item<?= $active('cart.php') ?>">
+                  <i class="fa fa-shopping-cart me-2"></i> Cart
+                </a>
+              <?php elseif ($sessionRole === 'staff'): ?>
+                <a href="staff_dashboard.php" class="dropdown-item"><i class="fa fa-briefcase me-2"></i> Dashboard</a>
+              <?php elseif ($sessionRole === 'admin'): ?> 
+                <a href="admin_dashboard.php" class="dropdown-item"><i class="fa fa-cogs me-2"></i> Dashboard</a>
+              <?php endif; ?>
+              <a href="logout.php" class="dropdown-item"><i class="fa fa-sign-out-alt me-2"></i> Sign Out</a>
+            </div>
     </div>
   </div>
 <?php endif; ?>
