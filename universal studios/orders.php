@@ -162,9 +162,15 @@ function statusBadge(string $s): string {
       <i class="fa-solid fa-film text-primary me-2"></i><strong>Universal Studios</strong>
     </a>
     <div class="d-flex align-items-center gap-3">
-      <span class="text-muted small">Signed in as <strong><?= e($_SESSION['user']['name'] ?? 'User') ?></strong> (<?= e($userRole) ?>)</span>
-      <a href="logout.php" class="btn btn-outline-secondary btn-sm">Logout</a>
-    </div>
+  <span class="text-muted small">Signed in as <strong><?= e($_SESSION['user']['name'] ?? 'User') ?></strong> (<?= e($userRole) ?>)</span>
+  
+  <!-- Container for both Logout and Cart buttons -->
+  <div class="d-flex gap-2">
+    <a href="package.php" class="btn btn-outline-secondary btn-sm">Package</a>
+    <a href="cart.php" class="btn btn-outline-secondary btn-sm">Cart</a>
+  </div>
+</div>
+
   </div>
 </nav>
 
