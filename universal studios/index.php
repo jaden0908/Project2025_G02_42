@@ -135,8 +135,8 @@ define('BRAND_NAME', 'Universal Studios');
                 <i class="fa fa-id-badge me-2"></i> Profile
               </a>
               <?php if ($sessionRole === 'customer'): ?>
-                <a href="cart.php" class="dropdown-item<?= $active('cart.php') ?>">
-                  <i class="fa fa-shopping-cart me-2"></i> Cart
+                  <a href="orders.php" class="dropdown-item<?= $active('orders.php') ?>">
+                  <i class="fa fa-shopping-cart me-2"></i> Order
                 </a>
               <?php elseif ($sessionRole === 'staff'): ?>
                 <a href="staff_dashboard.php" class="dropdown-item"><i class="fa fa-briefcase me-2"></i> Dashboard</a>
