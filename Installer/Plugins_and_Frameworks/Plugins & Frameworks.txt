@@ -1,0 +1,71 @@
+PLUGINS & FRAMEWORKS (DOWNLOAD LINKS)
+=====================================
+
+Core CSS/JS
+-----------
+- Bootstrap 5 (CSS/JS Bundle)
+  Official: https://getbootstrap.com/
+  CDN: https://cdn.jsdelivr.net/npm/bootstrap@5/
+
+- jQuery 3.6.x
+  Official: https://jquery.com/
+  CDN: https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js
+
+Icons & Fonts
+-------------
+- Font Awesome 5.15.4
+  Official: https://fontawesome.com/
+  CDN (v5.15.4 CSS): https://use.fontawesome.com/releases/v5.15.4/css/all.css
+
+- Bootstrap Icons 1.4.x
+  Official: https://icons.getbootstrap.com/
+  CDN: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/
+
+UI Animations / Effects
+-----------------------
+- Animate.css
+  Official: https://animate.style/
+  CDN: https://cdn.jsdelivr.net/npm/animate.css/
+
+- WOW.js (reveal animations on scroll)
+  Website: https://wowjs.uk/
+  GitHub: https://github.com/matthieua/WOW
+
+Galleries / Sliders
+-------------------
+- Owl Carousel 2
+  Docs: https://owlcarousel2.github.io/OwlCarousel2/
+  GitHub: https://github.com/OwlCarousel2/OwlCarousel2
+
+- Lightbox2
+  Website: https://lokeshdhakar.com/projects/lightbox2/
+  GitHub: https://github.com/lokesh/lightbox2
+
+Utilities for Counters & Scrolling
+----------------------------------
+- jQuery Easing
+  Docs: http://gsgd.co.uk/sandbox/jquery/easing/
+  CDN: https://cdnjs.com/libraries/jquery-easing
+
+- Waypoints
+  Website: http://imakewebthings.com/waypoints/
+  GitHub: https://github.com/imakewebthings/waypoints
+
+- Counter-Up (jQuery)
+  GitHub: https://github.com/bfintal/Counter-Up
+  (Note: requires Waypoints)
+
+Project Local Files
+-------------------
+- /css/bootstrap.min.css  (local copy)
+- /css/style.css
+- /lib/animate/animate.min.css
+- /lib/lightbox/css/lightbox.min.css
+- /lib/owlcarousel/assets/owl.carousel.min.css
+- /lib/wow/wow.min.js
+- /lib/easing/easing.min.js
+- /lib/waypoints/waypoints.min.js
+- /lib/counterup/counterup.min.js
+- /lib/lightbox/js/lightbox.min.js
+- /lib/owlcarousel/owl.carousel.min.js
+- /js/main.js

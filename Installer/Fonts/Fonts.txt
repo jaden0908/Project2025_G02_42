@@ -1,0 +1,19 @@
+FONTS (GOOGLE FONTS)
+====================
+
+This project uses Google-hosted web fonts:
+
+- Montserrat
+  Link: https://fonts.google.com/specimen/Montserrat
+
+- Open Sans
+  Link: https://fonts.google.com/specimen/Open+Sans
+
+How we include:
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet">
+
+Offline option (if required by examiner):
+Download the font families from Google Fonts, include .woff2/.woff under /fonts/,
+and reference locally in CSS with @font-face.

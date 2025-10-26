@@ -1,0 +1,152 @@
+/* ========== Universal Studios · Cinematic Profile ========== */
+:root{
+  --bg-0:#070b14;         /* 深夜蓝底 */
+  --bg-1:#0b1224;
+  --glass:#0d1427cc;      /* 玻璃层（含透明度） */
+  --line:#1e2a4a;
+  --ink:#e8eefc;
+  --muted:#94a3b8;
+  --brand:#00d4ff;        /* 霓虹青 */
+  --brand-2:#7cf5ff;      /* 辅助高光 */
+  --accent:#6c5ce7;       /* 电影紫 */
+  --ring: rgba(0,212,255,.28);
+}
+
+html,body{height:100%}
+body.theme-cinematic{
+  background:
+    radial-gradient(1200px 600px at 10% -20%, #0d1a38 0%, transparent 60%),
+    radial-gradient(900px 500px at 90% -10%, #0a0f24 0%, transparent 60%),
+    radial-gradient(700px 400px at 80% 120%, #0f1b3a 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-0), var(--bg-1));
+  color:var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ====== App Bar ====== */
+.appbar{
+  position:sticky; top:0; z-index:100;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, #0b1120cc, #0b1120aa);
+  border-bottom:1px solid var(--line);
+}
+.appbar-inner{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.85rem 0; }
+.brand{
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight:800; letter-spacing:.3px; margin:0;
+  display:flex; align-items:center; gap:.5rem;
+}
+.brand-icon{
+  color:var(--brand);
+  filter: drop-shadow(0 0 12px rgba(0,212,255,.6));
+  font-size:1.2em;
+}
+.brand-sub{ font-weight:600; color:var(--muted) }
+.btn-ghost{
+  border:1px solid var(--line); color:var(--ink); background:transparent;
+  display:inline-flex; align-items:center; gap:.4rem; border-radius:12px; padding:.45rem .75rem;
+  transition:.18s ease;
+}
+.btn-ghost:hover{ border-color:#2a3a62; background:#0b1220; }
+
+/* ====== Cover / Hero ====== */
+.cover{
+  padding:28px 0 16px;
+  background:
+    radial-gradient(600px 160px at 50% 0%, rgba(124,245,255,.14), transparent 60%),
+    linear-gradient(180deg, transparent, rgba(108,92,231,.06));
+  border-bottom:1px solid var(--line);
+}
+.cover-card{
+  display:flex; align-items:center; gap:1.25rem;
+  background: linear-gradient(180deg, #0d1427cc, #0b1326cc);
+  border:1px solid #2a3a62; border-radius:18px; padding:1rem 1.25rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter: blur(10px);
+}
+.avatar{
+  width:68px; height:68px; border-radius:16px;
+  display:grid; place-items:center; font-weight:900; font-size:1.4rem; color:#011a1f;
+  background:
+    radial-gradient(circle at 30% 30%, #c9fbff, #7cf5ff 60%, #00d4ff 100%);
+  box-shadow: inset 0 0 18px rgba(255,255,255,.45), 0 10px 24px rgba(0,212,255,.35);
+}
+.identity .fullname{ font-size:1.9rem; font-weight:800; line-height:1.1; }
+.identity .meta{ color:var(--muted) }
+.identity .dot{ margin:0 .6rem; opacity:.6 }
+.ok{ color:#34d399 } .dim{ color:#77839c }
+
+.actions .btn-primary{
+  border-radius:12px; border:1px solid #25e3ff;
+  background: linear-gradient(180deg, #0ad4ff, #00b3df);
+  color:#002029; font-weight:700;
+  box-shadow: 0 10px 30px var(--ring), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.actions .btn-primary:hover{ filter:brightness(1.05) }
+
+/* ====== Layout ====== */
+.content{ padding:26px 0 }
+.card{
+  border:1px solid #27355b;
+  border-radius:18px;
+  background: linear-gradient(180deg, var(--glass), #0c152d99);
+  box-shadow: 0 16px 44px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter: blur(10px);
+}
+
+/* Sidebar */
+.sidebar{ overflow:hidden }
+.sidebar .tab-link{
+  display:flex; align-items:center; gap:.6rem;
+  padding:.9rem 1rem; color:var(--ink); text-decoration:none;
+  border-left:3px solid transparent; transition:all .18s ease;
+}
+.sidebar .tab-link i{ color:var(--brand); opacity:.85 }
+.sidebar .tab-link:hover{ background:rgba(124,245,255,.06) }
+.sidebar .tab-link.active{
+  border-left-color:var(--brand);
+  background: linear-gradient(90deg, rgba(124,245,255,.08), transparent);
+  color:var(--brand);
+  font-weight:600;
+}
+
+/* Panels */
+.panel-header{ padding:.9rem 1rem; border-bottom:1px solid #263455; }
+.panel-header h5{ margin:0; font-weight:800; letter-spacing:.3px }
+.panel-body{ padding:1rem 1rem 1.15rem }
+
+.tile{
+  border:1px solid #2a3a62; border-radius:12px; padding:.8rem .95rem;
+  background: linear-gradient(180deg, #0c152d55, #0c152d22);
+}
+.tile .label{ display:block; color:var(--muted); font-size:.92rem }
+.tile .value{ font-weight:700 }
+
+/* Buttons */
+.btn{ border-radius:12px }
+.btn-outline-dark{
+  border-color:#334266; color:var(--ink);
+}
+.btn-outline-dark:hover{ background:#0b1324; border-color:#3b4d79 }
+.btn-primary{ box-shadow:0 8px 22px var(--ring) }
+.btn-primary:focus{ box-shadow:0 0 0 .25rem var(--ring) }
+
+/* Flash */
+.toastish{
+  border:1px solid #2a3a62; background:#0b1326cc; backdrop-filter: blur(8px);
+  border-radius:14px; box-shadow:0 10px 28px rgba(0,0,0,.35);
+}
+
+/* Footer */
+.foot{ border-top:1px solid var(--line); background:linear-gradient(180deg,#0b1120cc,#0b1120aa); padding:18px 0 }
+
+/* Utils */
+.mono{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace }
+a.muted.link{ color:var(--brand-2); text-decoration:none }
+a.muted.link:hover{ color:var(--brand); text-shadow:0 0 12px rgba(0,212,255,.4) }
+
+/* Responsive */
+@media (max-width: 768px){
+  .cover-card{ flex-direction:column; align-items:flex-start }
+  .actions{ width:100% } .actions .btn{ width:100% }
+}

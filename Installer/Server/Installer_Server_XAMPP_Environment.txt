@@ -1,0 +1,50 @@
+=======================================
+SERVER ENVIRONMENT (XAMPP / WAMP / UNIFORM SERVER)
+=======================================
+
+Project Tested Environment
+--------------------------
+Server Stack: XAMPP
+Apache Version: 2.4 or later
+PHP Version: 8.0 or later
+MySQL Version: 8.0 or later
+Operating System: Windows 10 / Windows 11
+XAMPP Control Panel: Version 8.x
+
+Official Download Links
+-----------------------
+XAMPP: https://www.apachefriends.org/index.html
+WAMP Server: https://www.wampserver.com/en/
+Uniform Server: https://www.uniformserver.com/
+
+Installation Steps
+------------------
+1. Download and install **XAMPP** from the official link above.
+2. Open XAMPP Control Panel.
+3. Start **Apache** and **MySQL** modules.
+4. Place the project folder inside:
+   C:\xampp\htdocs\universalstudios9\
+5. Launch your web browser and visit:
+   http://localhost/universalstudios9/public_website/index.php
+
+Database Configuration (if applicable)
+--------------------------------------
+1. Open phpMyAdmin from XAMPP.
+2. Create a new database (example: `themeparkdb`).
+3. Import the provided SQL file (if any) located in the `Database` folder.
+4. Verify your database connection credentials inside `config.php`:
+   host = localhost
+   username = root
+   password = (empty)
+   database = themeparkdb
+
+Uninstall Instructions
+----------------------
+1. Stop Apache and MySQL from XAMPP Control Panel.
+2. Delete the project folder from htdocs.
+3. Optionally uninstall XAMPP.
+
+Support & Documentation
+------------------------
+For additional help, visit:
+https://www.apachefriends.org/faq.html
